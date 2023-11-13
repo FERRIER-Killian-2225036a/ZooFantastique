@@ -3,16 +3,32 @@ package main.controller;
 import main.modele.CreatureModel;
 import main.view.CreatureView;
 
+import java.util.ArrayList;
+
 public class CreatureController {
-    CreatureModel creatureModel;
-    CreatureView creatureView;
+    static CreatureModel creatureModel;
+    static CreatureView creatureView;
 
     public CreatureController(CreatureModel creatureModel, CreatureView creatureView) {
-        this.creatureModel = creatureModel;
-        this.creatureView = creatureView;
+        CreatureController.creatureModel = creatureModel;
+        CreatureController.creatureView = creatureView;
     }
 
-    public void manger() {
+    public static ArrayList<String> getTypeName(CreatureModel creatureModel) {
+        Class<?>[] interfaces = creatureModel.getClass().getInterfaces();
+        ArrayList<String> interfaceNames = new ArrayList<>();
+        // Gestion du cas où la classe n'implémente aucune interface
+        if (interfaces.length > 0) {
+            for (Class<?> interfaceElem : interfaces) {
+                interfaceNames.add(interfaceElem.getSimpleName());
+            }
+        } else {
+            interfaceNames.add("Non spécifé");
+        }
+        return interfaceNames; // Prend le nom de la première interface (Volant dans ce cas)
+    }
+
+    public static void manger() {
         if (!creatureModel.isMorte()){
             if (!creatureModel.isDort()) {
                 System.out.println("Miam miam");
@@ -65,12 +81,11 @@ public class CreatureController {
     public void meurt() {
         if (!creatureModel.isMorte()) {
             creatureModel.setMorte(true);
-            if (Enclos.getListCreatureDansEnclos().contains(creatureModel)) {
+            if (EnclosController.getListCreatureDansEnclos().contains(creatureModel)) {
                 creatureView.vousDevezNettoyerEnclos();
             }
         } else {
             creatureView.mort();
         }
-
     }
 }

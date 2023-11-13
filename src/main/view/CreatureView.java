@@ -9,10 +9,6 @@ public class CreatureView {
         this.creatureModel = creatureModel;
     }
 
-    public void affichierLesDonneesDeLaCreature() {
-        System.out.println(creatureModel.toString());
-    }
-
     public void aMange() {
         System.out.println("La créature a mangé");
     }

@@ -1,7 +1,7 @@
 package main.modele;
 
-import main.core.InstanceManagerOfCreatures;
-import main.core.TypeGetter;
+import main.commun.InstanceManager;
+import main.controller.CreatureController;
 
 import java.util.ArrayList;
 
@@ -11,7 +11,7 @@ public class CreatureModel {
     protected int sexe; // 0 = male; 1 = femelle
     protected int poids; // En kg
     protected int taille; // En cm
-    protected ArrayList<?> type = TypeGetter.getTypeName(this); // Nom de l'interface
+    protected ArrayList<?> type = CreatureController.getTypeName(this); // Nom de l'interface
     protected int dureeDeVie = 50; // En années
     protected int indicateurFaim = 0; // De 0 a 100
     protected int indicateurSante = 100; // De 100 a 0
@@ -25,7 +25,7 @@ public class CreatureModel {
         this.sexe = sexe;
         this.poids = poids;
         this.taille = taille;
-        InstanceManagerOfCreatures.addInstance(this);
+        InstanceManager.InstanceManagerOfCreatures.addInstance(this);
     }
 
     //setters
