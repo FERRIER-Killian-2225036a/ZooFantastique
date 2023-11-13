@@ -1,6 +1,6 @@
 package main.modele;
 
-import main.Creature;
+import main.core.InstanceManagerOfCreatures;
 import main.core.TypeGetter;
 
 import java.util.ArrayList;
@@ -16,8 +16,8 @@ public class CreatureModel {
     protected int indicateurFaim = 0; // De 0 a 100
     protected int indicateurSante = 100; // De 100 a 0
     protected int indicateurSommeil = 0; // De 0 a 100
-    protected boolean dortIl = false;
-    protected boolean estMorte = false;
+    protected boolean dort = false;
+    protected boolean morte = false;
 
     public CreatureModel(String nom, int age, int sexe, int poids, int taille) {
         this.nom = nom;
@@ -25,10 +25,38 @@ public class CreatureModel {
         this.sexe = sexe;
         this.poids = poids;
         this.taille = taille;
-        //TODO: Creature.InstanceManager.addInstance(this);
+        InstanceManagerOfCreatures.addInstance(this);
     }
 
     //setters
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+    public void setAge(int age) {
+        this.age = age;
+    }
+    public void setSexe(int sexe) {
+        this.sexe = sexe;
+    }
+    public void setPoids(int poids) {
+        this.poids = poids;
+    }
+    public void setTaille(int taille) {
+        this.taille = taille;
+    }
+    public void setType(ArrayList<?> type) {
+        this.type = type;
+    }
+    public void setDureeDeVie(int dureeDeVie) {
+        this.dureeDeVie = dureeDeVie;
+    }
+    public void setDort(boolean dort) {
+        this.dort = dort;
+    }
+    public void setMorte(boolean morte) {
+        this.morte = morte;
+    }
+
     public void setIndicateurFaim(int indicateurFaim) {
         this.indicateurFaim = indicateurFaim;
     }
@@ -43,14 +71,8 @@ public class CreatureModel {
     public String getNom() {
         return nom;
     }
-    public String getSex() {
-        if (this.sexe==0){
-            return "Male";
-        } else if (this.sexe==1) {
-            return "Femelle";
-        } else {
-            return "Non défini";
-        }
+    public int getSex() {
+        return sexe;
     }
     public int getAge() {
         return age;
@@ -76,27 +98,11 @@ public class CreatureModel {
     public int getIndicateurSommeil() {
         return indicateurSommeil;
     }
-    public boolean isDortIl() {
-        return dortIl;
+    public boolean isDort() {
+        return dort;
     }
-    public boolean isEstMorte() {
-        return estMorte;
+    public boolean isMorte() {
+        return morte;
     }
 
-    @Override
-    public String toString() {
-        return "Creature{" +
-                "nom='" + nom + '\'' +
-                ", age=" + age +
-                ", sexe='" + getSex() + '\'' +
-                ", poids=" + poids +
-                ", taille=" + taille +
-                ", type='" + type.toString() + '\'' +
-                ", indicateurFaim=" + indicateurFaim +
-                ", indicateurSante=" + indicateurSante +
-                ", indicateurSommeil=" + indicateurSommeil +
-                ", dortIl=" + dortIl +
-                ", estMorte=" + estMorte +
-                '}';
-    }
 }
