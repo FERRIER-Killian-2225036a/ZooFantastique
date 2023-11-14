@@ -1,5 +1,6 @@
-package main.models.creatures;
+package main.models.creatures.implemente;
 
+import main.models.creatures.naissance.Ovipare;
 import main.models.interfaces.Aquatique;
 import main.models.interfaces.Terrestre;
 import main.models.interfaces.Volant;

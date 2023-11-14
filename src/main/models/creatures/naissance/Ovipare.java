@@ -1,4 +1,6 @@
-package main.models.creatures;
+package main.models.creatures.naissance;
+
+import main.models.creatures.Creature;
 
 public abstract class Ovipare extends Creature {
     public Ovipare(String nom, int age, int sexe, int poids, int taille) {

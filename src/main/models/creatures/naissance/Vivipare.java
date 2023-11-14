@@ -1,4 +1,4 @@
-package main.models.creatures;
+package main.models.creatures.naissance;
 
 import main.models.creatures.Creature;
 

@@ -1,5 +1,6 @@
-package main.models.creatures;
+package main.models.creatures.implemente;
 
+import main.models.creatures.naissance.Ovipare;
 import main.models.interfaces.Volant;
 
 public class Phenix extends Ovipare implements Volant {
