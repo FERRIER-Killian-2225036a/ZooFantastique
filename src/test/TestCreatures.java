@@ -1,8 +1,8 @@
 package test;
 
-import main.Creature;
-import main.Dragon;
-import main.Phenix;
+import main.models.creatures.Creature;
+import main.models.creatures.Dragon;
+import main.models.creatures.Phenix;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
