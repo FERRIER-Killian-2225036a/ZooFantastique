@@ -2,6 +2,7 @@ package main.controllers;
 
 import main.models.MaitreZoo;
 import main.models.ZooFantastique;
+import main.view.MenuView;
 import main.view.ZooView;
 
 import java.util.ArrayList;
@@ -16,8 +17,13 @@ public class DefaultController {
         ArrayList<String> zooFantastiqueInfo = ZooView.InitializeZooFantastiqueView();
         zooFantastique= new ZooFantastique(zooFantastiqueInfo.get(0), maitreZoo,Integer.parseInt(zooFantastiqueInfo.get(1)));
     }
+    public static void InitializeCreatures() {
+
+    }
 
     public static void main(String[] args) {
+        MenuView.start();
         InitializeZoo();
+        MenuView.end();
     }
 }
