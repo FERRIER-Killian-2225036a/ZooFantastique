@@ -52,7 +52,7 @@ public class MaitreZoo {
     public String toString() {
         return "MaitreZoo{" +
                 "nom='" + nom + '\'' +
-                ", sexe=" + sexe +
+                ", sexe=" + getSexe() +
                 ", age=" + age +
                 '}';
     }

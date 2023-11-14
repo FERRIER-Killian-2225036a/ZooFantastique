@@ -25,6 +25,16 @@ public class ZooFantastique {
         System.out.println("Les créatures présentent dans "+enclos.getNom()+" sont :\n"+enclos.getCreaturePresentes());
     }
 
+    @Override
+    public String toString() {
+        return "ZooFantastique{" +
+                "nom='" + nom + '\'' +
+                ", maitreZoo=" + maitreZoo +
+                ", nombreMaxEnclos=" + nombreMaxEnclos +
+                ", enclosExistants=" + enclosExistants +
+                '}';
+    }
+
     public static void main(String[] args) {
         //TODO: Similation du temps
     }
