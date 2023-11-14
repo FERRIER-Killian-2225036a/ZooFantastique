@@ -10,4 +10,11 @@ public class Dragon extends Ovipare implements Terrestre, Aquatique, Volant {
         super(nom, age, sexe, poids, taille);
         super.dureeDeVie = 100;
     }
+
+    @Override
+    public void meurt() {
+        System.out.println("La créature renaît");
+        this.indicateurSante = 100;
+        this.age = 0;
+    }
 }

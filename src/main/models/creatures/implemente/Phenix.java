@@ -11,7 +11,7 @@ public class Phenix extends Ovipare implements Volant {
 
     @Override
     public void meurt() {
-        System.out.println("La créature renée de ses cendres");
+        System.out.println("La créature renaît de ses cendres");
         this.indicateurSante = 100;
         this.age = 0;
     }
