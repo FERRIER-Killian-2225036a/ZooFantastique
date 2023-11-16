@@ -1,7 +1,9 @@
 package test;
 
+
 import main.models.creatures.Creature;
 import main.models.creatures.implemente.Dragon;
+import main.models.creatures.implemente.Licornes;
 import main.models.creatures.implemente.Phenix;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -10,6 +12,7 @@ public class TestCreatures {
     Creature phenix = new Phenix("Phénix", 18, 0, 50, 2);
     Creature dragon = new Dragon("Dragon", 20, 0, 50, 2);
     Creature dragonne = new Dragon("Dragonne", 20, 1, 50, 2);
+    Creature licorne = new Licornes("Licorne", 20, 0, 60, 150);
     @Test
     public void testToStringCreatureOneType() {
         assertEquals(phenix.toString(),"Creature{" +
@@ -60,9 +63,9 @@ public class TestCreatures {
     }
     @Test
     public void testMortCreature() {
-        assertFalse(dragon.isEstMorte());
-        dragon.meurt();
-        assertTrue(dragon.isEstMorte());
+        assertFalse(licorne.isEstMorte());
+        licorne.meurt();
+        assertTrue(licorne.isEstMorte());
     }
     @Test
     public void testCreatureSEndortOuSeReveille() {
@@ -73,16 +76,16 @@ public class TestCreatures {
     }
     @Test
     public void testMangerQuandEstMort() {
-        dragon.meurt();
-        assertTrue(dragon.isEstMorte());
-        dragon.setIndicateurFaim(100);
-        assertEquals(dragon.getIndicateurFaim(),100);
-        dragon.manger();
-        assertEquals(dragon.getIndicateurFaim(),100);
-        dragon.setIndicateurSommeil(100);
-        assertEquals(dragon.getIndicateurSommeil(),100);
-        dragon.sendormirOuSeReveiller();
-        assertNotEquals(dragon.getIndicateurSommeil(),0);
+        licorne.meurt();
+        assertTrue(licorne.isEstMorte());
+        licorne.setIndicateurFaim(100);
+        assertEquals(licorne.getIndicateurFaim(),100);
+        licorne.manger();
+        assertEquals(licorne.getIndicateurFaim(),100);
+        licorne.setIndicateurSommeil(100);
+        assertEquals(licorne.getIndicateurSommeil(),100);
+        licorne.sendormirOuSeReveiller();
+        assertNotEquals(licorne.getIndicateurSommeil(),0);
     }
     @Test
     public void testMangerQuandDort() {
@@ -94,19 +97,20 @@ public class TestCreatures {
     }
     @Test
     public void testMourirVeillesseAgeEgalDureeDeVie() {
-        dragon.vieillir(70);
-        assertEquals(dragon.getAge(), 90);
-        dragon.vieillir(10);
-        assertTrue(dragon.isEstMorte());
-        assertEquals(dragon.getAge(), 100);
+        licorne.vieillir(20);
+        assertEquals(licorne.getAge(), 40);
+        licorne.vieillir(10);
+        System.out.println(licorne.getAge());
+        assertTrue(licorne.isEstMorte());
+        assertEquals(licorne.getAge(), 50);
     }
     @Test
     public void testMourirVeillesseAgeSuperieurDureeDeVie() {
-        dragon.vieillir(70);
-        assertEquals(dragon.getAge(), 90);
-        dragon.vieillir(13);
-        assertTrue(dragon.isEstMorte());
-        assertEquals(dragon.getAge(), 100);
+        licorne.vieillir(20);
+        assertEquals(licorne.getAge(), 40);
+        licorne.vieillir(13);
+        assertTrue(licorne.isEstMorte());
+        assertEquals(licorne.getAge(), 50);
     }
     @Test
     public void testSoin() {
@@ -117,9 +121,9 @@ public class TestCreatures {
     }
     @Test
     public void testEmetUnSon() {
-        dragon.emetUnSon();
-        assertTrue(dragon.emetUnSon());
-        dragon.meurt();
-        assertFalse(dragon.emetUnSon());
+        licorne.emetUnSon();
+        assertTrue(licorne.emetUnSon());
+        licorne.meurt();
+        assertFalse(licorne.emetUnSon());
     }
 }
