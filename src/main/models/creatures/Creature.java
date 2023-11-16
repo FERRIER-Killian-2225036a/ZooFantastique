@@ -43,7 +43,7 @@ public abstract class Creature {
         if (!estMorte){
             if (!dortIl) {
                 System.out.println("Miam miam");
-                indicateurFaim+=0;
+                indicateurFaim=0;
             } else {
                 System.out.println(nom+" dort");
             }
@@ -101,6 +101,10 @@ public abstract class Creature {
     }
 
     //setters
+    public void reverseEstMorte() {this.estMorte = !estMorte;}
+    public void reverseDortIl() {
+        this.dortIl = !this.dortIl;
+    }
     public void setIndicateurFaim(int indicateurFaim) {
         this.indicateurFaim = indicateurFaim;
     }
@@ -154,7 +158,7 @@ public abstract class Creature {
     public boolean isEstMorte() {
         return estMorte;
     }
-    protected String accordMortMess() {
+    public String accordMortMess() {
         if (sexe==1) {return "morte";}
         else {return "mort";}
     }
