@@ -75,6 +75,13 @@ public class TestCreatures {
         assertFalse(dragon.isDortIl());
     }
     @Test
+    public void testManger() {
+        dragon.setIndicateurFaim(50);
+        assertEquals(dragon.getIndicateurFaim(), 50);
+        dragon.manger();
+        assertEquals(dragon.getIndicateurFaim(), 0);
+    }
+    @Test
     public void testMangerQuandEstMort() {
         licorne.meurt();
         assertTrue(licorne.isEstMorte());
@@ -125,5 +132,10 @@ public class TestCreatures {
         assertTrue(licorne.emetUnSon());
         licorne.meurt();
         assertFalse(licorne.emetUnSon());
+    }
+    @Test
+    public void testGetType() {
+        assertNotEquals(dragon.getType(), licorne.getType());
+        assertEquals(dragon.getType(), dragonne.getType());
     }
 }
