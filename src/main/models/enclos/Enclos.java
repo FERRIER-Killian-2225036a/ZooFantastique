@@ -52,9 +52,20 @@ public class Enclos {
     public String getNom() {
         return nom;
     }
-
+    public int getNombreCreaturesPresentes() {
+        return nombreCreaturesPresentes;
+    }
     public ArrayList<Creature> getCreaturePresentes() {
         return creaturePresentes;
+    }
+    public int getDegresProprete() {
+        return degresProprete;
+    }
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+    public void setDegresProprete(int degresProprete) {
+        this.degresProprete = degresProprete;
     }
 
     @Override
@@ -74,23 +85,32 @@ public class Enclos {
     }
 
     public void ajouterCreature(Creature creature) {
-        if (creaturePresentes.size()<capaciteMax){
-            if (!creaturePresentes.isEmpty()) {
-                if (creaturePresentes.get(0).getType() == creature.getType()) {
-                    creaturePresentes.add(creature);
-                    nombreCreaturesPresentes+=1;
-                    System.out.println(creature.getNom()+" placé dans l'enclos "+nom);
+        if (!creature.isEstMorte()) {
+            if (!Enclos.getListCreatureDansEnclos().contains(creature)){
+                if (creaturePresentes.size()<capaciteMax){
+                    if (!creaturePresentes.isEmpty()) {
+                        if (creaturePresentes.get(0).getClass()==creature.getClass()) {
+                            creaturePresentes.add(creature);
+                            nombreCreaturesPresentes+=1;
+                            System.out.println(creature.getNom()+" placé dans "+nom);
+                        } else {
+                            System.out.println("Cet enclos ne contient pas la même espèce");
+                        }
+                    } else {
+                        creaturePresentes.add(creature);
+                        nombreCreaturesPresentes+=1;
+                        System.out.println(creature.getNom()+" placé dans "+nom);
+                    }
                 } else {
-                    System.out.println("Cet enclos ne contient pas la même espèce");
+                    System.out.println("Capacité maximum de "+nom+" atteinte");
                 }
             } else {
-                creaturePresentes.add(creature);
-                nombreCreaturesPresentes+=1;
-                System.out.println(creature.getNom()+" placé dans : "+nom);
+                System.out.println("La créature est déjà dans un enclos");
             }
         } else {
-            System.out.println("Capacité maximum de "+nom+" atteinte");
+            System.out.println(creature.getNom()+" est "+ creature.accordMortMess());
         }
+
     }
     public void enleverCreature(Creature creature) {
         if (creaturePresentes.contains(creature)) {
@@ -108,9 +128,11 @@ public class Enclos {
         }
     }
     public void nettoyer() {
-        if (this.degresProprete == 0 && creaturePresentes.isEmpty()) {
+        if (this.degresProprete != 3 && creaturePresentes.isEmpty()) {
             degresProprete = 2;
             System.out.println("L'enclos a été néttoyé");
+        } else {
+            System.out.println("L'enclos est deja propre ou il reste des créatures dedans");
         }
     }
 }
