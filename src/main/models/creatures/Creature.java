@@ -1,23 +1,25 @@
+// Déclaration du package et des imports nécessaires
 package main.models.creatures;
-
 import main.models.enclos.Enclos;
-
 import java.util.ArrayList;
 
+// Définition de la classe abstraite Creature
 public abstract class Creature {
+    // Propriétés communes à toutes les créatures
     protected String nom;
     protected int age;
-    protected int sexe; // 0 = male; 1 = femelle
+    protected int sexe; // 0 = mâle; 1 = femelle
     protected int poids; // En kg
     protected int taille; // En cm
     protected ArrayList<?> type = getTypeName(); // Nom de l'interface
     protected int dureeDeVie = 50; // En années
-    protected int indicateurFaim = 0; // De 0 a 100
-    protected int indicateurSante = 100; // De 100 a 0
-    protected int indicateurSommeil = 0; // De 0 a 100
+    protected int indicateurFaim = 0; // De 0 à 100
+    protected int indicateurSante = 100; // De 100 à 0
+    protected int indicateurSommeil = 0; // De 0 à 100
     protected boolean dortIl = false;
     protected boolean estMorte = false;
 
+    // Classe interne pour la gestion des instances de Creature
     public static class InstanceManager {
         private static final ArrayList<Creature> instances = new ArrayList<>();
 
@@ -30,6 +32,7 @@ public abstract class Creature {
         }
     }
 
+    // Constructeur de la classe Creature
     public Creature(String nom, int age, int sexe, int poids, int taille) {
         this.nom = nom;
         this.age = age;
@@ -39,48 +42,52 @@ public abstract class Creature {
         InstanceManager.addInstance(this);
     }
 
+    // Méthode simulant l'action de manger
     public void manger() {
-        if (!estMorte){
-            if (!dortIl) {
-                System.out.println("Miam miam");
-                indicateurFaim=0;
-            } else {
-                System.out.println(nom+" dort");
-            }
+        // Vérifie si la créature est vivante et ne dort pas
+        if (!estMorte && !dortIl) {
+            System.out.println("Miam miam");
+            indicateurFaim = 0;
         } else {
-            System.out.println(nom+" est "+accordMortMess());
+            System.out.println(nom + " " + (estMorte ? "est " + accordMortMess() : "dort"));
         }
-
     }
+
+    // Méthode simulant l'émission d'un son par la créature
     public boolean emetUnSon() {
-        if (!this.estMorte) {
-            System.out.println(nom+" émet un son");
+        if (!estMorte) {
+            System.out.println(nom + " émet un son");
             return true;
         } else {
-            System.out.println(nom+" est "+accordMortMess());
+            System.out.println(nom + " est " + accordMortMess());
             return false;
         }
     }
+
+    // Méthode pour soigner la créature
     public void soigner() {
         if (!estMorte) {
             this.indicateurSante = 100;
         } else {
-            System.out.println(nom+" est "+accordMortMess());
+            System.out.println(nom + " est " + accordMortMess());
         }
-
     }
+
+    // Méthode pour endormir ou réveiller la créature
     public void sendormirOuSeReveiller() {
-        if (estMorte){
-            System.out.println(nom+" est "+accordMortMess());
+        if (estMorte) {
+            System.out.println(nom + " est " + accordMortMess());
         } else {
             dortIl = !dortIl;
-            indicateurSommeil=0;
+            indicateurSommeil = 0;
         }
     }
+
+    // Méthode pour faire vieillir la créature
     public void vieillir(int annee) {
-        if ((this.age+annee)<dureeDeVie) {
+        if ((this.age + annee) < dureeDeVie) {
             this.age += annee;
-        } else if ((this.age+annee)==dureeDeVie) {
+        } else if ((this.age + annee) == dureeDeVie) {
             this.age += annee;
             this.meurt();
         } else {
@@ -88,20 +95,23 @@ public abstract class Creature {
             this.meurt();
         }
     }
+
+    // Méthode pour simuler la mort de la créature
     public void meurt() {
         if (!estMorte) {
             this.estMorte = true;
             if (Enclos.getListCreatureDansEnclos().contains(this)) {
-                System.out.println("Vous devez enlever le cadavre de "+nom+" de son enclos");
+                System.out.println("Vous devez enlever le cadavre de " + nom + " de son enclos");
             }
         } else {
-            System.out.println(nom+" est déjà "+accordMortMess());
+            System.out.println(nom + " est déjà " + accordMortMess());
         }
-
     }
 
-    //setters
-    public void reverseEstMorte() {this.estMorte = !estMorte;}
+    // Méthodes setters
+    public void reverseEstMorte() {
+        this.estMorte = !estMorte;
+    }
     public void reverseDortIl() {
         this.dortIl = !this.dortIl;
     }
@@ -115,14 +125,14 @@ public abstract class Creature {
         this.indicateurSommeil = indicateurSommeil;
     }
 
-    // Getters
+    // Méthodes getters
     public String getNom() {
         return nom;
     }
     public String getSex() {
-        if (this.sexe==0){
-            return "Male";
-        } else if (this.sexe==1) {
+        if (this.sexe == 0) {
+            return "Mâle";
+        } else if (this.sexe == 1) {
             return "Femelle";
         } else {
             return "Non défini";
@@ -159,8 +169,7 @@ public abstract class Creature {
         return estMorte;
     }
     public String accordMortMess() {
-        if (sexe==1) {return "morte";}
-        else {return "mort";}
+        return (sexe == 1) ? "morte" : "mort";
     }
 
     // Méthode pour obtenir le nom de l'interface
@@ -173,11 +182,12 @@ public abstract class Creature {
                 interfaceNames.add(interfaceElem.getSimpleName());
             }
         } else {
-            interfaceNames.add("Non spécifé");
+            interfaceNames.add("Non spécifié");
         }
         return interfaceNames; // Prend le nom de la première interface (Volant dans ce cas)
     }
 
+    // Redéfinition de la méthode toString pour afficher les propriétés de la créature
     @Override
     public String toString() {
         return "Creature{" +
