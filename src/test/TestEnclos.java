@@ -2,7 +2,6 @@ package test;
 
 import main.models.creatures.Creature;
 import main.models.creatures.implemente.Dragon;
-import main.models.creatures.implemente.Licornes;
 import main.models.creatures.implemente.Phenix;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -17,7 +16,7 @@ public class TestEnclos {
         assertEquals(enclos.toString(), "Enclos{" +
                 "nom='enclosTest'" +
                 ", superficie=34" +
-                ", capaciteMax=5" +
+                ", capaciteMax=3" +
                 ", nombreCreaturesPresentes=0" +
                 ", creaturePresentes=" +
                 ", propreté=bon" +
@@ -38,11 +37,13 @@ public class TestEnclos {
     }
     @Test
     public void testAjouterCreatureDansEnclosSiCapaciteMaxAtteinte() {
+        Creature dragon1 = new Dragon("Dragon1", 60, 0, 160, 200);
+        Creature dragon2 = new Dragon("Dragon2", 60, 0, 160, 200);
         enclos.ajouterCreature(dragon);
-        enclos.ajouterCreature(dragon);
-        enclos.ajouterCreature(dragon);
+        enclos.ajouterCreature(dragonne);
+        enclos.ajouterCreature(dragon1);
         assertEquals(enclos.getNombreCreaturesPresentes(), 3);
-        enclos.ajouterCreature(dragon);
+        enclos.ajouterCreature(dragon2);
         assertEquals(enclos.getNombreCreaturesPresentes(), 3);
     }
     @Test
@@ -105,7 +106,7 @@ public class TestEnclos {
     }
     @Test
     public void testGetCreaturesDansEnclos() {
-        Enclos enclos1 = new Enclos("deuxièmeEnclosTest", 34, 3, 3);
+        Enclos enclos1 = new Enclos("premierEnclosTest", 34, 3, 3);
         Creature dragon2 = new Dragon("Dragon2", 60, 0, 160, 200);
         enclos.ajouterCreature(dragon);
         enclos1.ajouterCreature(dragonne);
