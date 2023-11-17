@@ -3,22 +3,31 @@ package main.models;
 import main.models.creatures.Creature;
 import main.models.enclos.Enclos;
 
+import javax.lang.model.type.NullType;
 import java.util.ArrayList;
 
 public class ZooFantastique {
     protected String nom;
     protected MaitreZoo maitreZoo;
-    protected int nombreMaxEnclos;
+    protected static int nombreMaxEnclos=0;
     protected ArrayList<Enclos> enclosExistants = Enclos.InstanceManager.getAllInstances();
 
     public ZooFantastique(String nom, MaitreZoo maitreZoo, int nombreMaxEnclos) {
         this.nom = nom;
         this.maitreZoo = maitreZoo;
-        this.nombreMaxEnclos = nombreMaxEnclos;
+        ZooFantastique.nombreMaxEnclos = nombreMaxEnclos;
     }
-
-    public void getNombreDeCreaturesDansZoo() {
-        System.out.println("Il y a "+ Creature.InstanceManager.getAllInstances().size()+" créatures dans le Zoo");
+    public String getNom() {
+        return nom;
+    }
+    public MaitreZoo getMaitreZoo() {
+        return maitreZoo;
+    }
+    public static int getNombreMaxEnclos() {
+        return nombreMaxEnclos;
+    }
+    public ArrayList<Enclos> getEnclosExistants() {
+        return enclosExistants;
     }
 
     public void getCreaturesDUnEnclos(Enclos enclos) {

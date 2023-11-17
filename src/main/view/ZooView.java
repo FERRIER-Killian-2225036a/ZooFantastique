@@ -11,7 +11,7 @@ public class ZooView {
         Scanner sc = new Scanner(System.in);
         System.out.print("Entrez votre nom : ");
         initMaitreZoo.add(sc.nextLine());
-        System.out.print("Entrez votre sex (h/f) :");
+        System.out.print("Entrez votre sexe (h/f) :");
         String sexe = sc.nextLine();
         if (Objects.equals(sexe, "h")){
             initMaitreZoo.add("0");

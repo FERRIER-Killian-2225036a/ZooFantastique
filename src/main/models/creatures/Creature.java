@@ -35,7 +35,12 @@ public abstract class Creature {
     // Constructeur de la classe Creature
     public Creature(String nom, int age, int sexe, int poids, int taille) {
         this.nom = nom;
-        this.age = age;
+        if (age>=dureeDeVie) {
+            this.age = dureeDeVie;
+            this.estMorte = true;
+        } else {
+            this.age = age;
+        }
         this.sexe = sexe;
         this.poids = poids;
         this.taille = taille;

@@ -1,5 +1,6 @@
 // Déclaration du package et des imports nécessaires
 package main.models.enclos;
+import main.models.ZooFantastique;
 import main.models.creatures.Creature;
 import java.util.ArrayList;
 
@@ -37,11 +38,16 @@ public class Enclos {
 
     // Constructeur de la classe Enclos
     public Enclos(String nom, int superficie, int capaciteMax, int degresProprete) {
-        this.nom = nom;
-        this.superficie = superficie;
-        this.capaciteMax = capaciteMax;
-        this.degresProprete = degresProprete;
-        InstanceManager.addInstance(this);
+        if (InstanceManager.getAllInstances().size()<ZooFantastique.getNombreMaxEnclos()) {
+            this.nom = nom;
+            this.superficie = superficie;
+            this.capaciteMax = capaciteMax;
+            this.degresProprete = degresProprete;
+            InstanceManager.addInstance(this);
+        } else {
+            System.out.println("Le nombre maximal d'enclos du zoo est atteint...");
+        }
+
     }
 
     // Méthode protégée pour obtenir le niveau de propreté sous forme de chaîne de caractères
