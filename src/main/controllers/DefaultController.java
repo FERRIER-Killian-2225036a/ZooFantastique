@@ -70,7 +70,7 @@ public class DefaultController {
                         maitreZoo.examinerEnclos(Enclos.InstanceManager.getAllInstances().get(menuView.checkIfEntreeIsInt()-1));
                         System.out.println("\n");
                     } catch (Exception e) {
-                        System.out.println(GFG.ANSI_RED+"Vous n'avez pas entré un numéro d'enclos valide...\n"+GFG.ANSI_RESET);
+                        System.out.println(GFG.ANSI_YELLOW+"Vous n'avez pas entré un numéro d'enclos valide...\n"+GFG.ANSI_RESET);
                     }
                     break;
                 case 6:
@@ -78,7 +78,7 @@ public class DefaultController {
                         maitreZoo.nettoyerEnclos(Enclos.InstanceManager.getAllInstances().get(menuView.checkIfEntreeIsInt()-1));
                         System.out.println("\n");
                     } catch (Exception e) {
-                        System.out.println(GFG.ANSI_RED+"Vous n'avez pas entré un numéro d'enclos valide...\n"+GFG.ANSI_RESET);
+                        System.out.println(GFG.ANSI_YELLOW+"Vous n'avez pas entré un numéro d'enclos valide...\n"+GFG.ANSI_RESET);
                     }
                     break;
                 case 7:
@@ -86,7 +86,7 @@ public class DefaultController {
                         maitreZoo.nourrirEnclos(Enclos.InstanceManager.getAllInstances().get(menuView.checkIfEntreeIsInt()-1));
                         System.out.println("\n");
                     } catch (Exception e) {
-                        System.out.println(GFG.ANSI_RED+"Vous n'avez pas entré un numéro d'enclos valide...\n"+GFG.ANSI_RESET);
+                        System.out.println(GFG.ANSI_YELLOW+"Vous n'avez pas entré un numéro d'enclos valide...\n"+GFG.ANSI_RESET);
                     }
                     break;
             }

@@ -33,7 +33,7 @@ public class ZooView {
                 break;
             } catch (NumberFormatException e) {
                 // Si la conversion échoue, afficher un message d'erreur et continuer la boucle
-                System.out.println(GFG.ANSI_RESET+"Veuillez entrer un nombre entier valide"+GFG.ANSI_RESET);
+                System.out.println(GFG.ANSI_YELLOW+"Veuillez entrer un nombre entier valide"+GFG.ANSI_RESET);
             }
         }
         return initMaitreZoo;
@@ -55,7 +55,7 @@ public class ZooView {
                 break;
             } catch (NumberFormatException e) {
                 // Si la conversion échoue, afficher un message d'erreur et continuer la boucle
-                System.out.println(GFG.ANSI_RED+"Veuillez entrer un nombre entier valide"+GFG.ANSI_RED);
+                System.out.println(GFG.ANSI_YELLOW+"Veuillez entrer un nombre entier valide"+GFG.ANSI_RED);
             }
         }
         return initZooFantastique;

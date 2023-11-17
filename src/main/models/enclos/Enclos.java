@@ -1,5 +1,6 @@
 // Déclaration du package et des imports nécessaires
 package main.models.enclos;
+import main.common.GFG;
 import main.models.ZooFantastique;
 import main.models.creatures.Creature;
 import java.util.ArrayList;
@@ -45,7 +46,7 @@ public class Enclos {
             this.degresProprete = degresProprete;
             InstanceManager.addInstance(this);
         } else {
-            System.out.println("Le nombre maximal d'enclos du zoo est atteint...");
+            System.out.println(GFG.ANSI_YELLOW+"Le nombre maximal d'enclos du zoo est atteint..."+GFG.ANSI_RESET);
         }
 
     }
@@ -109,7 +110,7 @@ public class Enclos {
                             nombreCreaturesPresentes += 1;
                             System.out.println(creature.getNom() + " placé dans " + nom);
                         } else {
-                            System.out.println("Cet enclos ne contient pas la même espèce");
+                            System.out.println(GFG.ANSI_YELLOW+"Cet enclos ne contient pas la même espèce"+GFG.ANSI_RESET);
                         }
                     } else {
                         creaturePresentes.add(creature);
@@ -117,10 +118,10 @@ public class Enclos {
                         System.out.println(creature.getNom() + " placé dans " + nom);
                     }
                 } else {
-                    System.out.println("Capacité maximum de " + nom + " atteinte");
+                    System.out.println(GFG.ANSI_YELLOW+"Capacité maximum de " + nom + " atteinte"+GFG.ANSI_RESET);
                 }
             } else {
-                System.out.println("La créature est déjà dans un enclos");
+                System.out.println(GFG.ANSI_YELLOW+"La créature est déjà dans un enclos"+GFG.ANSI_RESET);
             }
         } else {
             System.out.println(creature.getNom() + " est " + creature.accordMortMess());
@@ -134,7 +135,7 @@ public class Enclos {
             nombreCreaturesPresentes -= 1;
             System.out.println(creature.getNom() + " a été enlevé de " + nom);
         } else {
-            System.out.println(creature.getNom() + " n'est pas dans " + nom);
+            System.out.println(GFG.ANSI_YELLOW+creature.getNom() + " n'est pas dans " + nom+GFG.ANSI_RESET);
         }
     }
 
@@ -146,7 +147,7 @@ public class Enclos {
                 System.out.println("Les créatures ont été nourries");
             }
         } else {
-            System.out.println("Il n'y a pas de créature dans l'enclos");
+            System.out.println(GFG.ANSI_YELLOW+"Il n'y a pas de créature dans l'enclos"+GFG.ANSI_RESET);
         }
     }
 
@@ -156,7 +157,7 @@ public class Enclos {
             degresProprete = 2;
             System.out.println("L'enclos a été nettoyé");
         } else {
-            System.out.println("L'enclos est déjà propre ou il reste des créatures dedans");
+            System.out.println(GFG.ANSI_YELLOW+"L'enclos est déjà propre ou il reste des créatures dedans"+GFG.ANSI_RESET);
         }
     }
 }

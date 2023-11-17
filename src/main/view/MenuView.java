@@ -38,7 +38,7 @@ public class MenuView {
                 break;
             } catch (NumberFormatException e) {
                 // Si la conversion échoue, afficher un message d'erreur et continuer la boucle
-                System.out.println(GFG.ANSI_RED+"Veuillez entrer un nombre entier valide...\n"+GFG.ANSI_RESET);
+                System.out.println(GFG.ANSI_YELLOW+"Veuillez entrer un nombre entier valide...\n"+GFG.ANSI_RESET);
                 menu();
             }
         }
@@ -53,7 +53,7 @@ public class MenuView {
             }
             System.out.print("Sélectionnez l'enclos : ");
         } else {
-            System.out.println(GFG.ANSI_RED+"Il n'y pas d'enclos...\n"+GFG.ANSI_RESET);
+            System.out.println("Il n'y pas d'enclos...\n");
         }
     }
 
