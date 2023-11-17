@@ -1,11 +1,13 @@
 package main.view;
 
+import main.common.GFG;
+
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Scanner;
 
 public class ZooView {
-    public static ArrayList<String> initializeMaitreZooView() {
+    public ArrayList<String> initializeMaitreZooView() {
         System.out.println("Creation de votre personnage, Maitre du Zoo");
         ArrayList<String> initMaitreZoo = new ArrayList<>(3);
         Scanner sc = new Scanner(System.in);
@@ -31,12 +33,12 @@ public class ZooView {
                 break;
             } catch (NumberFormatException e) {
                 // Si la conversion échoue, afficher un message d'erreur et continuer la boucle
-                System.out.println("Veuillez entrer un nombre entier valide");
+                System.out.println(GFG.ANSI_RESET+"Veuillez entrer un nombre entier valide"+GFG.ANSI_RESET);
             }
         }
         return initMaitreZoo;
     }
-    public static ArrayList<String> initializeZooFantastiqueView() {
+    public ArrayList<String> initializeZooFantastiqueView() {
         System.out.println("Création du Zoo fantastique");
         ArrayList<String> initZooFantastique = new ArrayList<>(2);
         Scanner sc = new Scanner(System.in);
@@ -53,9 +55,15 @@ public class ZooView {
                 break;
             } catch (NumberFormatException e) {
                 // Si la conversion échoue, afficher un message d'erreur et continuer la boucle
-                System.out.println("Veuillez entrer un nombre entier valide");
+                System.out.println(GFG.ANSI_RED+"Veuillez entrer un nombre entier valide"+GFG.ANSI_RED);
             }
         }
         return initZooFantastique;
+    }
+    public void messageInitialisation() {
+        System.out.println("------  Initialisation  ------");
+    }
+    public void messageFinInitialisation() {
+        System.out.println("------  Initialisation terminée  ------\n");
     }
 }

@@ -140,15 +140,19 @@ public class Enclos {
 
     // Méthode pour nourrir toutes les créatures dans l'Enclos
     public void nourrirCreatures() {
-        for (Creature creature: creaturePresentes) {
-            creature.manger();
-            System.out.println("Les créatures ont été nourries");
+        if (!this.creaturePresentes.isEmpty()){
+            for (Creature creature: creaturePresentes) {
+                creature.manger();
+                System.out.println("Les créatures ont été nourries");
+            }
+        } else {
+            System.out.println("Il n'y a pas de créature dans l'enclos");
         }
     }
 
     // Méthode pour nettoyer l'Enclos
     public void nettoyer() {
-        if (this.degresProprete != 3 && creaturePresentes.isEmpty()) {
+        if (this.degresProprete < 2 && creaturePresentes.isEmpty()) {
             degresProprete = 2;
             System.out.println("L'enclos a été nettoyé");
         } else {
