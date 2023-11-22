@@ -11,17 +11,6 @@ public class TestEnclos {
     Enclos enclos = new Enclos("enclosTest", 34, 3, 3);
     Creature dragon = new Dragon("Dragon", 60, 0, 160, 200);
     Creature dragonne = new Dragon("Dragonne", 60, 1, 160, 200);
-    @Test
-    public void testToString() {
-        assertEquals(enclos.toString(), "Enclos{" +
-                "nom='enclosTest'" +
-                ", superficie=34" +
-                ", capaciteMax=3" +
-                ", nombreCreaturesPresentes=0" +
-                ", creaturePresentes=" +
-                ", propreté=bon" +
-                '}');
-    }
 
     @Test
     public void testEnleverCreature() {

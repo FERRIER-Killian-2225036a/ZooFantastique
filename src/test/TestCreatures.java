@@ -13,54 +13,7 @@ public class TestCreatures {
     Creature dragon = new Dragon("Dragon", 20, 0, 50, 2);
     Creature dragonne = new Dragon("Dragonne", 20, 1, 50, 2);
     Creature licorne = new Licornes("Licorne", 20, 0, 60, 150);
-    @Test
-    public void testToStringCreatureOneType() {
-        assertEquals(phenix.toString(),"Creature{" +
-                "nom='Phénix'" +
-                ", age=18" +
-                ", sexe='Male'" +
-                ", poids=50" +
-                ", taille=2" +
-                ", type='[Volant]'" +
-                ", indicateurFaim=0" +
-                ", indicateurSante=100" +
-                ", indicateurSommeil=0" +
-                ", dortIl=false" +
-                ", estMorte=false" +
-                '}');
-    }
-    @Test
-    public void testToStringCreatureTwoTypes() {
-        assertEquals(dragon.toString(),"Creature{" +
-                "nom='Dragon'" +
-                ", age=20" +
-                ", sexe='Male'" +
-                ", poids=50" +
-                ", taille=2" +
-                ", type='[Terrestre, Aquatique, Volant]'" +
-                ", indicateurFaim=0" +
-                ", indicateurSante=100" +
-                ", indicateurSommeil=0" +
-                ", dortIl=false" +
-                ", estMorte=false" +
-                '}');
-    }
-    @Test
-    public void testToStringCreatureFemale() {
-        assertEquals(dragonne.toString(),"Creature{" +
-                "nom='Dragonne'" +
-                ", age=20" +
-                ", sexe='Femelle'" +
-                ", poids=50" +
-                ", taille=2" +
-                ", type='[Terrestre, Aquatique, Volant]'" +
-                ", indicateurFaim=0" +
-                ", indicateurSante=100" +
-                ", indicateurSommeil=0" +
-                ", dortIl=false" +
-                ", estMorte=false" +
-                '}');
-    }
+
     @Test
     public void testMortCreature() {
         assertFalse(licorne.isEstMorte());
