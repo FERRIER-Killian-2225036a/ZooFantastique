@@ -17,11 +17,13 @@ public class DefaultController {
     protected static MaitreZoo maitreZoo;
     protected static ZooFantastique zooFantastique;
 
-    public static void InitializeZoo() {
-        ArrayList<String> maitreZooInfo = zooView.initializeMaitreZooView();
-        maitreZoo = new MaitreZoo(maitreZooInfo.get(0), Integer.parseInt(maitreZooInfo.get(1)), Integer.parseInt(maitreZooInfo.get(2)));
+    public static void initializeZoo() {
         ArrayList<String> zooFantastiqueInfo = zooView.initializeZooFantastiqueView();
         zooFantastique = new ZooFantastique(zooFantastiqueInfo.get(0), maitreZoo,Integer.parseInt(zooFantastiqueInfo.get(1)));
+    }
+    public static void initializeMaitreZoo() {
+        ArrayList<String> maitreZooInfo = zooView.initializeMaitreZooView();
+        maitreZoo = new MaitreZoo(maitreZooInfo.get(0), Integer.parseInt(maitreZooInfo.get(1)), Integer.parseInt(maitreZooInfo.get(2)));
     }
 
     public static void initializeCreatures() {
@@ -46,26 +48,35 @@ public class DefaultController {
                 case -1:
                     break;
                 case 1:
+                    // Affichage de toutes les créatures dans le Zoo
                     if (!zooFantastique.getToutesCreatureDansZoo().isEmpty()) {
-                        System.out.println(zooFantastique.getToutesCreatureDansZoo()+"\n");
+                        for (int i = 0; i<zooFantastique.getToutesCreatureDansZoo().size(); ++i){
+                            System.out.println("Créature " + i + " : " + zooFantastique.getToutesCreatureDansZoo().get(i).getNom()+"\n");
+                        }
                     } else {
                         System.out.println("Pas de créatures\n");
                     }
                     break;
                 case 2:
+                    // Affichage nombre de créatures présentes dans l'enclos
                     System.out.println(zooFantastique.getToutesCreatureDansZoo().size()+"\n");
                     break;
                 case 3:
+                    // Affiche des enclos dans le Zoo
                     if (!zooFantastique.getEnclosExistants().isEmpty()) {
-                        System.out.println(zooFantastique.getEnclosExistants()+"\n");
+                        for (int i = 0; i<zooFantastique.getEnclosExistants().size(); ++i){
+                            System.out.println("Enclos " + i + " : " + zooFantastique.getEnclosExistants().get(i).getNom()+"\n");
+                        }
                     } else {
                         System.out.println("Pas d'enclos\n");
                     }
                     break;
                 case 4:
+                    // Affichage du nombre d'enclos
                     System.out.println(zooFantastique.getEnclosExistants().size()+"\n");
                     break;
                 case 5:
+                    // Examiner un enclos
                     try {
                         maitreZoo.examinerEnclos(zooFantastique.getEnclosExistants().get(menuView.checkIfEntreeIsInt()-1));
                         System.out.println("\n");
@@ -74,6 +85,7 @@ public class DefaultController {
                     }
                     break;
                 case 6:
+                    // Nettoyer un enclos
                     try {
                         maitreZoo.nettoyerEnclos(zooFantastique.getEnclosExistants().get(menuView.checkIfEntreeIsInt()-1));
                         System.out.println("\n");
@@ -82,6 +94,7 @@ public class DefaultController {
                     }
                     break;
                 case 7:
+                    // Nourrir créatures dans un enclos
                     try {
                         maitreZoo.nourrirEnclos(zooFantastique.getEnclosExistants().get(menuView.checkIfEntreeIsInt()-1));
                         System.out.println("\n");
@@ -95,7 +108,8 @@ public class DefaultController {
 
     public static void main(String[] args) {
         zooView.messageInitialisation();
-        InitializeZoo();
+        initializeZoo();
+        initializeMaitreZoo();
         initializeCreatures();
         initializeEnclos();
         zooView.messageFinInitialisation();

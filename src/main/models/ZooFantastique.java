@@ -40,15 +40,9 @@ public class ZooFantastique {
 
     @Override
     public String toString() {
-        return "ZooFantastique{" +
-                "nom='" + nom + '\'' +
-                ", maitreZoo=" + maitreZoo +
-                ", nombreMaxEnclos=" + nombreMaxEnclos +
-                ", enclosExistants=" + enclosExistants +
-                '}';
-    }
-
-    public static void main(String[] args) {
-        //TODO: Similation du temps
+        return "------  Information ZooFantastique " + nom + ":  ------\n" +
+                "Maitre du zoo : " + maitreZoo + "\n" +
+                "Nombre Maximum d'enclos : " + nombreMaxEnclos + "\n" +
+                "Liste des enclos existants : \n\n" + enclosExistants + "\n" ;
     }
 }

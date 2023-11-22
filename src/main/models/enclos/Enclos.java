@@ -39,7 +39,7 @@ public class Enclos {
 
     // Constructeur de la classe Enclos
     public Enclos(String nom, int superficie, int capaciteMax, int degresProprete) {
-        if (InstanceManager.getAllInstances().size()<ZooFantastique.getNombreMaxEnclos()) {
+        if (InstanceManager.getAllInstances().size()<=ZooFantastique.getNombreMaxEnclos()) {
             this.nom = nom;
             this.superficie = superficie;
             this.capaciteMax = capaciteMax;
@@ -89,14 +89,14 @@ public class Enclos {
         for (Creature crea: creaturePresentes) {
             toStringCreaturePresentes.append(crea.toString());
         }
-        return "Enclos{" +
-                "nom='" + nom + '\'' +
-                ", superficie=" + superficie +
-                ", capaciteMax=" + capaciteMax +
-                ", nombreCreaturesPresentes=" + nombreCreaturesPresentes +
-                ", creaturePresentes=" + toStringCreaturePresentes +
-                ", propreté=" + getProprete() +
-                '}';
+        return "------  Information enclos " + nom + " :  ------\n" +
+                "Nom : " + nom + "\n" +
+                "Superficie : " + superficie + "\n" +
+                "Capacite maximum : " + capaciteMax + "\n" +
+                "Nombre de creatures présentes : " + nombreCreaturesPresentes + "\n" +
+                "Liste des creatures présentes : " + toStringCreaturePresentes + "\n" +
+                "Indice de propreté : " + getProprete() + "\n" +
+                "  ----------------------------------------------  " + "\n";
     }
 
     // Méthode pour ajouter une créature à l'Enclos
@@ -124,7 +124,7 @@ public class Enclos {
                 System.out.println(GFG.ANSI_YELLOW+"La créature est déjà dans un enclos"+GFG.ANSI_RESET);
             }
         } else {
-            System.out.println(creature.getNom() + " est " + creature.accordMortMess());
+            System.out.println(creature.getNom() + " est mort(e)");
         }
     }
 

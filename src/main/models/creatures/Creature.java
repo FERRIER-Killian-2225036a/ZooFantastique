@@ -54,7 +54,7 @@ public abstract class Creature {
             System.out.println("Miam miam");
             indicateurFaim = 0;
         } else {
-            System.out.println(nom + " " + (estMorte ? "est " + accordMortMess() : "dort"));
+            System.out.println(nom + " " + (estMorte ? "est mort(e)" : "dort"));
         }
     }
 
@@ -64,7 +64,7 @@ public abstract class Creature {
             System.out.println(nom + " émet un son");
             return true;
         } else {
-            System.out.println(nom + " est " + accordMortMess());
+            System.out.println(nom + " est mort(e)");
             return false;
         }
     }
@@ -74,14 +74,14 @@ public abstract class Creature {
         if (!estMorte) {
             this.indicateurSante = 100;
         } else {
-            System.out.println(nom + " est " + accordMortMess());
+            System.out.println(nom + " est mort(e)");
         }
     }
 
     // Méthode pour endormir ou réveiller la créature
     public void sendormirOuSeReveiller() {
         if (estMorte) {
-            System.out.println(nom + " est " + accordMortMess());
+            System.out.println(nom + " est mort(e)");
         } else {
             dortIl = !dortIl;
             indicateurSommeil = 0;
@@ -109,7 +109,7 @@ public abstract class Creature {
                 System.out.println("Vous devez enlever le cadavre de " + nom + " de son enclos");
             }
         } else {
-            System.out.println(nom + " est déjà " + accordMortMess());
+            System.out.println(nom + " est déjà mort(e)");
         }
     }
 
@@ -173,9 +173,6 @@ public abstract class Creature {
     public boolean isEstMorte() {
         return estMorte;
     }
-    public String accordMortMess() {
-        return (sexe == 1) ? "morte" : "mort";
-    }
 
     // Méthode pour obtenir le nom de l'interface
     private ArrayList<?> getTypeName() {
@@ -195,18 +192,17 @@ public abstract class Creature {
     // Redéfinition de la méthode toString pour afficher les propriétés de la créature
     @Override
     public String toString() {
-        return "Creature{" +
-                "nom='" + nom + '\'' +
-                ", age=" + age +
-                ", sexe='" + getSex() + '\'' +
-                ", poids=" + poids +
-                ", taille=" + taille +
-                ", type='" + getTypeName() + '\'' +
-                ", indicateurFaim=" + indicateurFaim +
-                ", indicateurSante=" + indicateurSante +
-                ", indicateurSommeil=" + indicateurSommeil +
-                ", dortIl=" + dortIl +
-                ", estMorte=" + estMorte +
-                '}';
+        return "------  Information creature " + nom + " :  ------\n" +
+                "Age : " + age + "\n" +
+                "Sexe : " + getSex()  + "\n" +
+                "Poids : " + poids + "\n" +
+                "Taille : " + taille + "\n" +
+                "Type : " + getTypeName() + "\n" +
+                "Indicateur de faim : " + indicateurFaim + "\n" +
+                "Indicateur de sante : " + indicateurSante + "\n" +
+                "Indicateur de sommeil : " + indicateurSommeil + "\n" +
+                "Dort-il : " + dortIl + "\n" +
+                "Est-il mort(e) : " + estMorte + "\n" +
+                "  ----------------------------------------------  " + "\n";
     }
 }
