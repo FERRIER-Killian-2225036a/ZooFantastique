@@ -30,6 +30,10 @@ public class ZooFantastique {
         return enclosExistants;
     }
 
+    public ArrayList<Creature> getToutesCreatureDansZoo() {
+        return Creature.InstanceManager.getAllInstances();
+    }
+
     public void getCreaturesDUnEnclos(Enclos enclos) {
         System.out.println("Les créatures présentent dans "+enclos.getNom()+" sont :\n"+enclos.getCreaturePresentes());
     }

@@ -46,28 +46,28 @@ public class DefaultController {
                 case -1:
                     break;
                 case 1:
-                    if (!Creature.InstanceManager.getAllInstances().isEmpty()) {
-                        System.out.println(Creature.InstanceManager.getAllInstances()+"\n");
+                    if (!zooFantastique.getToutesCreatureDansZoo().isEmpty()) {
+                        System.out.println(zooFantastique.getToutesCreatureDansZoo()+"\n");
                     } else {
                         System.out.println("Pas de créatures\n");
                     }
                     break;
                 case 2:
-                    System.out.println(Creature.InstanceManager.getAllInstances().size()+"\n");
+                    System.out.println(zooFantastique.getToutesCreatureDansZoo().size()+"\n");
                     break;
                 case 3:
-                    if (!Enclos.InstanceManager.getAllInstances().isEmpty()) {
-                        System.out.println(Enclos.InstanceManager.getAllInstances()+"\n");
+                    if (!zooFantastique.getEnclosExistants().isEmpty()) {
+                        System.out.println(zooFantastique.getEnclosExistants()+"\n");
                     } else {
                         System.out.println("Pas d'enclos\n");
                     }
                     break;
                 case 4:
-                    System.out.println(Enclos.InstanceManager.getAllInstances().size()+"\n");
+                    System.out.println(zooFantastique.getEnclosExistants().size()+"\n");
                     break;
                 case 5:
                     try {
-                        maitreZoo.examinerEnclos(Enclos.InstanceManager.getAllInstances().get(menuView.checkIfEntreeIsInt()-1));
+                        maitreZoo.examinerEnclos(zooFantastique.getEnclosExistants().get(menuView.checkIfEntreeIsInt()-1));
                         System.out.println("\n");
                     } catch (Exception e) {
                         System.out.println(GFG.ANSI_YELLOW+"Vous n'avez pas entré un numéro d'enclos valide...\n"+GFG.ANSI_RESET);
@@ -75,7 +75,7 @@ public class DefaultController {
                     break;
                 case 6:
                     try {
-                        maitreZoo.nettoyerEnclos(Enclos.InstanceManager.getAllInstances().get(menuView.checkIfEntreeIsInt()-1));
+                        maitreZoo.nettoyerEnclos(zooFantastique.getEnclosExistants().get(menuView.checkIfEntreeIsInt()-1));
                         System.out.println("\n");
                     } catch (Exception e) {
                         System.out.println(GFG.ANSI_YELLOW+"Vous n'avez pas entré un numéro d'enclos valide...\n"+GFG.ANSI_RESET);
@@ -83,7 +83,7 @@ public class DefaultController {
                     break;
                 case 7:
                     try {
-                        maitreZoo.nourrirEnclos(Enclos.InstanceManager.getAllInstances().get(menuView.checkIfEntreeIsInt()-1));
+                        maitreZoo.nourrirEnclos(zooFantastique.getEnclosExistants().get(menuView.checkIfEntreeIsInt()-1));
                         System.out.println("\n");
                     } catch (Exception e) {
                         System.out.println(GFG.ANSI_YELLOW+"Vous n'avez pas entré un numéro d'enclos valide...\n"+GFG.ANSI_RESET);
