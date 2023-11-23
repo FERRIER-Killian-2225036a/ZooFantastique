@@ -171,9 +171,7 @@ public abstract class Creature {
     public ArrayList<?> getType() {
         return type;
     }
-    public int getDureeDeVie() {
-        return dureeDeVie;
-    }
+
     public int getIndicateurFaim() {
         return indicateurFaim;
     }
