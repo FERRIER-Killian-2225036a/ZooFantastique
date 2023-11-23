@@ -194,7 +194,7 @@ public abstract class Enclos {
             toStringCreaturePresentes.append("\n\tCréature ").append(index).append(" : ").append(creature.getNom());
             index++;
         }
-        return "------  Information enclos " + nom + " :  ------\n" +
+        return "------  Information enclos \"" + nom + "\" :  ------\n" +
                 "Nom : " + getNom() + "\n" +
                 "Superficie : " + getSuperficie() + "\n" +
                 "Capacite maximum : " + getCapaciteMax() + "\n" +

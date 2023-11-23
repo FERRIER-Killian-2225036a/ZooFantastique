@@ -218,7 +218,7 @@ public abstract class Creature {
     // Redéfinition de la méthode toString pour afficher les propriétés de la créature
     @Override
     public String toString() {
-        return "------  Information créature " + nom + " :  ------\n" +
+        return "------  Information créature \"" + nom + "\" :  ------\n" +
                 "Age : " + age + "\n" +
                 "Sexe : " + getSex()  + "\n" +
                 "Poids : " + poids + "\n" +
