@@ -14,6 +14,7 @@ public abstract class Enclos {
     protected int nombreCreaturesPresentes;
     protected ArrayList<Creature> creaturePresentes = new ArrayList<>();
     protected int degresProprete; // 0 = « mauvais », 1 = « correct » et 2 = « bon »
+    protected ArrayList<?> type;
 
     // Classe interne pour la gestion des instances d'Enclos
     public static class InstanceManager {
@@ -81,6 +82,14 @@ public abstract class Enclos {
     public int getDegresProprete() {
         return degresProprete;
     }
+    public ArrayList<?> getType() {
+        return type;
+    }
+    public String getTypeToString() {
+        if (type==null || type.isEmpty()) {
+            return "Pas de type";
+        } return type.toString();
+    }
 
     public void setNom(String nom) {
         this.nom = nom;
@@ -94,6 +103,7 @@ public abstract class Enclos {
         if (enclosExiste() && creatureEstVivante(creature) && !creatureEstDansUnAutreEnclos(creature) && capaciteEstAtteinte()) {
             if (memeEspeceQuePremiereCreature(creature)) {
                 creaturePresentes.add(creature);
+                type = creature.getType();
                 nombreCreaturesPresentes += 1;
                 System.out.println(creature.getNom() + " placé dans " + nom);
             } else {
@@ -188,6 +198,7 @@ public abstract class Enclos {
                 "Nom : " + getNom() + "\n" +
                 "Superficie : " + getSuperficie() + "\n" +
                 "Capacite maximum : " + getCapaciteMax() + "\n" +
+                "Type de créature dans l'enclos : " + getTypeToString() + "\n" +
                 "Nombre de creatures présentes : " + getNombreCreaturesPresentes() + "\n" +
                 "Liste des creatures présentes : " + toStringCreaturePresentes + "\n" +
                 "Indice de propreté : " + getProprete() + "\n";
