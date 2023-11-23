@@ -13,7 +13,7 @@ public abstract class Enclos {
     protected int capaciteMax;
     protected int nombreCreaturesPresentes;
     protected ArrayList<Creature> creaturePresentes = new ArrayList<>();
-    protected int degresProprete; // 0 = « mauvais », 1 = « correct » et 2 = « bon »
+    protected int degresProprete=2; // 0 = « mauvais », 1 = « correct » et 2 = « bon »
     protected ArrayList<?> type;
 
     // Classe interne pour la gestion des instances d'Enclos
@@ -39,12 +39,11 @@ public abstract class Enclos {
     }
 
     // Constructeur de la classe Enclos
-    public Enclos(String nom, int superficie, int capaciteMax, int degresProprete) {
+    public Enclos(String nom, int superficie, int capaciteMax) {
         if (InstanceManager.getAllInstances().size()+1<=ZooFantastique.getNombreMaxEnclos()) {
             this.nom = nom;
             this.superficie = superficie;
             this.capaciteMax = capaciteMax;
-            this.degresProprete = degresProprete;
             InstanceManager.addInstance(this);
         } else {
             System.out.println(GFG.ANSI_YELLOW+"Le nombre maximal d'enclos du zoo est atteint..."+GFG.ANSI_RESET);

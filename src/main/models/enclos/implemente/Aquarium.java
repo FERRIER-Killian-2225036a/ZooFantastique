@@ -12,7 +12,7 @@ public class Aquarium extends Enclos {
     // Constructeur de la classe Aquarium
     public Aquarium(String nom, int superficie, int capaciteMax, int degresProprete, int profondeur, int saliniteEau) {
         // Appel du constructeur de la classe parente Enclos avec les paramètres fournis
-        super(nom, superficie, capaciteMax, degresProprete);
+        super(nom, superficie, capaciteMax);
         // Initialisation des propriétés spécifiques à l'Aquarium
         this.profondeur = profondeur;
         this.saliniteEau = saliniteEau;

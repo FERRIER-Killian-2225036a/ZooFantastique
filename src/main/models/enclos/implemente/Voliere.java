@@ -11,7 +11,7 @@ public class Voliere extends Enclos {
     // Constructeur de la classe Voliere
     public Voliere(String nom, int superficie, int capaciteMax, int degresProprete, int hauteur) {
         // Appel du constructeur de la classe parente Enclos avec les paramètres fournis
-        super(nom, superficie, capaciteMax, degresProprete);
+        super(nom, superficie, capaciteMax);
         // Initialisation de la propriété spécifique à la Voliere
         this.hauteur = hauteur;
     }
