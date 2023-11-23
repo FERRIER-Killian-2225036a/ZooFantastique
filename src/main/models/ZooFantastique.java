@@ -15,6 +15,11 @@ public class ZooFantastique {
         this.maitreZoo = maitreZoo;
         ZooFantastique.nombreMaxEnclos = nombreMaxEnclos;
     }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
     public String getNom() {
         return nom;
     }
