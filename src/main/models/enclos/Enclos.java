@@ -39,7 +39,7 @@ public abstract class Enclos {
 
     // Constructeur de la classe Enclos
     public Enclos(String nom, int superficie, int capaciteMax, int degresProprete) {
-        if (InstanceManager.getAllInstances().size()<=ZooFantastique.getNombreMaxEnclos()) {
+        if (InstanceManager.getAllInstances().size()+1<=ZooFantastique.getNombreMaxEnclos()) {
             this.nom = nom;
             this.superficie = superficie;
             this.capaciteMax = capaciteMax;
@@ -89,51 +89,57 @@ public abstract class Enclos {
         this.degresProprete = degresProprete;
     }
 
-    // Redéfinition de la méthode toString pour afficher les propriétés de l'Enclos
-    @Override
-    public String toString() {
-        StringBuilder toStringCreaturePresentes = new StringBuilder();
-        int index = 1;
-        for (Creature creature: creaturePresentes) {
-            toStringCreaturePresentes.append("\n\tCréature ").append(index).append(" : ").append(creature.getNom());
-            index++;
-        }
-        return "------  Information enclos " + nom + " :  ------\n" +
-                "Nom : " + nom + "\n" +
-                "Superficie : " + superficie + "\n" +
-                "Capacite maximum : " + capaciteMax + "\n" +
-                "Nombre de creatures présentes : " + nombreCreaturesPresentes + "\n" +
-                "Liste des creatures présentes : " + toStringCreaturePresentes + "\n" +
-                "Indice de propreté : " + getProprete() + "\n";
-    }
-
     // Méthode pour ajouter une créature à l'Enclos
     public void ajouterCreature(Creature creature) {
-        if (!creature.isEstMorte()) {
-            if (!Enclos.getListCreatureDansEnclos().contains(creature)){
-                if (creaturePresentes.size() < capaciteMax){
-                    if (!creaturePresentes.isEmpty()) {
-                        if (creaturePresentes.get(0).getClass() == creature.getClass()) {
-                            creaturePresentes.add(creature);
-                            nombreCreaturesPresentes += 1;
-                            System.out.println(creature.getNom() + " placé dans " + nom);
-                        } else {
-                            System.out.println(GFG.ANSI_YELLOW+"Cet enclos ne contient pas la même espèce"+GFG.ANSI_RESET);
-                        }
-                    } else {
-                        creaturePresentes.add(creature);
-                        nombreCreaturesPresentes += 1;
-                        System.out.println(creature.getNom() + " placé dans " + nom);
-                    }
-                } else {
-                    System.out.println(GFG.ANSI_YELLOW+"Capacité maximum de " + nom + " atteinte"+GFG.ANSI_RESET);
-                }
+        if (enclosExiste() && creatureEstVivante(creature) && !creatureEstDansUnAutreEnclos(creature) && capaciteEstAtteinte()) {
+            if (memeEspeceQuePremiereCreature(creature)) {
+                creaturePresentes.add(creature);
+                nombreCreaturesPresentes += 1;
+                System.out.println(creature.getNom() + " placé dans " + nom);
             } else {
-                System.out.println(GFG.ANSI_YELLOW+"La créature est déjà dans un enclos"+GFG.ANSI_RESET);
+                System.out.println(GFG.ANSI_YELLOW + "Cet enclos ne contient pas la même espèce" + GFG.ANSI_RESET);
             }
+        }
+    }
+
+    private boolean enclosExiste() {
+        if (nom == null) {
+            System.out.println(GFG.ANSI_YELLOW + "L'enclos n'existe pas" + GFG.ANSI_RESET);
+        }
+        return nom != null;
+    }
+
+    private boolean creatureEstVivante(Creature creature) {
+        if (!creature.isEstMorte()) {
+            return true;
         } else {
             System.out.println(creature.getNom() + " est mort(e)");
+            return false;
         }
+    }
+
+    private boolean creatureEstDansUnAutreEnclos(Creature creature) {
+        if (!Enclos.getListCreatureDansEnclos().contains(creature)) {
+            return false;
+        } else {
+            System.out.println(GFG.ANSI_YELLOW + "La créature est déjà dans un enclos" + GFG.ANSI_RESET);
+            return true;
+        }
+    }
+
+    private boolean capaciteEstAtteinte() {
+        if (creaturePresentes.size() < capaciteMax) {
+            return true;
+        } else {
+            System.out.println(GFG.ANSI_YELLOW + "Capacité maximum de " + nom + " atteinte" + GFG.ANSI_RESET);
+            return false;
+        }
+    }
+
+    private boolean memeEspeceQuePremiereCreature(Creature creature) {
+        if (!creaturePresentes.isEmpty() && creaturePresentes.get(0).getClass() == creature.getClass()) {
+            return true;
+        } else return creaturePresentes.isEmpty();
     }
 
     // Méthode pour enlever une créature de l'Enclos
@@ -167,5 +173,23 @@ public abstract class Enclos {
         } else {
             System.out.println(GFG.ANSI_YELLOW+"L'enclos est déjà propre ou il reste des créatures dedans"+GFG.ANSI_RESET);
         }
+    }
+
+    // Redéfinition de la méthode toString pour afficher les propriétés de l'Enclos
+    @Override
+    public String toString() {
+        StringBuilder toStringCreaturePresentes = new StringBuilder();
+        int index = 1;
+        for (Creature creature: creaturePresentes) {
+            toStringCreaturePresentes.append("\n\tCréature ").append(index).append(" : ").append(creature.getNom());
+            index++;
+        }
+        return "------  Information enclos " + nom + " :  ------\n" +
+                "Nom : " + nom + "\n" +
+                "Superficie : " + superficie + "\n" +
+                "Capacite maximum : " + capaciteMax + "\n" +
+                "Nombre de creatures présentes : " + nombreCreaturesPresentes + "\n" +
+                "Liste des creatures présentes : " + toStringCreaturePresentes + "\n" +
+                "Indice de propreté : " + getProprete() + "\n";
     }
 }
