@@ -1,6 +1,7 @@
 // Déclaration du package et des imports nécessaires
-package main.models.enclos;
+package main.models.enclos.implemente;
 import main.models.creatures.Creature;
+import main.models.enclos.Enclos;
 
 // Définition de la classe Voliere qui hérite de la classe Enclos
 public class Voliere extends Enclos {
@@ -32,5 +33,12 @@ public class Voliere extends Enclos {
     public void nettoyer() {
         // TODO: Ajouter la logique de nettoyage spécifique à la Voliere (vérification du toit)
         super.nettoyer(); // Appel de la méthode de la classe parente Enclos
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() +
+                "Hauteur : " + hauteur +
+                "  ----------------------------------------------  " + "\n";
     }
 }

@@ -1,6 +1,7 @@
 // Déclaration du package et des imports nécessaires
-package main.models.enclos;
+package main.models.enclos.implemente;
 import main.models.creatures.Creature;
+import main.models.enclos.Enclos;
 
 // Définition de la classe Aquarium qui hérite de la classe abstraite Enclos
 public class Aquarium extends Enclos {
@@ -39,15 +40,9 @@ public class Aquarium extends Enclos {
     // Redéfinition de la méthode toString pour afficher les propriétés de l'Aquarium
     @Override
     public String toString() {
-        return "Aquarium{" +
-                "nom='" + nom + '\'' +
-                ", superficie=" + superficie +
-                ", capaciteMax=" + capaciteMax +
-                ", nombreCreaturesPresentes=" + nombreCreaturesPresentes +
-                ", creaturePresentes=" + creaturePresentes +
-                ", degresProprete=" + degresProprete +
-                ", profondeur=" + profondeur +
-                ", saliniteEau=" + saliniteEau +
-                '}';
+        return super.toString() +
+                "Profondeur : " + profondeur +
+                "Salinité de l'eau : " + saliniteEau +
+                "  ----------------------------------------------  " + "\n";
     }
 }

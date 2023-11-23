@@ -6,7 +6,7 @@ import main.models.creatures.Creature;
 import java.util.ArrayList;
 
 // Définition de la classe abstraite Enclos
-public class Enclos {
+public abstract class Enclos {
     // Propriétés communes à tous les enclos
     String nom;
     int superficie; // En mètres carrés
@@ -66,6 +66,12 @@ public class Enclos {
     public String getNom() {
         return nom;
     }
+    public int getSuperficie() {
+        return superficie;
+    }
+    public int getCapaciteMax() {
+        return capaciteMax;
+    }
     public int getNombreCreaturesPresentes() {
         return nombreCreaturesPresentes;
     }
@@ -75,6 +81,7 @@ public class Enclos {
     public int getDegresProprete() {
         return degresProprete;
     }
+
     public void setNom(String nom) {
         this.nom = nom;
     }
@@ -86,8 +93,10 @@ public class Enclos {
     @Override
     public String toString() {
         StringBuilder toStringCreaturePresentes = new StringBuilder();
-        for (Creature crea: creaturePresentes) {
-            toStringCreaturePresentes.append(crea.toString());
+        int index = 1;
+        for (Creature creature: creaturePresentes) {
+            toStringCreaturePresentes.append("\n\tCréature ").append(index).append(" : ").append(creature.getNom());
+            index++;
         }
         return "------  Information enclos " + nom + " :  ------\n" +
                 "Nom : " + nom + "\n" +
@@ -95,8 +104,7 @@ public class Enclos {
                 "Capacite maximum : " + capaciteMax + "\n" +
                 "Nombre de creatures présentes : " + nombreCreaturesPresentes + "\n" +
                 "Liste des creatures présentes : " + toStringCreaturePresentes + "\n" +
-                "Indice de propreté : " + getProprete() + "\n" +
-                "  ----------------------------------------------  " + "\n";
+                "Indice de propreté : " + getProprete() + "\n";
     }
 
     // Méthode pour ajouter une créature à l'Enclos
