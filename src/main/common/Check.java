@@ -2,6 +2,7 @@ package main.common;
 
 import java.util.Scanner;
 
+import static main.controllers.DefaultController.menuView;
 import static main.view.MenuView.menu;
 
 public class Check {
@@ -15,7 +16,7 @@ public class Check {
                 break;
             } catch (NumberFormatException e) {
                 // Si la conversion échoue, afficher un message d'erreur et continuer la boucle
-                System.out.println(GFG.ANSI_YELLOW+"Veuillez entrer un nombre entier valide...\n"+GFG.ANSI_RESET);
+                menuView.numeroEntreeInvalideErrorMessage();
                 menu();
             }
         }
@@ -36,7 +37,7 @@ public class Check {
                 }
             } catch (NumberFormatException e) {
                 // Si la conversion échoue, afficher un message d'erreur et continuer la boucle
-                System.out.println(GFG.ANSI_YELLOW+"Veuillez entrer un nombre entier valide"+GFG.ANSI_RESET);
+                menuView.numeroEntreeInvalideErrorMessage();
             }
         }
     }
