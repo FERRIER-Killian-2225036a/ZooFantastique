@@ -17,6 +17,9 @@ public class MaitreZoo {
     public void examinerEnclos(Enclos enclos) {
         System.out.println(enclos);
     }
+    public void examinerCreature(Creature creature) {
+        System.out.println(creature);
+    }
     public void nettoyerEnclos(Enclos enclos) {
         enclos.nettoyer();
     }
