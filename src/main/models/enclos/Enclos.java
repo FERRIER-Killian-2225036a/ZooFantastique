@@ -8,12 +8,12 @@ import java.util.ArrayList;
 // Définition de la classe abstraite Enclos
 public abstract class Enclos {
     // Propriétés communes à tous les enclos
-    String nom;
-    int superficie; // En mètres carrés
-    int capaciteMax;
-    int nombreCreaturesPresentes;
-    ArrayList<Creature> creaturePresentes = new ArrayList<>();
-    int degresProprete; // 0 = « mauvais », 1 = « correct » et 2 = « bon »
+    protected String nom;
+    protected int superficie; // En mètres carrés
+    protected int capaciteMax;
+    protected int nombreCreaturesPresentes;
+    protected ArrayList<Creature> creaturePresentes = new ArrayList<>();
+    protected int degresProprete; // 0 = « mauvais », 1 = « correct » et 2 = « bon »
 
     // Classe interne pour la gestion des instances d'Enclos
     public static class InstanceManager {
@@ -185,10 +185,10 @@ public abstract class Enclos {
             index++;
         }
         return "------  Information enclos " + nom + " :  ------\n" +
-                "Nom : " + nom + "\n" +
-                "Superficie : " + superficie + "\n" +
-                "Capacite maximum : " + capaciteMax + "\n" +
-                "Nombre de creatures présentes : " + nombreCreaturesPresentes + "\n" +
+                "Nom : " + getNom() + "\n" +
+                "Superficie : " + getSuperficie() + "\n" +
+                "Capacite maximum : " + getCapaciteMax() + "\n" +
+                "Nombre de creatures présentes : " + getNombreCreaturesPresentes() + "\n" +
                 "Liste des creatures présentes : " + toStringCreaturePresentes + "\n" +
                 "Indice de propreté : " + getProprete() + "\n";
     }

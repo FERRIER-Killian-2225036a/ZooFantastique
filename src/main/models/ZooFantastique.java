@@ -2,8 +2,6 @@ package main.models;
 
 import main.models.creatures.Creature;
 import main.models.enclos.Enclos;
-
-import javax.lang.model.type.NullType;
 import java.util.ArrayList;
 
 public class ZooFantastique {
