@@ -7,15 +7,14 @@ import main.models.enclos.Enclos;
 public class Aquarium extends Enclos {
     // Propriétés spécifiques à l'Aquarium
     int profondeur;
-    int saliniteEau;
+    int saliniteEau=0;
 
     // Constructeur de la classe Aquarium
-    public Aquarium(String nom, int superficie, int capaciteMax, int profondeur, int saliniteEau) {
+    public Aquarium(String nom, int superficie, int capaciteMax, int profondeur) {
         // Appel du constructeur de la classe parente Enclos avec les paramètres fournis
         super(nom, superficie, capaciteMax);
         // Initialisation des propriétés spécifiques à l'Aquarium
         this.profondeur = profondeur;
-        this.saliniteEau = saliniteEau;
     }
 
     // Redéfinition de la méthode pour ajouter une créature à l'Aquarium
