@@ -1,0 +1,8 @@
+X Mettre l'entrée du sexe en toLower
+X Classe Enclos en abstract et une classe EnclosBasique a créer
+- Changements (setters) des infos du maitre du zoo et du Zoo (sauf taille zoo)
+- Nourri seulement une créature dans un enclos
+- Sub menu pour ajouter une créature
+- Sub menu pour ajouter un enclos
+- Refaire tests enclos
+- Revoir capacité max d'enclos dans le zoo
