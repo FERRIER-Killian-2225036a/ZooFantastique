@@ -8,7 +8,7 @@ import static main.view.MenuView.menu;
 public class Check {
     protected static Scanner sc = new Scanner(System.in);
     public static int checkIfEntreeIsInt() {
-        int entree = 0;
+        int entree;
         while (true) {
             try {
                 String input = sc.nextLine();
@@ -24,13 +24,13 @@ public class Check {
     }
 
     public static String checkIfEntreeIsIntToPutIntoTab(String subject) {
-        int intToCheck = 0;
+        int intForCheck;
         while (true) {
             try {
                 System.out.print("Entrez "+subject+" : ");
                 String input = sc.nextLine();
-                intToCheck = Integer.parseInt(input);
-                if (intToCheck!=0) {
+                intForCheck = Integer.parseInt(input);
+                if (intForCheck!=0) {
                     return input;
                 } else {
                     System.out.println(GFG.ANSI_YELLOW+subject+" ne peut pas valoir 0..."+GFG.ANSI_RESET);
