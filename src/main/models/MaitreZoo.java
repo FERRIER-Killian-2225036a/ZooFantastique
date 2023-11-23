@@ -27,9 +27,25 @@ public class MaitreZoo {
         enclos.nourrirCreatures();
     }
     public void transferCreature(Creature creature, Enclos enclosCible, Enclos enclosDistination) {
-        enclosCible.enleverCreature(creature);
-        enclosDistination.ajouterCreature(creature);
-        System.out.println(creature.getNom()+" a été transféré de "+enclosCible.getNom()+" dans "+enclosDistination.getNom());
+        if (enclosCible.getType()==enclosDistination.getType()){
+            enclosCible.enleverCreature(creature);
+            enclosDistination.ajouterCreature(creature);
+            System.out.println(creature.getNom()+" a été transféré de "+enclosCible.getNom()+" dans "+enclosDistination.getNom());
+        } else {
+            System.out.println("Les enclos n'ont pas le même type");
+        }
+
+    }
+    public void transferToutesCreaturesEnclosAUnAutre(Enclos enclosCible, Enclos enclosDistination) {
+        if (enclosCible.getType()==enclosDistination.getType()){
+            for (Creature creature : enclosCible.getCreaturePresentes()){
+                enclosCible.enleverCreature(creature);
+                enclosDistination.ajouterCreature(creature);
+                System.out.println(creature.getNom()+" a été transféré de "+enclosCible.getNom()+" dans "+enclosDistination.getNom());
+            }
+        } else {
+            System.out.println("Les enclos n'ont pas le même type");
+        }
     }
 
     public void setNom(String nom) {
