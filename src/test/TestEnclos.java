@@ -3,17 +3,19 @@ package test;
 import main.models.creatures.Creature;
 import main.models.creatures.implemente.Dragon;
 import main.models.creatures.implemente.Phenix;
+import main.models.enclos.implemente.Cage;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import main.models.enclos.Enclos;
 
 public class TestEnclos {
-    Enclos enclos = new Enclos("enclosTest", 34, 3, 3);
+    Enclos enclos = new Cage("enclosTest", 34, 3, 3);
     Creature dragon = new Dragon("Dragon", 60, 0, 160, 200);
     Creature dragonne = new Dragon("Dragonne", 60, 1, 160, 200);
 
     @Test
     public void testEnleverCreature() {
+        dragon.setIndicateurSante(100);
         enclos.ajouterCreature(dragon);
         assertEquals(enclos.getCreaturePresentes().get(0), dragon);
         enclos.enleverCreature(dragon);
@@ -95,7 +97,7 @@ public class TestEnclos {
     }
     @Test
     public void testGetCreaturesDansEnclos() {
-        Enclos enclos1 = new Enclos("premierEnclosTest", 34, 3, 3);
+        Enclos enclos1 = new Cage("premierEnclosTest", 34, 3, 3);
         Creature dragon2 = new Dragon("Dragon2", 60, 0, 160, 200);
         enclos.ajouterCreature(dragon);
         enclos1.ajouterCreature(dragonne);

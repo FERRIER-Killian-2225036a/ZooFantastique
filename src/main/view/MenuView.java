@@ -24,6 +24,9 @@ public class MenuView {
                 "5. Examiner un enclos\n" +
                 "6. Nettoyer un enclos\n" +
                 "7. Nourrir les créature dans un enclos\n" +
+                "8. Afficher les informations du Zoo et du maître du zoo\n" +
+                "9. Modification des information du maitre du zoo\n" +
+                "10. Modification des information du zoo\n" +
                 "0. Quitter");
         System.out.print("Choisir une action : ");
     }
@@ -46,10 +49,9 @@ public class MenuView {
     }
 
     public void afficherChoixEnclos() {
-        System.out.println("\nVoici la liste des enclos : ");
         if (!instanceEnclos.isEmpty()){
             for (int i = 0; i < instanceEnclos.size(); ++i){
-                System.out.println("Enclos "+(i+1)+" : "+instanceEnclos.get(i).getNom()+" ");
+                System.out.println((i+1)+" : "+instanceEnclos.get(i).getNom()+" ");
             }
             System.out.print("Sélectionnez l'enclos : ");
         } else {
@@ -74,7 +76,7 @@ public class MenuView {
                 yield 2;
             }
             case 3 -> {
-                System.out.print("\nLes enclos existants sont : ");
+                System.out.println("\nLes enclos existants sont : ");
                 yield 3;
             }
             case 4 -> {
@@ -82,19 +84,32 @@ public class MenuView {
                 yield 4;
             }
             case 5 -> {
-                System.out.print("\nExaminer un enclos : ");
+                System.out.println("\nExaminer un enclos : ");
                 afficherChoixEnclos();
                 yield 5;
             }
             case 6 -> {
-                System.out.print("\nNettoyer un enclos : ");
+                System.out.println("\nNettoyer un enclos : ");
                 afficherChoixEnclos();
                 yield 6;
             }
             case 7 -> {
-                System.out.print("\nNourrir un enclos : ");
+                System.out.println("\nNourrir un enclos : ");
                 afficherChoixEnclos();
                 yield 7;
+            }
+            case 8 -> {
+                System.out.println("Information sur le Zoo et le Maitre du Zoo : ");
+                yield 8;
+            }
+            case 9 -> {
+                System.out.println("Modification des information du maitre du zoo : ");
+
+                yield 9;
+            }
+            case 10 -> {
+                System.out.println("Modification des information du zoo : ");
+                yield 10;
             }
             default -> -1;
         };

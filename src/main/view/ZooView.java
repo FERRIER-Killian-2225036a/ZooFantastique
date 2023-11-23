@@ -15,13 +15,19 @@ public class ZooView {
         initMaitreZoo.add(sc.nextLine());
         System.out.print("Entrez votre sexe (h/f) :");
         String sexe = sc.nextLine();
-        if (Objects.equals(sexe, "h")){
-            initMaitreZoo.add("0");
-        } else if (Objects.equals(sexe, "f")) {
-            initMaitreZoo.add("1");
-        } else {
+        try {
+            sexe = sexe.toLowerCase();
+            if (Objects.equals(sexe, "h")){
+                initMaitreZoo.add("0");
+            } else if (Objects.equals(sexe, "f")) {
+                initMaitreZoo.add("1");
+            } else {
+                initMaitreZoo.add("3");
+            }
+        } catch (Exception e) {
             initMaitreZoo.add("3");
         }
+
         int age = 0;
         while (true) {
             try {
@@ -47,7 +53,7 @@ public class ZooView {
         int capacite = 0;
         while (true) {
             try {
-                System.out.print("Entrez la capacité maximum du Zoo : ");
+                System.out.print("Entrez la capacité maximum d'enclos du Zoo : ");
                 String input = sc.nextLine();
                 capacite = Integer.parseInt(input);
                 initZooFantastique.add(1, input);

@@ -4,12 +4,14 @@ import main.common.GFG;
 import main.models.MaitreZoo;
 import main.models.ZooFantastique;
 import main.models.creatures.Creature;
-import main.models.creatures.implemente.Dragon;
+import main.models.creatures.implemente.*;
 import main.models.enclos.Enclos;
+import main.models.enclos.implemente.Cage;
 import main.view.MenuView;
 import main.view.ZooView;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class DefaultController {
     protected static MenuView menuView = new MenuView();
@@ -17,26 +19,32 @@ public class DefaultController {
     protected static MaitreZoo maitreZoo;
     protected static ZooFantastique zooFantastique;
 
+    protected static ArrayList<Enclos> listEnclosInitialise = new ArrayList<>();
+    protected static ArrayList<Creature> listCreatureInitialise = new ArrayList<>();
+
     public static void initializeZoo() {
+        ArrayList<String> maitreZooInfo = zooView.initializeMaitreZooView();
+        maitreZoo = new MaitreZoo(maitreZooInfo.get(0), Integer.parseInt(maitreZooInfo.get(1)), Integer.parseInt(maitreZooInfo.get(2)));
         ArrayList<String> zooFantastiqueInfo = zooView.initializeZooFantastiqueView();
         zooFantastique = new ZooFantastique(zooFantastiqueInfo.get(0), maitreZoo,Integer.parseInt(zooFantastiqueInfo.get(1)));
     }
-    public static void initializeMaitreZoo() {
-        ArrayList<String> maitreZooInfo = zooView.initializeMaitreZooView();
-        maitreZoo = new MaitreZoo(maitreZooInfo.get(0), Integer.parseInt(maitreZooInfo.get(1)), Integer.parseInt(maitreZooInfo.get(2)));
-    }
-
-    public static void initializeCreatures() {
-        Dragon dragon = new Dragon("Dragon", 13, 0, 300, 4);
-    }
-    public static void initializeEnclos() {
+    public static void initializeDonneesDuJeu() {
         if (zooFantastique!=null) {
-            Enclos enclos = new Enclos("Premier enclos", 34, 6, 2);
-            Enclos enclos2 = new Enclos("Deuxième enclos", 34, 6, 0);
+            listEnclosInitialise.add(new Cage("Premier enclos", 34, 6, 2));
+            listEnclosInitialise.add(new Cage("Deuxième enclos", 34, 6, 0));
+
+            listCreatureInitialise.add(new Dragon("Dragon", 13, 0, 300, 4));
+            listCreatureInitialise.add(new Dragon("Dragonne", 13, 0, 300, 4));
+            listCreatureInitialise.add(new Krakens("Krakens", 13, 0, 300, 4));
+
+            // AJout des créatures dans l'enclos 0 Premier enclos
+            listEnclosInitialise.get(0).ajouterCreature(listCreatureInitialise.get(0));
+            listEnclosInitialise.get(0).ajouterCreature(listCreatureInitialise.get(1));
         } else {
             System.out.println(GFG.ANSI_RED+"Vous n'avez pas de zoo"+GFG.ANSI_RESET);
         }
     }
+
     public static void menuViewManager() {
         int exit = 0;
         while (exit==0) {
@@ -51,8 +59,9 @@ public class DefaultController {
                     // Affichage de toutes les créatures dans le Zoo
                     if (!zooFantastique.getToutesCreatureDansZoo().isEmpty()) {
                         for (int i = 0; i<zooFantastique.getToutesCreatureDansZoo().size(); ++i){
-                            System.out.println("Créature " + i + " : " + zooFantastique.getToutesCreatureDansZoo().get(i).getNom()+"\n");
+                            System.out.println("Créature " + (i+1) + " : " + zooFantastique.getToutesCreatureDansZoo().get(i).getNom());
                         }
+                        System.out.println("\n");
                     } else {
                         System.out.println("Pas de créatures\n");
                     }
@@ -65,8 +74,9 @@ public class DefaultController {
                     // Affiche des enclos dans le Zoo
                     if (!zooFantastique.getEnclosExistants().isEmpty()) {
                         for (int i = 0; i<zooFantastique.getEnclosExistants().size(); ++i){
-                            System.out.println("Enclos " + i + " : " + zooFantastique.getEnclosExistants().get(i).getNom()+"\n");
+                            System.out.println("Enclos " + (i+1) + " : " + zooFantastique.getEnclosExistants().get(i).getNom());
                         }
+                        System.out.println("\n");
                     } else {
                         System.out.println("Pas d'enclos\n");
                     }
@@ -79,7 +89,6 @@ public class DefaultController {
                     // Examiner un enclos
                     try {
                         maitreZoo.examinerEnclos(zooFantastique.getEnclosExistants().get(menuView.checkIfEntreeIsInt()-1));
-                        System.out.println("\n");
                     } catch (Exception e) {
                         System.out.println(GFG.ANSI_YELLOW+"Vous n'avez pas entré un numéro d'enclos valide...\n"+GFG.ANSI_RESET);
                     }
@@ -88,7 +97,6 @@ public class DefaultController {
                     // Nettoyer un enclos
                     try {
                         maitreZoo.nettoyerEnclos(zooFantastique.getEnclosExistants().get(menuView.checkIfEntreeIsInt()-1));
-                        System.out.println("\n");
                     } catch (Exception e) {
                         System.out.println(GFG.ANSI_YELLOW+"Vous n'avez pas entré un numéro d'enclos valide...\n"+GFG.ANSI_RESET);
                     }
@@ -97,10 +105,19 @@ public class DefaultController {
                     // Nourrir créatures dans un enclos
                     try {
                         maitreZoo.nourrirEnclos(zooFantastique.getEnclosExistants().get(menuView.checkIfEntreeIsInt()-1));
-                        System.out.println("\n");
                     } catch (Exception e) {
                         System.out.println(GFG.ANSI_YELLOW+"Vous n'avez pas entré un numéro d'enclos valide...\n"+GFG.ANSI_RESET);
                     }
+                    break;
+                case 8:
+                    System.out.println(maitreZoo);
+                    System.out.println(zooFantastique);
+                    break;
+                case 9:
+                    System.out.println();
+                    break;
+                case 10:
+                    System.out.println(" ");
                     break;
             }
         }
@@ -109,9 +126,7 @@ public class DefaultController {
     public static void main(String[] args) {
         zooView.messageInitialisation();
         initializeZoo();
-        initializeMaitreZoo();
-        initializeCreatures();
-        initializeEnclos();
+        initializeDonneesDuJeu();
         zooView.messageFinInitialisation();
         menuView.start();
         menuViewManager();

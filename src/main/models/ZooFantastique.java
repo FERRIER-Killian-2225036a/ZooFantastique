@@ -30,6 +30,16 @@ public class ZooFantastique {
         return enclosExistants;
     }
 
+    public StringBuilder getNomsEnclos() {
+        StringBuilder listNomsEnclos = new StringBuilder();
+        int index = 1;
+        for (Enclos enclos : enclosExistants) {
+            listNomsEnclos.append("\tEnclos ").append(index).append(" : ").append(enclos.getNom()).append("\n");
+            index++;
+        }
+        return listNomsEnclos;
+    }
+
     public ArrayList<Creature> getToutesCreatureDansZoo() {
         return Creature.InstanceManager.getAllInstances();
     }
@@ -41,8 +51,9 @@ public class ZooFantastique {
     @Override
     public String toString() {
         return "------  Information ZooFantastique " + nom + ":  ------\n" +
-                "Maitre du zoo : " + maitreZoo + "\n" +
+                "Maitre du zoo : " + maitreZoo.getNom() + "\n" +
                 "Nombre Maximum d'enclos : " + nombreMaxEnclos + "\n" +
-                "Liste des enclos existants : \n\n" + enclosExistants + "\n" ;
+                "Liste des enclos du Zoo : \n" + getNomsEnclos();
+
     }
 }

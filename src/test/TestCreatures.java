@@ -60,7 +60,6 @@ public class TestCreatures {
         licorne.vieillir(20);
         assertEquals(licorne.getAge(), 40);
         licorne.vieillir(10);
-        System.out.println(licorne.getAge());
         assertTrue(licorne.isEstMorte());
         assertEquals(licorne.getAge(), 50);
     }

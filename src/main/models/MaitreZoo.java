@@ -50,11 +50,9 @@ public class MaitreZoo {
 
     @Override
     public String toString() {
-        return "MaitreZoo{" +
-                "nom='" + nom + '\'' +
-                ", sexe=" + getSexe() +
-                ", age=" + age +
-                '}';
+        return "------  Information Maitre du Zoo " + nom + ":  ------\n" +
+                "Sexe : " + getSexe() + "\n" +
+                "Age : " + age + "\n" ;
     }
 
     public void dirigerZoo() {
