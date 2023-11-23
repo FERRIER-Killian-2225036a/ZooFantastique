@@ -50,12 +50,28 @@ public abstract class Creature {
     // Méthode simulant l'action de manger
     public void manger() {
         // Vérifie si la créature est vivante et ne dort pas
-        if (!estMorte && !dortIl) {
-            System.out.println("Miam miam");
+        if (!estMorte() && !dortIl() && aFaim()) {
+            System.out.println(getNom()+" a bien mangé");
             indicateurFaim = 0;
-        } else {
-            System.out.println(nom + " " + (estMorte ? "est mort(e)" : "dort"));
         }
+    }
+    protected boolean dortIl() {
+        if (dortIl) {
+            System.out.println(getNom()+" est en train de dormir");
+            return true;
+        } else return false;
+    }
+    protected boolean estMorte() {
+        if (estMorte) {
+            System.out.println(getNom()+" est mort(e)");
+            return true;
+        } else return false;
+    }
+    protected boolean aFaim() {
+        if (indicateurFaim<70) {
+            System.out.println(getNom()+" n'a pas faim");
+            return false;
+        } return true;
     }
 
     // Méthode simulant l'émission d'un son par la créature
@@ -173,6 +189,16 @@ public abstract class Creature {
     public boolean isEstMorte() {
         return estMorte;
     }
+    public String isDortIlToString() {
+        if (!dortIl) {
+            return "non";
+        } else return "oui";
+    }
+    public String isEstMorteToString() {
+        if (!estMorte) {
+            return "non";
+        } else return "oui";
+    }
 
     // Méthode pour obtenir le nom de l'interface
     private ArrayList<?> getTypeName() {
@@ -192,7 +218,7 @@ public abstract class Creature {
     // Redéfinition de la méthode toString pour afficher les propriétés de la créature
     @Override
     public String toString() {
-        return "------  Information " + getClass().getName() + " " + nom + " :  ------\n" +
+        return "------  Information créature " + nom + " :  ------\n" +
                 "Age : " + age + "\n" +
                 "Sexe : " + getSex()  + "\n" +
                 "Poids : " + poids + "\n" +
@@ -201,8 +227,8 @@ public abstract class Creature {
                 "Indicateur de faim : " + indicateurFaim + "\n" +
                 "Indicateur de sante : " + indicateurSante + "\n" +
                 "Indicateur de sommeil : " + indicateurSommeil + "\n" +
-                "Dort-il : " + dortIl + "\n" +
-                "Est-il mort(e) : " + estMorte + "\n" +
+                "Dort-il : " + isDortIlToString() + "\n" +
+                "Est-il mort(e) : " + isEstMorteToString() + "\n" +
                 "  ----------------------------------------------  " + "\n";
     }
 }
