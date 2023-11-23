@@ -133,9 +133,7 @@ public abstract class Creature {
     public void reverseEstMorte() {
         this.estMorte = !estMorte;
     }
-    public void reverseDortIl() {
-        this.dortIl = !this.dortIl;
-    }
+
     public void setIndicateurFaim(int indicateurFaim) {
         this.indicateurFaim = indicateurFaim;
     }

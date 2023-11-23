@@ -5,8 +5,6 @@ import main.models.creatures.Creature;
 import main.models.enclos.Enclos;
 
 import java.util.ArrayList;
-import java.util.Objects;
-import java.util.Scanner;
 
 import static main.common.Check.*;
 
@@ -144,9 +142,7 @@ public class MenuView {
                 System.out.print("Entrez votre choix : ");
                 yield 13;
             }
-            case 14 -> {
-                yield 14;
-            }
+            case 14 -> 14;
             default -> -1;
         };
     }
