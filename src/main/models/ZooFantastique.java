@@ -23,9 +23,7 @@ public class ZooFantastique {
     public String getNom() {
         return nom;
     }
-    public MaitreZoo getMaitreZoo() {
-        return maitreZoo;
-    }
+
     public static int getNombreMaxEnclos() {
         return nombreMaxEnclos;
     }
@@ -45,10 +43,6 @@ public class ZooFantastique {
 
     public ArrayList<Creature> getToutesCreatureDansZoo() {
         return Creature.InstanceManager.getAllInstances();
-    }
-
-    public void getCreaturesDUnEnclos(Enclos enclos) {
-        System.out.println("Les créatures présentent dans "+enclos.getNom()+" sont :\n"+enclos.getCreaturePresentes());
     }
 
     @Override
