@@ -1,5 +1,6 @@
 package main.view;
 
+import main.common.Check;
 import main.common.GFG;
 
 import java.util.ArrayList;
@@ -12,58 +13,31 @@ public class ZooView {
         ArrayList<String> initMaitreZoo = new ArrayList<>(3);
         Scanner sc = new Scanner(System.in);
         System.out.print("Entrez votre nom : ");
-        initMaitreZoo.add(sc.nextLine());
-        System.out.print("Entrez votre sexe (h/f) :");
+        initMaitreZoo.add(0,sc.nextLine());
+        System.out.print("Entrez votre sexe (h/f sinon sera non défini) :");
         String sexe = sc.nextLine();
         try {
             sexe = sexe.toLowerCase();
-            if (Objects.equals(sexe, "h")){
-                initMaitreZoo.add("0");
-            } else if (Objects.equals(sexe, "f")) {
-                initMaitreZoo.add("1");
+            if (Objects.equals(sexe, "h") || Objects.equals(sexe, "0")){
+                initMaitreZoo.add(1,"0");
+            } else if (Objects.equals(sexe, "f") || Objects.equals(sexe, "1")) {
+                initMaitreZoo.add(1,"1");
             } else {
-                initMaitreZoo.add("3");
+                initMaitreZoo.add(1,"3");
             }
         } catch (Exception e) {
-            initMaitreZoo.add("3");
+            initMaitreZoo.add(1,"3");
         }
-
-        int age = 0;
-        while (true) {
-            try {
-                System.out.print("Votre age : ");
-                String input = sc.nextLine();
-                age = Integer.parseInt(input);
-                initMaitreZoo.add(2, input);
-                // Si la conversion en entier réussit, sortir de la boucle
-                break;
-            } catch (NumberFormatException e) {
-                // Si la conversion échoue, afficher un message d'erreur et continuer la boucle
-                System.out.println(GFG.ANSI_YELLOW+"Veuillez entrer un nombre entier valide"+GFG.ANSI_RESET);
-            }
-        }
+        initMaitreZoo.add(2, Check.checkIfEntreeIsIntToPutIntoTab("votre âge"));
         return initMaitreZoo;
     }
     public ArrayList<String> initializeZooFantastiqueView() {
-        System.out.println("Création du Zoo fantastique");
+        System.out.println("\nCréation du Zoo fantastique");
         ArrayList<String> initZooFantastique = new ArrayList<>(2);
         Scanner sc = new Scanner(System.in);
         System.out.print("Entrez le nom du Zoo : ");
-        initZooFantastique.add(sc.nextLine());
-        int capacite = 0;
-        while (true) {
-            try {
-                System.out.print("Entrez la capacité maximum d'enclos du Zoo : ");
-                String input = sc.nextLine();
-                capacite = Integer.parseInt(input);
-                initZooFantastique.add(1, input);
-                // Si la conversion en entier réussit, sortir de la boucle
-                break;
-            } catch (NumberFormatException e) {
-                // Si la conversion échoue, afficher un message d'erreur et continuer la boucle
-                System.out.println(GFG.ANSI_YELLOW+"Veuillez entrer un nombre entier valide"+GFG.ANSI_RED);
-            }
-        }
+        initZooFantastique.add(0,sc.nextLine());
+        initZooFantastique.add(1,Check.checkIfEntreeIsIntToPutIntoTab("la capacité maximum d'enclos du Zoo"));
         return initZooFantastique;
     }
     public void messageInitialisation() {
