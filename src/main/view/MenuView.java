@@ -1,51 +1,24 @@
 package main.view;
 
 import main.common.GFG;
+import main.models.creatures.Creature;
 import main.models.enclos.Enclos;
 
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Scanner;
+
+import static main.common.Check.*;
 
 public class MenuView {
     protected ArrayList<Enclos> instanceEnclos = Enclos.InstanceManager.getAllInstances();
+    protected ArrayList<Creature> instanceCreatures = Creature.InstanceManager.getAllInstances();
 
     public void start() {
-        System.out.println("------  Bienvenue  ------");
+        System.out.println("------------------------------------  Bienvenue  ------------------------------------");
     }
     public void end() {
-        System.out.println("------  Aurevoir  ------");
-    }
-
-    public void menu() {
-        System.out.println("1. Lister les créatures\n" +
-                "2. Afficher le nombre de créature dans le zoo\n" +
-                "3. Afficher les enclos existants\n" +
-                "4. Affiche le nombre d'enclos dans le zoo\n" +
-                "5. Examiner un enclos\n" +
-                "6. Nettoyer un enclos\n" +
-                "7. Nourrir les créature dans un enclos\n" +
-                "8. Afficher les informations du Zoo et du maître du zoo\n" +
-                "9. Modification des information du maitre du zoo\n" +
-                "10. Modification des information du zoo\n" +
-                "0. Quitter");
-        System.out.print("Choisir une action : ");
-    }
-
-    public int checkIfEntreeIsInt() {
-        Scanner sc = new Scanner(System.in);
-        int entree = 0;
-        while (true) {
-            try {
-                String input = sc.nextLine();
-                entree = Integer.parseInt(input);
-                break;
-            } catch (NumberFormatException e) {
-                // Si la conversion échoue, afficher un message d'erreur et continuer la boucle
-                System.out.println(GFG.ANSI_YELLOW+"Veuillez entrer un nombre entier valide...\n"+GFG.ANSI_RESET);
-                menu();
-            }
-        }
-        return entree;
+        System.out.println("------------------------------------  Aurevoir  ------------------------------------");
     }
 
     public void afficherChoixEnclos() {
@@ -58,6 +31,44 @@ public class MenuView {
             System.out.println("Il n'y pas d'enclos...\n");
         }
     }
+    public void afficherChoixCreatures() {
+        if (!instanceCreatures.isEmpty()){
+            for (int i = 0; i < instanceCreatures.size(); ++i){
+                System.out.println((i+1)+" : "+instanceCreatures.get(i).getNom()+" avec "+instanceCreatures.get(i).getIndicateurFaim()+" d'indicateur de faim");
+            }
+            System.out.print("Sélectionnez une créature : ");
+        } else {
+            System.out.println("Il n'y pas de créatures...\n");
+        }
+    }
+
+    public void numeroEntreeInvalideErrorMessage() {
+        System.out.println(GFG.ANSI_YELLOW+"Vous n'avez pas entré un numéro valide..."+GFG.ANSI_RESET);
+    }
+
+    public void menuCreationEnclos() {
+        System.out.println("Ajout d'un enclos : ");
+        System.out.println("1. Cage");
+        System.out.println("2. Aquarium");
+        System.out.println("3. Volière");
+        System.out.print("Entrez votre choix : ");
+    }
+
+    public static void menu() {
+        System.out.println("""
+        1. Lister les créatures                                         10. Modification des information du maitre du zoo
+        2. Afficher le nombre de créature dans le zoo                   11. Renommer le zoo
+        3. Examiner une créature                                        12. Nourrir seulement une créature
+        4. Afficher les enclos existants                                13. Ajout d'une créature
+        5. Affiche le nombre d'enclos dans le zoo                       14. Ajout d'un enclos
+        6. Examiner un enclos
+        7. Nettoyer un enclos
+        8. Nourrir les créature dans un enclos
+        9. Afficher les informations du Zoo et du maître du zoo
+
+        0. Quitter""");
+        System.out.print("Choisir une action : ");
+    }
 
     public int userMenu() {
         menu();
@@ -68,7 +79,7 @@ public class MenuView {
                 yield 0;
             }
             case 1 -> {
-                System.out.println("\nLes créatures présentes sont : ");
+                System.out.print("\nLes créatures présentes sont : \n");
                 yield 1;
             }
             case 2 -> {
@@ -76,43 +87,67 @@ public class MenuView {
                 yield 2;
             }
             case 3 -> {
-                System.out.println("\nLes enclos existants sont : ");
+                System.out.print("\nChoisissez une créature que vous voulez examiner : \n");
                 yield 3;
             }
             case 4 -> {
-                System.out.print("\nLe nombre d'enclos présente dans le zoo est : ");
+                System.out.print("\nLes enclos existants sont : \n");
                 yield 4;
             }
             case 5 -> {
-                System.out.println("\nExaminer un enclos : ");
-                afficherChoixEnclos();
+                System.out.print("\nLe nombre d'enclos présente dans le zoo est : ");
                 yield 5;
             }
             case 6 -> {
-                System.out.println("\nNettoyer un enclos : ");
+                System.out.println("\nChoisissez l'encos que vous voulez examiner : ");
                 afficherChoixEnclos();
                 yield 6;
             }
             case 7 -> {
-                System.out.println("\nNourrir un enclos : ");
+                System.out.println("\nNettoyer un enclos : ");
                 afficherChoixEnclos();
                 yield 7;
             }
             case 8 -> {
-                System.out.println("Information sur le Zoo et le Maitre du Zoo : ");
+                System.out.println("\nNourrir un enclos : ");
+                afficherChoixEnclos();
                 yield 8;
             }
             case 9 -> {
-                System.out.println("Modification des information du maitre du zoo : ");
-
+                System.out.println("Affichage des informations du maitre du zoo et du zoo");
                 yield 9;
             }
             case 10 -> {
-                System.out.println("Modification des information du zoo : ");
+                System.out.println("Modification des information du maitre du zoo : ");
+                System.out.println("1. Changer le nom");
+                System.out.println("2. Changer le sexe");
+                System.out.println("3. Changer l'âge");
+                System.out.print("Entrez votre choix : ");
                 yield 10;
+            }
+            case 11 -> {
+                System.out.println("Comment voulez-vous renommer le zoo : ");
+                yield 11;
+            }
+            case 12 -> {
+                System.out.println("Choisissez une créature que vous voulez nourrir : ");
+                yield 12;
+            }
+            case 13 -> {
+                System.out.print("""
+                        Ajout d'une créature :
+                        1. Dragon       5. Megalodon
+                        2. Kraken       6. Nymphe
+                        3. Licorne      7. Phénix
+                        4. Lycanthrope  8. Sirène
+                        """);
+                System.out.print("Entrez votre choix : ");
+                yield 13;
+            }
+            case 14 -> {
+                yield 14;
             }
             default -> -1;
         };
     }
-
 }
