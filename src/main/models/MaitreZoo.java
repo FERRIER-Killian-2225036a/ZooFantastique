@@ -29,10 +29,19 @@ public class MaitreZoo {
         System.out.println(creature.getNom()+" a été transféré de "+enclosCible.getNom()+" dans "+enclosDistination.getNom());
     }
 
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+    public void setSexe(int sexe) {
+        this.sexe = sexe;
+    }
+    public void setAge(int age) {
+        this.age = age;
+    }
+
     public String getNom() {
         return nom;
     }
-
     public String getSexe() {
         if (this.sexe==0){
             return "Homme";
@@ -43,19 +52,14 @@ public class MaitreZoo {
         }
 
     }
-
     public int getAge() {
         return age;
     }
 
     @Override
     public String toString() {
-        return "------  Information Maitre du Zoo " + nom + ":  ------\n" +
+        return "------  Information Maitre du Zoo " + nom + " :  ------\n" +
                 "Sexe : " + getSexe() + "\n" +
-                "Age : " + age + "\n" ;
-    }
-
-    public void dirigerZoo() {
-        // TODO: faire le menu
+                "Age : " + age + " ans" + "\n" ;
     }
 }
