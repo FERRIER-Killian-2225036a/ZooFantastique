@@ -2,11 +2,6 @@ package main.controllers;
 
 import main.models.Temps;
 
-import javax.swing.text.html.parser.Entity;
-import java.util.Hashtable;
-import java.util.List;
-import java.util.Map;
-
 public class TempsController {
     Temps temps = new Temps();
 

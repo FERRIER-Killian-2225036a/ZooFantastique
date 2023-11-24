@@ -1,7 +1,6 @@
 package main.view;
 
 import main.common.GFG;
-import main.models.Temps;
 import main.models.creatures.Creature;
 import main.models.enclos.Enclos;
 

@@ -1,7 +1,6 @@
 package main.controllers;
 
 import main.common.GFG;
-import main.models.Temps;
 import main.models.ZooFantastique;
 import main.models.creatures.Creature;
 import main.models.creatures.implemente.*;
