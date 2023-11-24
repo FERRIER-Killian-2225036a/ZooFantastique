@@ -13,10 +13,10 @@ public class MenuView {
     protected ArrayList<Creature> instanceCreatures = Creature.InstanceManager.getAllInstances();
 
     public void start() {
-        System.out.println("------------------------------------  Bienvenue  ------------------------------------");
+        System.out.println("---------------------------------------  Bienvenue  ---------------------------------------");
     }
     public void end() {
-        System.out.println("------------------------------------  Aurevoir  ------------------------------------");
+        System.out.println("Aurevoir...");
     }
 
     public void afficherChoixEnclos() {
@@ -40,6 +40,10 @@ public class MenuView {
         }
     }
 
+    public void afficherText(String texte) {
+        System.out.println(texte);
+    }
+
     public void numeroEntreeInvalideErrorMessage() {
         System.out.println(GFG.ANSI_YELLOW+"Vous n'avez pas entré un numéro valide..."+GFG.ANSI_RESET);
     }
@@ -59,8 +63,8 @@ public class MenuView {
         3. Examiner une créature                                        12. Nourrir seulement une créature
         4. Afficher les enclos existants                                13. Ajout d'une créature
         5. Affiche le nombre d'enclos dans le zoo                       14. Ajout d'un enclos
-        6. Examiner un enclos
-        7. Nettoyer un enclos
+        6. Examiner un enclos                                           15. Transférer une créature
+        7. Nettoyer un enclos                                           16. Transférer toutes les créature d'un enclos
         8. Nourrir les créature dans un enclos
         9. Afficher les informations du Zoo et du maître du zoo
 
@@ -143,6 +147,14 @@ public class MenuView {
                 yield 13;
             }
             case 14 -> 14;
+            case 15 -> {
+                System.out.println("Qu'elle créature voulez-vous transférer:");
+                yield 15;
+            }
+            case 16 -> {
+                System.out.println("Quel enclos voulez-vous transférer:");
+                yield 16;
+            }
             default -> -1;
         };
     }
