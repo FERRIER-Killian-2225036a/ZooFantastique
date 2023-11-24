@@ -196,6 +196,32 @@ public class MenuUserController {
                         System.out.println(GFG.ANSI_YELLOW+"La capacité maximum du zoo est atteinte..."+GFG.ANSI_RESET+"\n");
                     }
                     break;
+                case 15:
+                    // Transférer une créature
+                    menuView.afficherChoixCreatures();
+                    Creature creatureCible = zooFantastique.getToutesCreatureDansZoo().get(checkIfEntreeIsInt()-1);
+                    menuView.afficherText("Dans quel enclos voulez-vous le transférer");
+                    menuView.afficherChoixEnclos();
+                    Enclos enclosDestination = zooFantastique.getEnclosExistants().get(checkIfEntreeIsInt()-1);
+                    try {
+                        maitreZoo.transferCreature(creatureCible,zooFantastique.getEnclosDUneCreature(creatureCible),enclosDestination);
+                    } catch (Exception e) {
+                        menuView.numeroEntreeInvalideErrorMessage();
+                    }
+                    break;
+                case 16:
+                    // Transférer les créature d'un enclos
+                    menuView.afficherChoixEnclos();
+                    Enclos enclosCible = zooFantastique.getEnclosExistants().get(checkIfEntreeIsInt()-1);
+                    menuView.afficherText("Dans quel enclos voulez-vous le transférer :");
+                    menuView.afficherChoixEnclos();
+                    Enclos enclosDistination = zooFantastique.getEnclosExistants().get(checkIfEntreeIsInt()-1);
+                    try {
+                        maitreZoo.transferToutesCreaturesEnclosAUnAutre(enclosCible, enclosDistination);
+                    } catch (Exception e) {
+                        menuView.numeroEntreeInvalideErrorMessage();
+                    }
+                    break;
             }
         }
     }
