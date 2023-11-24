@@ -18,6 +18,7 @@ public abstract class Creature {
     protected int indicateurSommeil = 0; // De 0 à 100
     protected boolean dortIl = false;
     protected boolean estMorte = false;
+    protected String espece = getClass().getSimpleName();
 
     // Classe interne pour la gestion des instances de Creature
     public static class InstanceManager {
@@ -179,6 +180,7 @@ public abstract class Creature {
     public int getIndicateurSommeil() {
         return indicateurSommeil;
     }
+    public String getEspece() {return espece;}
     public boolean isDortIl() {
         return dortIl;
     }
@@ -214,7 +216,7 @@ public abstract class Creature {
     // Redéfinition de la méthode toString pour afficher les propriétés de la créature
     @Override
     public String toString() {
-        return "------  Information créature \"" + nom + "\" :  ------\n" +
+        return "------  Information "+ getEspece() +" \"" + nom + "\" :  ------\n" +
                 "Age : " + age + "\n" +
                 "Sexe : " + getSex()  + "\n" +
                 "Poids : " + poids + "\n" +
