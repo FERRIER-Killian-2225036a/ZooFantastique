@@ -1,6 +1,7 @@
 package main.view;
 
 import main.common.GFG;
+import main.models.Temps;
 import main.models.creatures.Creature;
 import main.models.enclos.Enclos;
 
@@ -57,6 +58,7 @@ public class MenuView {
     }
 
     public static void menu() {
+        System.out.println(TempsView.afficherDate());
         System.out.println("""
         1. Lister les créatures                                         10. Modification des information du maitre du zoo
         2. Afficher le nombre de créature dans le zoo                   11. Renommer le zoo

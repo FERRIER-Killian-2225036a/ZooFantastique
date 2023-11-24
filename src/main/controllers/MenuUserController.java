@@ -1,6 +1,7 @@
 package main.controllers;
 
 import main.common.GFG;
+import main.models.Temps;
 import main.models.ZooFantastique;
 import main.models.creatures.Creature;
 import main.models.creatures.implemente.*;
@@ -14,6 +15,7 @@ import static main.controllers.DefaultController.*;
 
 public class MenuUserController {
     public static void menuViewManager() {
+        TempsController temps = new TempsController();
         int exit = 0;
         while (exit==0) {
             int menuOutput = menuView.userMenu();
@@ -75,6 +77,7 @@ public class MenuUserController {
                     // Nettoyer un enclos
                     try {
                         maitreZoo.nettoyerEnclos(zooFantastique.getEnclosExistants().get(checkIfEntreeIsInt()-1));
+                        temps.faisUneAction(3);
                     } catch (Exception e) {
                         menuView.numeroEntreeInvalideErrorMessage();
                     }
@@ -83,6 +86,7 @@ public class MenuUserController {
                     // Nourrir créatures dans un enclos
                     try {
                         maitreZoo.nourrirEnclos(zooFantastique.getEnclosExistants().get(checkIfEntreeIsInt()-1));
+                        temps.faisUneAction(3);
                     } catch (Exception e) {
                         menuView.numeroEntreeInvalideErrorMessage();
                     }
@@ -115,11 +119,13 @@ public class MenuUserController {
                     try {
                         Creature.InstanceManager.getAllInstances().get(checkIfEntreeIsInt()-1).manger();
                         System.out.println();
+                        temps.faisUneAction(3);
                     } catch (Exception e) {
                         menuView.numeroEntreeInvalideErrorMessage();
                     }
                     break;
                 case 13:
+                    // Ajouter une créature
                     entree = checkIfEntreeIsInt();
                     ArrayList<String> listeInformationCreature = ajoutEntiteView.ajoutCreature();
                     switch (entree) {
@@ -168,6 +174,7 @@ public class MenuUserController {
                     break;
 
                 case 14:
+                    // Ajouter un enclos
                     if (Enclos.InstanceManager.getAllInstances().size()+1 <= ZooFantastique.getNombreMaxEnclos()) {
                         menuView.menuCreationEnclos();
                         entree = checkIfEntreeIsInt();
@@ -205,6 +212,7 @@ public class MenuUserController {
                     Enclos enclosDestination = zooFantastique.getEnclosExistants().get(checkIfEntreeIsInt()-1);
                     try {
                         maitreZoo.transferCreature(creatureCible,zooFantastique.getEnclosDUneCreature(creatureCible),enclosDestination);
+                        temps.faisUneAction(3);
                     } catch (Exception e) {
                         menuView.numeroEntreeInvalideErrorMessage();
                     }
@@ -218,11 +226,13 @@ public class MenuUserController {
                     Enclos enclosDistination = zooFantastique.getEnclosExistants().get(checkIfEntreeIsInt()-1);
                     try {
                         maitreZoo.transferToutesCreaturesEnclosAUnAutre(enclosCible, enclosDistination);
+                        temps.faisUneAction(5);
                     } catch (Exception e) {
                         menuView.numeroEntreeInvalideErrorMessage();
                     }
                     break;
             }
+            temps.passeUnJour();
         }
     }
 }

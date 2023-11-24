@@ -5,8 +5,12 @@ X Nourri seulement une créature dans un enclos
 X Implémenté l'examination d'une créature
 X Sub menu pour ajouter une créature
 X Sub menu pour ajouter un enclos
-- Refaire tests enclos
 X Revoir capacité max d'enclos dans le zoo
+X Ajout le transfère de créature au menu
+- Implémenté le temps
+- Implémenté la reproduction
+- Ajouter l'incrémentation de l'âge + saleté des enclos
+    Faire des CreatureController et EnclosController pour faire des appels fonction dans la classe temps
 - Faire les comm
 - Transformé les erreur dans les exceptions
-X Ajout le transfère de créature au menu
+- Refaire tests enclos
