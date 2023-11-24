@@ -11,6 +11,9 @@ X Ajout le transfère de créature au menu
 - Implémenté la reproduction
 - Ajouter l'incrémentation de l'âge + saleté des enclos
     Faire des CreatureController et EnclosController pour faire des appels fonction dans la classe temps
+- Quand accouplement :
+   Récupérer mois et quand mois = mois + 9 : Créer bébé 
+- Séparer créatures et enclos en controller et vue
 - Faire les comm
 - Transformé les erreur dans les exceptions
 - Refaire tests enclos
