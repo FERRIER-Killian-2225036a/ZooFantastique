@@ -210,10 +210,10 @@ public class MenuUserController {
                     }
                     break;
                 case 16:
-                    // Transférer les créature d'un enclos
+                    // Transférer les créatures d'un enclos
                     menuView.afficherChoixEnclos();
                     Enclos enclosCible = zooFantastique.getEnclosExistants().get(checkIfEntreeIsInt()-1);
-                    menuView.afficherText("Dans quel enclos voulez-vous le transférer :");
+                    menuView.afficherText("Dans quel enclos voulez-vous les transférer :");
                     menuView.afficherChoixEnclos();
                     Enclos enclosDistination = zooFantastique.getEnclosExistants().get(checkIfEntreeIsInt()-1);
                     try {
