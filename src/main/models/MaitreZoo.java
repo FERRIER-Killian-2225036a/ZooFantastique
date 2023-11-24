@@ -3,6 +3,8 @@ package main.models;
 import main.models.creatures.Creature;
 import main.models.enclos.Enclos;
 
+import java.util.Objects;
+
 public class MaitreZoo {
     String nom;
     int sexe; // 0 = male; 1 = femelle
@@ -26,25 +28,25 @@ public class MaitreZoo {
     public void nourrirEnclos(Enclos enclos) {
         enclos.nourrirCreatures();
     }
-    public void transferCreature(Creature creature, Enclos enclosCible, Enclos enclosDistination) {
-        if (enclosCible.getType()==enclosDistination.getType()){
+    public void transferCreature(Creature creature, Enclos enclosCible, Enclos enclosDestination) {
+        if (Objects.equals(enclosCible.getEspeceContenue(), enclosDestination.getEspeceContenue()) || enclosDestination.getEspeceContenue().isEmpty()){
             enclosCible.enleverCreature(creature);
-            enclosDistination.ajouterCreature(creature);
-            System.out.println(creature.getNom()+" a été transféré de "+enclosCible.getNom()+" dans "+enclosDistination.getNom());
+            enclosDestination.ajouterCreature(creature);
+            System.out.println(creature.getNom()+" a bien été transféré de "+enclosCible.getNom()+" dans "+enclosDestination.getNom()+"\n");
         } else {
-            System.out.println("Les enclos n'ont pas le même type");
+            System.out.println("Les enclos n'ont pas le même type\n");
         }
 
     }
-    public void transferToutesCreaturesEnclosAUnAutre(Enclos enclosCible, Enclos enclosDistination) {
-        if (enclosCible.getType()==enclosDistination.getType()){
+    public void transferToutesCreaturesEnclosAUnAutre(Enclos enclosCible, Enclos enclosDestination) {
+        if (Objects.equals(enclosCible.getEspeceContenue(), enclosDestination.getEspeceContenue()) || enclosDestination.getEspeceContenue().isEmpty()){
             for (Creature creature : enclosCible.getCreaturePresentes()){
                 enclosCible.enleverCreature(creature);
-                enclosDistination.ajouterCreature(creature);
-                System.out.println(creature.getNom()+" a été transféré de "+enclosCible.getNom()+" dans "+enclosDistination.getNom());
+                enclosDestination.ajouterCreature(creature);
+                System.out.println(creature.getNom()+" a bien été transféré de "+enclosCible.getNom()+" dans "+enclosDestination.getNom()+"\n");
             }
         } else {
-            System.out.println("Les enclos n'ont pas le même type");
+            System.out.println("Les enclos n'ont pas le même type\n");
         }
     }
 
