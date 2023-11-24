@@ -4,6 +4,7 @@ import main.common.GFG;
 import main.models.ZooFantastique;
 import main.models.creatures.Creature;
 import java.util.ArrayList;
+import java.util.Objects;
 
 // Définition de la classe abstraite Enclos
 public abstract class Enclos {
@@ -14,7 +15,7 @@ public abstract class Enclos {
     protected int nombreCreaturesPresentes;
     protected ArrayList<Creature> creaturePresentes = new ArrayList<>();
     protected int degresProprete=2; // 0 = « mauvais », 1 = « correct » et 2 = « bon »
-    protected ArrayList<?> type;
+    protected String especeContenue="";
 
     // Classe interne pour la gestion des instances d'Enclos
     public static class InstanceManager {
@@ -81,13 +82,13 @@ public abstract class Enclos {
     public int getDegresProprete() {
         return degresProprete;
     }
-    public ArrayList<?> getType() {
-        return type;
+    public String getEspeceContenue() {
+        return especeContenue;
     }
-    public String getTypeToString() {
-        if (type==null || type.isEmpty()) {
-            return "Pas de type";
-        } return type.toString();
+    public String getEspeceContenueToString() {
+        if (especeContenue.isEmpty()) {
+            return "Pas d'escpèce contenue";
+        } return especeContenue;
     }
 
     public void setNom(String nom) {
@@ -102,7 +103,7 @@ public abstract class Enclos {
         if (enclosExiste() && creatureEstVivante(creature) && !creatureEstDansUnAutreEnclos(creature) && capaciteEstAtteinte()) {
             if (memeEspeceQuePremiereCreature(creature)) {
                 creaturePresentes.add(creature);
-                type = creature.getType();
+                especeContenue = creature.getEspece();
                 nombreCreaturesPresentes += 1;
                 System.out.println(creature.getNom() + " placé dans " + nom);
             } else {
@@ -146,7 +147,7 @@ public abstract class Enclos {
     }
 
     private boolean memeEspeceQuePremiereCreature(Creature creature) {
-        if (!creaturePresentes.isEmpty() && creaturePresentes.get(0).getClass() == creature.getClass()) {
+        if (!creaturePresentes.isEmpty() && Objects.equals(creaturePresentes.get(0).getEspece(), creature.getEspece())) {
             return true;
         } else return creaturePresentes.isEmpty();
     }
@@ -159,6 +160,9 @@ public abstract class Enclos {
             System.out.println(creature.getNom() + " a été enlevé de " + nom);
         } else {
             System.out.println(GFG.ANSI_YELLOW+creature.getNom() + " n'est pas dans " + nom+GFG.ANSI_RESET);
+        }
+        if (nombreCreaturesPresentes==0) {
+            especeContenue="";
         }
     }
 
@@ -197,7 +201,7 @@ public abstract class Enclos {
                 "Nom : " + getNom() + "\n" +
                 "Superficie : " + getSuperficie() + "\n" +
                 "Capacite maximum : " + getCapaciteMax() + "\n" +
-                "Type de créature dans l'enclos : " + getTypeToString() + "\n" +
+                "Type de créature dans l'enclos : " + getEspeceContenueToString() + "\n" +
                 "Nombre de creatures présentes : " + getNombreCreaturesPresentes() + "\n" +
                 "Liste des creatures présentes : " + toStringCreaturePresentes + "\n" +
                 "Indice de propreté : " + getProprete() + "\n";
