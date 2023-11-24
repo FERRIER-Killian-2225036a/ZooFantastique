@@ -29,17 +29,19 @@ public class MaitreZoo {
         enclos.nourrirCreatures();
     }
     public void transferCreature(Creature creature, Enclos enclosCible, Enclos enclosDestination) {
-        if (Objects.equals(enclosCible.getEspeceContenue(), enclosDestination.getEspeceContenue()) || enclosDestination.getEspeceContenue().isEmpty()){
+        if ((Objects.equals(enclosCible.getEspeceContenue(), enclosDestination.getEspeceContenue()) || enclosDestination.getEspeceContenue().isEmpty())
+                && !Objects.equals(enclosCible, enclosDestination)){
             enclosCible.enleverCreature(creature);
             enclosDestination.ajouterCreature(creature);
             System.out.println(creature.getNom()+" a bien été transféré de "+enclosCible.getNom()+" dans "+enclosDestination.getNom()+"\n");
         } else {
-            System.out.println("Les enclos n'ont pas le même type\n");
+            System.out.println("Les enclos n'ont pas le même type ou l'enclos est le même\n");
         }
 
     }
     public void transferToutesCreaturesEnclosAUnAutre(Enclos enclosCible, Enclos enclosDestination) {
-        if (Objects.equals(enclosCible.getEspeceContenue(), enclosDestination.getEspeceContenue()) || enclosDestination.getEspeceContenue().isEmpty()){
+        if ((Objects.equals(enclosCible.getEspeceContenue(), enclosDestination.getEspeceContenue()) || enclosDestination.getEspeceContenue().isEmpty())
+                && !Objects.equals(enclosCible, enclosDestination)){
             int nombreCreatureDansEnclos = enclosCible.getNombreCreaturesPresentes();
             for (int i =0; i<nombreCreatureDansEnclos; ++i){
                 Creature creature = enclosCible.getCreaturePresentes().get(0);
@@ -49,7 +51,7 @@ public class MaitreZoo {
             }
             System.out.println();
         } else {
-            System.out.println("Les enclos n'ont pas le même type\n");
+            System.out.println("Les enclos n'ont pas le même type ou l'enclos est le même\n");
         }
     }
 
