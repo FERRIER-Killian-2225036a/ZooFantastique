@@ -45,6 +45,15 @@ public class ZooFantastique {
         return Creature.InstanceManager.getAllInstances();
     }
 
+    public Enclos getEnclosDUneCreature(Creature creature) {
+        for (Enclos enclos : enclosExistants) {
+            if (enclos.getCreaturePresentes().contains(creature)) {
+                return enclos;
+            }
+        }
+        return null;
+    }
+
     @Override
     public String toString() {
         return "------  Information ZooFantastique " + nom + " :  ------\n" +
