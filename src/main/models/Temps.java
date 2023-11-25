@@ -3,9 +3,15 @@ package main.models;
 import java.util.Hashtable;
 
 public class Temps {
-    protected static int jour = 1;
-    protected static int mois = 1;
+    protected static int jour = 31;
+    protected static int mois = 12;
     protected static int annee = 2023;
+    ZooFantastique zooFantastique;
+
+    public Temps(ZooFantastique zooFantastique) {
+        this.zooFantastique = zooFantastique;
+    }
+
 
     public void setJour(int jour) {
         Temps.jour = jour;
@@ -31,4 +37,7 @@ public class Temps {
         return annee;
     }
 
+    public ZooFantastique getZooFantastique() {
+        return zooFantastique;
+    }
 }

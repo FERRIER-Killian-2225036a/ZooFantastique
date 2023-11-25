@@ -24,6 +24,10 @@ public class ZooFantastique {
         return nom;
     }
 
+    public MaitreZoo getMaitreZoo() {
+        return maitreZoo;
+    }
+
     public static int getNombreMaxEnclos() {
         return nombreMaxEnclos;
     }
