@@ -58,6 +58,17 @@ public class MenuView {
         System.out.println(GFG.ANSI_YELLOW+"Vous n'avez pas entré un numéro valide..."+GFG.ANSI_RESET);
     }
 
+    public void menuAjoutCreature() {
+        System.out.print("""
+                        Ajout d'une créature :
+                        1. Dragon       5. Megalodon
+                        2. Kraken       6. Nymphe
+                        3. Licorne      7. Phénix
+                        4. Lycanthrope  8. Sirène
+                        """);
+        System.out.print("Entrez votre choix : ");
+    }
+
     public void menuCreationEnclos() {
         System.out.println("Ajout d'un enclos : ");
         System.out.println("1. Cage");
@@ -146,17 +157,7 @@ public class MenuView {
                 System.out.println("Choisissez une créature que vous voulez nourrir : ");
                 yield 12;
             }
-            case 13 -> {
-                System.out.print("""
-                        Ajout d'une créature :
-                        1. Dragon       5. Megalodon
-                        2. Kraken       6. Nymphe
-                        3. Licorne      7. Phénix
-                        4. Lycanthrope  8. Sirène
-                        """);
-                System.out.print("Entrez votre choix : ");
-                yield 13;
-            }
+            case 13 ->13;
             case 14 -> 14;
             case 15 -> {
                 System.out.println("Qu'elle créature voulez-vous transférer:");
