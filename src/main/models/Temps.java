@@ -1,7 +1,5 @@
 package main.models;
 
-import java.util.Hashtable;
-
 public class Temps {
     protected static int jour = 31;
     protected static int mois = 12;
