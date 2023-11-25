@@ -11,9 +11,9 @@ X Implémenté le temps
 X Afficher plus d'info quand on liste les créaures
 X Ne pas mettre le passage de journée par défaut
 X Ajouté les créature créé a des enclos
+X Incrémentation de l'âge des entitées
 - Implémenté la reproduction
-- Ajouter l'incrémentation de l'âge + saleté des enclos
-    Faire des CreatureController et EnclosController pour faire des appels fonction dans la classe temps
+- Modification saleté des enclos (faire méthode enclos se sali dans Enclos)
 - Quand accouplement :
    Récupérer mois et quand mois = mois + 9 : Créer bébé
 - Vérifier ajout créa quand enclos pas le même type doit appuyer deux fois sur entré
