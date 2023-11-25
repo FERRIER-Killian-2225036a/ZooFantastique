@@ -19,13 +19,15 @@ public class Aquarium extends Enclos {
 
     // Redéfinition de la méthode pour ajouter une créature à l'Aquarium
     @Override
-    public void ajouterCreature(Creature creature) {
+    public boolean ajouterCreature(Creature creature) {
         // Vérifie si la créature est de type Aquatique
         if (creature.getType().contains("Aquatique")) {
             // Appel de la méthode d'ajout de la classe parente Enclos
             super.ajouterCreature(creature);
+            return true;
         } else {
             System.out.println("La créature n'est pas aquatique");
+            return false;
         }
     }
 

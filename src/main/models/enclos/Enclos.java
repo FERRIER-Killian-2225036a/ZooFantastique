@@ -99,17 +99,20 @@ public abstract class Enclos {
     }
 
     // Méthode pour ajouter une créature à l'Enclos
-    public void ajouterCreature(Creature creature) {
+    public boolean ajouterCreature(Creature creature) {
         if (enclosExiste() && creatureEstVivante(creature) && !creatureEstDansUnAutreEnclos(creature) && capaciteEstAtteinte()) {
             if (memeEspeceQuePremiereCreature(creature)) {
                 creaturePresentes.add(creature);
                 especeContenue = creature.getEspece();
                 nombreCreaturesPresentes += 1;
                 System.out.println(creature.getNom() + " placé dans " + nom);
+                return true;
             } else {
                 System.out.println(GFG.ANSI_YELLOW + "Cet enclos ne contient pas la même espèce" + GFG.ANSI_RESET);
+                return false;
             }
         }
+        return false;
     }
 
     private boolean enclosExiste() {

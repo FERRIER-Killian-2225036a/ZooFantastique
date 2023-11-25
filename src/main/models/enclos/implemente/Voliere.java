@@ -18,13 +18,15 @@ public class Voliere extends Enclos {
 
     // Redéfinition de la méthode pour ajouter une créature à la Voliere
     @Override
-    public void ajouterCreature(Creature creature) {
+    public boolean ajouterCreature(Creature creature) {
         // Vérifie si la créature est de type Volant
         if (creature.getType().contains("Volant")) {
             // Appel de la méthode d'ajout de la classe parente Enclos
             super.ajouterCreature(creature);
+            return true;
         } else {
             System.out.println("La créature n'est pas un volant");
+            return false;
         }
     }
 
