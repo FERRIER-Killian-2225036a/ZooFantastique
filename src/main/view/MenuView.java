@@ -32,6 +32,16 @@ public class MenuView {
     public void afficherChoixCreatures() {
         if (!instanceCreatures.isEmpty()){
             for (int i = 0; i < instanceCreatures.size(); ++i){
+                System.out.println((i+1)+" : "+instanceCreatures.get(i).getNom());
+            }
+            System.out.print("Sélectionnez une créature : ");
+        } else {
+            System.out.println("Il n'y pas de créatures...\n");
+        }
+    }
+    public void afficherChoixCreaturesAvecIndicateurFaim() {
+        if (!instanceCreatures.isEmpty()){
+            for (int i = 0; i < instanceCreatures.size(); ++i){
                 System.out.println((i+1)+" : "+instanceCreatures.get(i).getNom()+" avec "+instanceCreatures.get(i).getIndicateurFaim()+" d'indicateur de faim");
             }
             System.out.print("Sélectionnez une créature : ");
