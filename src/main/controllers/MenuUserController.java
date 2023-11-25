@@ -50,9 +50,10 @@ public class MenuUserController {
                     } catch (Exception e) {
                         menuView.numeroEntreeInvalideErrorMessage();
                     }
+                    temps.passeUnJour();
                     break;
                 case 4:
-                    // Affiche les enclos dans le Zoo
+                    // Affiche les enclos du Zoo
                     if (!zooFantastique.getEnclosExistants().isEmpty()) {
                         for (int i = 0; i<zooFantastique.getEnclosExistants().size(); ++i){
                             System.out.println("\tEnclos " + (i+1) + " : " + zooFantastique.getEnclosExistants().get(i).getNom());
@@ -73,6 +74,7 @@ public class MenuUserController {
                     } catch (Exception e) {
                         menuView.numeroEntreeInvalideErrorMessage();
                     }
+                    temps.passeUnJour();
                     break;
                 case 7:
                     // Nettoyer un enclos
@@ -172,6 +174,7 @@ public class MenuUserController {
                             break;
                     }
                     // TODO: ajouté les créature créé a des enclos
+                    temps.passeUnJour();
                     break;
 
                 case 14:
@@ -203,6 +206,7 @@ public class MenuUserController {
                     } else {
                         System.out.println(GFG.ANSI_YELLOW+"La capacité maximum du zoo est atteinte..."+GFG.ANSI_RESET+"\n");
                     }
+                    temps.passeUnJour();
                     break;
                 case 15:
                     // Transférer une créature
@@ -233,7 +237,6 @@ public class MenuUserController {
                     }
                     break;
             }
-            temps.passeUnJour();
         }
     }
 }
