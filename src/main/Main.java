@@ -1,6 +1,6 @@
 package main;
 
-import static main.controllers.DefaultController.*;
+import static main.initialisation.InitialisationZoo.*;
 import static main.controllers.MenuUserController.menuViewManager;
 
 public class Main {

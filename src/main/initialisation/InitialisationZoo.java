@@ -1,4 +1,4 @@
-package main.controllers;
+package main.initialisation;
 
 import main.models.MaitreZoo;
 import main.models.ZooFantastique;
@@ -12,7 +12,7 @@ import main.view.ModificationEntiteView;
 import main.view.ZooView;
 import java.util.ArrayList;
 
-public class DefaultController {
+public class InitialisationZoo {
     public static MenuView menuView = new MenuView();
     public static AjoutEntiteView ajoutEntiteView = new AjoutEntiteView();
     public static ModificationEntiteView modificationEntiteView = new ModificationEntiteView();

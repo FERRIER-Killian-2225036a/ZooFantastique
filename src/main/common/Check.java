@@ -2,7 +2,7 @@ package main.common;
 
 import java.util.Scanner;
 
-import static main.controllers.DefaultController.menuView;
+import static main.initialisation.InitialisationZoo.menuView;
 import static main.view.MenuView.menu;
 
 public class Check {
