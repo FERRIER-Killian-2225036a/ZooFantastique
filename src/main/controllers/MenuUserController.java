@@ -10,11 +10,11 @@ import main.models.enclos.implemente.Cage;
 import main.models.enclos.implemente.Voliere;
 import java.util.ArrayList;
 import static main.common.Check.checkIfEntreeIsInt;
-import static main.controllers.DefaultController.*;
+import static main.initialisation.InitialisationZoo.*;
 
 public class MenuUserController {
     public static void menuViewManager() {
-        TempsController temps = new TempsController();
+        TempsController temps = new TempsController(zooFantastique);
         int exit = 0;
         while (exit==0) {
             int menuOutput = menuView.userMenu();
@@ -28,8 +28,10 @@ public class MenuUserController {
                 case 1:
                     // Affichage de toutes les créatures dans le Zoo
                     if (!zooFantastique.getToutesCreatureDansZoo().isEmpty()) {
-                        for (int i = 0; i<zooFantastique.getToutesCreatureDansZoo().size(); ++i){
-                            System.out.println("\tCréature " + (i+1) + " : " + zooFantastique.getToutesCreatureDansZoo().get(i).getNom());
+                        ArrayList<Creature> listDesCreaures =  zooFantastique.getToutesCreatureDansZoo();
+                        for (int i = 0; i<listDesCreaures.size(); ++i){
+                            System.out.println("\tCréature " + (i+1) + " : " + listDesCreaures.get(i).getNom() + " est un " + listDesCreaures.get(i).getSex() +
+                                    " est a " + listDesCreaures.get(i).getAge());
                         }
                         System.out.println();
                     } else {
@@ -114,7 +116,7 @@ public class MenuUserController {
                     break;
                 case 12:
                     // Nourrir seulement une créature
-                    menuView.afficherChoixCreatures();
+                    menuView.afficherChoixCreaturesAvecIndicateurFaim();
                     try {
                         Creature.InstanceManager.getAllInstances().get(checkIfEntreeIsInt()-1).manger();
                         System.out.println();
