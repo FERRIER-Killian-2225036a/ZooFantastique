@@ -129,7 +129,15 @@ public class MenuUserController {
                     break;
                 case 13:
                     // Ajouter une créature
+                    menuView.menuAjoutCreature();
                     entree = checkIfEntreeIsInt();
+                    if (entree<1 || entree>8){
+                        while (entree<1 || entree>8) {
+                            menuView.numeroEntreeInvalideErrorMessage();
+                            menuView.menuAjoutCreature();
+                            entree = checkIfEntreeIsInt();
+                        }
+                    }
                     ArrayList<String> listeInformationCreature = ajoutEntiteView.ajoutCreature();
                     switch (entree) {
                         case 1:
@@ -173,8 +181,30 @@ public class MenuUserController {
                                     Integer.parseInt(listeInformationCreature.get(4))));
                             break;
                     }
-                    // TODO: ajouté les créature créé a des enclos
-                    temps.passeUnJour();
+                    Creature creatureAjoutee = listCreatureInitialise.getLast();
+                    menuView.afficherText("Dans quel enclos voulez-vous le placer : ");
+                    menuView.afficherChoixEnclos();
+                    choix = checkIfEntreeIsInt();
+                    if (choix<1 || choix>Enclos.InstanceManager.getAllInstances().size()){
+                        while (choix<1 || choix>Enclos.InstanceManager.getAllInstances().size()) {
+                            menuView.numeroEntreeInvalideErrorMessage();
+                            menuView.afficherChoixEnclos();
+                            choix = checkIfEntreeIsInt();
+                        }
+                    }
+                    Enclos enclosChoisi = zooFantastique.getEnclosExistants().get(checkIfEntreeIsInt()-1);
+                    try {
+                        boolean ajoutDansEnclosFait = enclosChoisi.ajouterCreature(creatureAjoutee);
+                        while (!ajoutDansEnclosFait) {
+                            menuView.afficherText("Dans quel enclos voulez-vous le placer : ");
+                            menuView.afficherChoixEnclos();
+                            enclosChoisi = zooFantastique.getEnclosExistants().get(checkIfEntreeIsInt()-1);
+                            ajoutDansEnclosFait = enclosChoisi.ajouterCreature(creatureAjoutee);
+                        }
+                        temps.faisUneAction(3);
+                    } catch (Exception e) {
+                        menuView.numeroEntreeInvalideErrorMessage();
+                    }
                     break;
 
                 case 14:
