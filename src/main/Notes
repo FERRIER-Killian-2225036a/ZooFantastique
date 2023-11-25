@@ -7,13 +7,18 @@ X Sub menu pour ajouter une créature
 X Sub menu pour ajouter un enclos
 X Revoir capacité max d'enclos dans le zoo
 X Ajout le transfère de créature au menu
-- Implémenté le temps
+X Implémenté le temps
+X Afficher plus d'info quand on liste les créaures
+X Ne pas mettre le passage de journée par défaut
+X Ajouté les créature créé a des enclos
 - Implémenté la reproduction
 - Ajouter l'incrémentation de l'âge + saleté des enclos
     Faire des CreatureController et EnclosController pour faire des appels fonction dans la classe temps
 - Quand accouplement :
-   Récupérer mois et quand mois = mois + 9 : Créer bébé 
-- Séparer créatures et enclos en controller et vue
+   Récupérer mois et quand mois = mois + 9 : Créer bébé
+- Vérifier ajout créa quand enclos pas le même type doit appuyer deux fois sur entré
+
+AUTRE:
 - Faire les comm
 - Transformé les erreur dans les exceptions
 - Refaire tests enclos
