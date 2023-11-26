@@ -13,6 +13,7 @@ X Ne pas mettre le passage de journée par défaut
 X Ajouté les créature créé a des enclos
 X Incrémentation de l'âge des entitées
 - Implémenté la reproduction
+		Envoyer juste le couple de parents 
     La créature ajouté c'est caca
 - Modification saleté des enclos (faire méthode enclos se sali dans Enclos)
 - Quand accouplement :
