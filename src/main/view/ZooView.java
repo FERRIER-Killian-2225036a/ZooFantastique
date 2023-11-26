@@ -6,6 +6,11 @@ import java.util.Objects;
 import java.util.Scanner;
 
 public class ZooView {
+    public String initializeAsDefault() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Faire l'initialisation par défaut (y/n par défaut y) : ");
+        return sc.nextLine();
+    }
     public ArrayList<String> initializeMaitreZooView() {
         System.out.println("Creation de votre personnage, Maitre du Zoo");
         ArrayList<String> initMaitreZoo = new ArrayList<>(3);

@@ -15,8 +15,8 @@ public abstract class Vivipare extends Creature {
     public void reproduction(Creature male, Creature femelle) {
         super.reproduction(male, femelle);
         if (super.getEstParent()) {
-            System.out.println(femelle+" est enceinte");
-            TempsController.nouvelleNaissance(this, male, femelle);
+            System.out.println(femelle.getNom()+" est enceinte\nVous devez attendre 9 mois avant que l'enfant naisse");
+            TempsController.nouvelleNaissance(male, femelle);
         }
     }
 }

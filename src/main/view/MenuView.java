@@ -55,7 +55,7 @@ public class MenuView {
     }
 
     public void numeroEntreeInvalideErrorMessage() {
-        System.out.println(GFG.ANSI_YELLOW+"Vous n'avez pas entré un numéro valide..."+GFG.ANSI_RESET);
+        System.out.println(GFG.ANSI_YELLOW+"Vous n'avez pas entré un numéro valide...\n"+GFG.ANSI_RESET);
     }
 
     public void menuAjoutCreature() {
@@ -87,8 +87,8 @@ public class MenuView {
         5. Affiche le nombre d'enclos dans le zoo                       14. Ajout d'un enclos
         6. Examiner un enclos                                           15. Transférer une créature
         7. Nettoyer un enclos                                           16. Transférer toutes les créature d'un enclos
-        8. Nourrir les créature dans un enclos
-        9. Afficher les informations du Zoo et du maître du zoo
+        8. Nourrir les créature dans un enclos                          17. Faire reproduire les créatures
+        9. Afficher les informations du Zoo et du maître du zoo         18. Passer un mois
 
         0. Quitter""");
         System.out.print("Choisir une action : ");
@@ -167,6 +167,8 @@ public class MenuView {
                 System.out.println("Quel enclos voulez-vous transférer:");
                 yield 16;
             }
+            case 17 -> 17;
+            case 18 -> 18;
             default -> -1;
         };
     }

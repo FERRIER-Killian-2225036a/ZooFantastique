@@ -7,26 +7,45 @@ import java.util.Scanner;
 import static main.common.Check.checkIfEntreeIsIntToPutIntoTab;
 
 public class AjoutEntiteView {
-    public ArrayList<String> ajoutCreature() {
-        ArrayList<String> listInfoNouvelleCreature = new ArrayList<>(5);
-        Scanner sc = new Scanner(System.in);
+    Scanner sc = new Scanner(System.in);
+
+    ArrayList<String> listInfoNouvelleCreature = new ArrayList<>(5);
+
+    protected String entrezNom() {
         System.out.print("Entrez le nom de la créature : ");
-        listInfoNouvelleCreature.add(0,sc.nextLine());
-        listInfoNouvelleCreature.add(1,checkIfEntreeIsIntToPutIntoTab("l'âge"));
+        return sc.nextLine();
+    }
+    protected String entrezSex() {
         System.out.print("Entrez le sexe de la créature (h/f sinon sera non défini) :");
         String sexe = sc.nextLine();
         try {
             sexe = sexe.toLowerCase();
             if (Objects.equals(sexe, "h") || Objects.equals(sexe, "0")){
-                listInfoNouvelleCreature.add(2,"0");
+                return "0";
             } else if (Objects.equals(sexe, "f") || Objects.equals(sexe, "1")) {
-                listInfoNouvelleCreature.add(2,"1");
+                return "1";
             } else {
-                listInfoNouvelleCreature.add(2,"3");
+                return "3";
             }
         } catch (Exception e) {
-            listInfoNouvelleCreature.add(2,"3");
+            return "3";
         }
+    }
+
+    public ArrayList<String> ajoutCreature() {
+        listInfoNouvelleCreature.add(0,entrezNom());
+        listInfoNouvelleCreature.add(1,checkIfEntreeIsIntToPutIntoTab("l'âge"));
+        listInfoNouvelleCreature.add(2,entrezSex());
+        listInfoNouvelleCreature.add(3,checkIfEntreeIsIntToPutIntoTab("le poids (en Kg)"));
+        listInfoNouvelleCreature.add(4,checkIfEntreeIsIntToPutIntoTab("la taille (en cm)"));
+        System.out.println();
+        return listInfoNouvelleCreature;
+    }
+
+    public ArrayList<String> ajoutCreatureNouveauNee() {
+        listInfoNouvelleCreature.add(0,entrezNom());
+        listInfoNouvelleCreature.add(1,"0");
+        listInfoNouvelleCreature.add(2,entrezSex());
         listInfoNouvelleCreature.add(3,checkIfEntreeIsIntToPutIntoTab("le poids (en Kg)"));
         listInfoNouvelleCreature.add(4,checkIfEntreeIsIntToPutIntoTab("la taille (en cm)"));
         System.out.println();

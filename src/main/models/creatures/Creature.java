@@ -1,7 +1,9 @@
 package main.models.creatures;
 
+import main.controllers.TempsController;
 import main.models.enclos.Enclos;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public abstract class Creature {
     // Propriétés communes à toutes les créatures
@@ -19,6 +21,7 @@ public abstract class Creature {
     protected boolean estMorte = false;
     protected String espece = getClass().getSimpleName();
     protected boolean estParent = false;
+    protected static ArrayList<Creature> creaturesNee = new ArrayList<>();
     protected ArrayList<Creature> estParentDe = new ArrayList<>();
     protected ArrayList<Creature> estEnfantDe = new ArrayList<>(2);
 
@@ -33,6 +36,12 @@ public abstract class Creature {
         public static ArrayList<Creature> getAllInstances() {
             return instances;
         }
+
+        public static void addCreatureNee(Creature creature) {
+            creaturesNee.add(creature);
+        }
+
+        public static ArrayList<Creature> getCreaturesNee(){return creaturesNee;}
     }
 
     // Constructeur de la classe Creature
@@ -189,7 +198,7 @@ public abstract class Creature {
         return estParentDe;
     }
     public ArrayList<Creature> getEstEnfantDe() {
-        return estParentDe;
+        return estEnfantDe;
     }
     public String getDortIlToString() {
         if (!dortIl) {
@@ -210,6 +219,24 @@ public abstract class Creature {
             return "Non défini";
         }
     }
+    public String getEstParentDeToString() {
+        if (!estParentDe.isEmpty()) {
+            StringBuilder listNomsEnfants = new StringBuilder();
+            for (int i = 0; i < estParentDe.size(); ++i){
+                listNomsEnfants.append("\n\tEnfant ").append(i + 1).append(" : ").append(estParentDe.get(i).getNom());
+            }
+            return listNomsEnfants.toString();
+        } else {
+            return "Pas d'enfant";
+        }
+    }
+    public String getEstEnfantDeToString() {
+        if (!estEnfantDe.isEmpty()) {
+            return "\n\tPère : "+estEnfantDe.getFirst().getNom()+"\n\tMère : "+estEnfantDe.getLast().getNom();
+        } else {
+            return "Pas de parents";
+        }
+    }
 
     // Méthode pour obtenir le nom de l'interface
     private ArrayList<?> getTypeName() {
@@ -227,10 +254,10 @@ public abstract class Creature {
     }
 
     public void reproduction (Creature male, Creature femelle) {
-        if (femelle.getSex()==1 && male.getSex()!=1) {
+        if (femelle.getSex()==1 && male.getSex()!=1 || !Objects.equals(male.getEspece(), femelle.getEspece())) {
             estParent=true;
         } else {
-            System.out.println("Le sexe des créatures n'est pas compatible pour se reproduires");
+            System.out.println("Le sexe ou l'espèce des créatures n'est pas compatible pour se reproduires");
         }
     }
 
@@ -248,6 +275,8 @@ public abstract class Creature {
                 "Indicateur de sommeil : " + indicateurSommeil + "\n" +
                 "Dort-il : " + getDortIlToString() + "\n" +
                 "Est-il mort(e) : " + getEstMorteToString() + "\n" +
+                "Est le parent de : " + getEstParentDeToString() + "\n" +
+                "Est l'enfant de : " + getEstEnfantDeToString() + "\n" +
                 "  ----------------------------------------------  " + "\n";
     }
 }

@@ -45,8 +45,7 @@ public class Check {
         }
     }
 
-    public static void checkEspeceEtAjoutCreature(String espece) {
-        ArrayList<String> listeInformationCreature = ajoutEntiteView.ajoutCreature();
+    public static void ajoutDeLaCreature(String espece, ArrayList<String> listeInformationCreature) {
         if (Objects.equals(espece, "Dragon")) {
             listCreatureInitialise.add(new Dragon(listeInformationCreature.get(0),Integer.parseInt(listeInformationCreature.get(1)),
                     Integer.parseInt(listeInformationCreature.get(2)),Integer.parseInt(listeInformationCreature.get(3)),
@@ -81,4 +80,15 @@ public class Check {
                     Integer.parseInt(listeInformationCreature.get(4))));
         }
     }
+
+    public static void checkEspeceEtAjoutCreature(String espece) {
+        ArrayList<String> listeInformationCreature = ajoutEntiteView.ajoutCreature();
+        ajoutDeLaCreature(espece, listeInformationCreature);
+    }
+
+    public static void checkEspeceEtAjoutCreaturePourNaissance(String espece) {
+        ArrayList<String> listeInformationCreatureNouveauNee = ajoutEntiteView.ajoutCreatureNouveauNee();
+        ajoutDeLaCreature(espece, listeInformationCreatureNouveauNee);
+    }
+
 }
