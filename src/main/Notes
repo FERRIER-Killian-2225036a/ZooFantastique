@@ -16,7 +16,7 @@ X Implémenté la reproduction Vivipare
 X Vérifier ajout créa quand enclos pas le même type doit appuyer deux fois sur entré
 X Ajout d'une créature qui n'est pas dans un enclos de base
 X Faire la vérification d'entrée pour transfère de créature
-- Implémenté la reproduction Ovipare
+X Implémenté la reproduction Ovipare
 - Modification saleté des enclos (faire méthode enclos se sali dans Enclos)
 
 
