@@ -5,8 +5,6 @@ import main.models.MaitreZoo;
 import main.models.Temps;
 import main.models.ZooFantastique;
 import main.models.creatures.Creature;
-import main.models.creatures.naissance.Vivipare;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -32,14 +30,14 @@ public class TempsController {
     }
 
     public static void nouvelleNaissanceVivipare(Creature pere, Creature mere) {
-        ajouterNaissance(pere, mere, moisDeGestationMap, 9);
+        ajouterNaissance(pere, mere, moisDeGestationMap);
     }
 
     public static void nouvelleNaissanceOvipare(Creature pere, Creature mere) {
-        ajouterNaissance(pere, mere, joursDIncubationMap, 21);
+        ajouterNaissance(pere, mere, joursDIncubationMap);
     }
 
-    private static void ajouterNaissance(Creature pere, Creature mere, Map<ArrayList<Creature>, Integer> moisMap, int conditionNaissance) {
+    private static void ajouterNaissance(Creature pere, Creature mere, Map<ArrayList<Creature>, Integer> moisMap) {
         ArrayList<Creature> pereEtMere = new ArrayList<>();
         pereEtMere.add(pere);
         pereEtMere.add(mere);

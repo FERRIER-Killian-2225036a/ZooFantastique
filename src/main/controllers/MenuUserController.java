@@ -15,7 +15,7 @@ import static main.initialisation.InitialisationZoo.*;
 public class MenuUserController {
     public static void menuViewManager() {
         TempsController temps = new TempsController(zooFantastique);
-        int choix = 0;
+        int choix;
         int exit = 0;
         while (exit==0) {
             int menuOutput = menuView.userMenu();

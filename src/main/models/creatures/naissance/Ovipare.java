@@ -1,7 +1,6 @@
 package main.models.creatures.naissance;
 
 import main.controllers.TempsController;
-import main.models.Temps;
 import main.models.creatures.Creature;
 
 public abstract class Ovipare extends Creature {
