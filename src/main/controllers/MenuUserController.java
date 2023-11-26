@@ -1,5 +1,6 @@
 package main.controllers;
 
+import main.common.Check;
 import main.common.GFG;
 import main.models.ZooFantastique;
 import main.models.creatures.Creature;
@@ -30,7 +31,7 @@ public class MenuUserController {
                     if (!zooFantastique.getToutesCreatureDansZoo().isEmpty()) {
                         ArrayList<Creature> listDesCreaures =  zooFantastique.getToutesCreatureDansZoo();
                         for (int i = 0; i<listDesCreaures.size(); ++i){
-                            System.out.println("\tCréature " + (i+1) + " : " + listDesCreaures.get(i).getNom() + " est un " + listDesCreaures.get(i).getSex() +
+                            System.out.println("\tCréature " + (i+1) + " : " + listDesCreaures.get(i).getNom() + " est un " + listDesCreaures.get(i).getSexToString() +
                                     " est a " + listDesCreaures.get(i).getAge());
                         }
                         System.out.println();
@@ -138,49 +139,24 @@ public class MenuUserController {
                             entree = checkIfEntreeIsInt();
                         }
                     }
-                    ArrayList<String> listeInformationCreature = ajoutEntiteView.ajoutCreature();
-                    switch (entree) {
-                        case 1:
-                            listCreatureInitialise.add(new Dragon(listeInformationCreature.get(0),Integer.parseInt(listeInformationCreature.get(1)),
-                                    Integer.parseInt(listeInformationCreature.get(2)),Integer.parseInt(listeInformationCreature.get(3)),
-                                    Integer.parseInt(listeInformationCreature.get(4))));
-                            break;
-                        case 2:
-                            listCreatureInitialise.add(new Krakens(listeInformationCreature.get(0),Integer.parseInt(listeInformationCreature.get(1)),
-                                    Integer.parseInt(listeInformationCreature.get(2)),Integer.parseInt(listeInformationCreature.get(3)),
-                                    Integer.parseInt(listeInformationCreature.get(4))));
-                            break;
-                        case 3:
-                            listCreatureInitialise.add(new Licornes(listeInformationCreature.get(0),Integer.parseInt(listeInformationCreature.get(1)),
-                                    Integer.parseInt(listeInformationCreature.get(2)),Integer.parseInt(listeInformationCreature.get(3)),
-                                    Integer.parseInt(listeInformationCreature.get(4))));
-                            break;
-                        case 4:
-                            listCreatureInitialise.add(new Lycanthropes(listeInformationCreature.get(0),Integer.parseInt(listeInformationCreature.get(1)),
-                                    Integer.parseInt(listeInformationCreature.get(2)),Integer.parseInt(listeInformationCreature.get(3)),
-                                    Integer.parseInt(listeInformationCreature.get(4))));
-                            break;
-                        case 5:
-                            listCreatureInitialise.add(new Megalodons(listeInformationCreature.get(0),Integer.parseInt(listeInformationCreature.get(1)),
-                                    Integer.parseInt(listeInformationCreature.get(2)),Integer.parseInt(listeInformationCreature.get(3)),
-                                    Integer.parseInt(listeInformationCreature.get(4))));
-                            break;
-                        case 6:
-                            listCreatureInitialise.add(new Nymphes(listeInformationCreature.get(0),Integer.parseInt(listeInformationCreature.get(1)),
-                                    Integer.parseInt(listeInformationCreature.get(2)),Integer.parseInt(listeInformationCreature.get(3)),
-                                    Integer.parseInt(listeInformationCreature.get(4))));
-                            break;
-                        case 7:
-                            listCreatureInitialise.add(new Phenix(listeInformationCreature.get(0),Integer.parseInt(listeInformationCreature.get(1)),
-                                    Integer.parseInt(listeInformationCreature.get(2)),Integer.parseInt(listeInformationCreature.get(3)),
-                                    Integer.parseInt(listeInformationCreature.get(4))));
-                            break;
-                        case 8:
-                            listCreatureInitialise.add(new Sirenes(listeInformationCreature.get(0),Integer.parseInt(listeInformationCreature.get(1)),
-                                    Integer.parseInt(listeInformationCreature.get(2)),Integer.parseInt(listeInformationCreature.get(3)),
-                                    Integer.parseInt(listeInformationCreature.get(4))));
-                            break;
+                    if (entree==1) {
+                        Check.checkEspeceEtAjoutCreature("Dragon");
+                    } else if (entree==2) {
+                        Check.checkEspeceEtAjoutCreature("Krakens");
+                    } else if (entree==3) {
+                        Check.checkEspeceEtAjoutCreature("Licornes");
+                    } else if (entree==4) {
+                        Check.checkEspeceEtAjoutCreature("Lycanthropes");
+                    } else if (entree==5) {
+                        Check.checkEspeceEtAjoutCreature("Megalodons");
+                    } else if (entree==6) {
+                        Check.checkEspeceEtAjoutCreature("Nymphes");
+                    } else if (entree==7) {
+                        Check.checkEspeceEtAjoutCreature("Phenix");
+                    } else if (entree==8) {
+                        Check.checkEspeceEtAjoutCreature("Sirenes");
                     }
+
                     Creature creatureAjoutee = listCreatureInitialise.getLast();
                     menuView.afficherText("Dans quel enclos voulez-vous le placer : ");
                     menuView.afficherChoixEnclos();

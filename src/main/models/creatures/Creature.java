@@ -1,9 +1,8 @@
-// Déclaration du package et des imports nécessaires
 package main.models.creatures;
+
 import main.models.enclos.Enclos;
 import java.util.ArrayList;
 
-// Définition de la classe abstraite Creature
 public abstract class Creature {
     // Propriétés communes à toutes les créatures
     protected String nom;
@@ -19,6 +18,9 @@ public abstract class Creature {
     protected boolean dortIl = false;
     protected boolean estMorte = false;
     protected String espece = getClass().getSimpleName();
+    protected boolean estParent = false;
+    protected ArrayList<Creature> estParentDe = new ArrayList<>();
+    protected ArrayList<Creature> estEnfantDe = new ArrayList<>(2);
 
     // Classe interne pour la gestion des instances de Creature
     public static class InstanceManager {
@@ -149,15 +151,6 @@ public abstract class Creature {
     public String getNom() {
         return nom;
     }
-    public String getSex() {
-        if (this.sexe == 0) {
-            return "Mâle";
-        } else if (this.sexe == 1) {
-            return "Femelle";
-        } else {
-            return "Non défini";
-        }
-    }
     public int getAge() {
         return age;
     }
@@ -170,7 +163,9 @@ public abstract class Creature {
     public ArrayList<?> getType() {
         return type;
     }
-
+    public int getSex() {
+        return sexe;
+    }
     public int getIndicateurFaim() {
         return indicateurFaim;
     }
@@ -181,21 +176,39 @@ public abstract class Creature {
         return indicateurSommeil;
     }
     public String getEspece() {return espece;}
-    public boolean isDortIl() {
+    public boolean getDortIl() {
         return dortIl;
     }
-    public boolean isEstMorte() {
+    public boolean getEstMorte() {
         return estMorte;
     }
-    public String isDortIlToString() {
+    public boolean getEstParent() {
+        return estParent;
+    }
+    public ArrayList<Creature> getEstParentDe() {
+        return estParentDe;
+    }
+    public ArrayList<Creature> getEstEnfantDe() {
+        return estParentDe;
+    }
+    public String getDortIlToString() {
         if (!dortIl) {
             return "non";
         } else return "oui";
     }
-    public String isEstMorteToString() {
+    public String getEstMorteToString() {
         if (!estMorte) {
             return "non";
         } else return "oui";
+    }
+    public String getSexToString() {
+        if (this.sexe == 0) {
+            return "Mâle";
+        } else if (this.sexe == 1) {
+            return "Femelle";
+        } else {
+            return "Non défini";
+        }
     }
 
     // Méthode pour obtenir le nom de l'interface
@@ -213,20 +226,28 @@ public abstract class Creature {
         return interfaceNames; // Prend le nom de la première interface (Volant dans ce cas)
     }
 
+    public void reproduction (Creature male, Creature femelle) {
+        if (femelle.getSex()==1 && male.getSex()!=1) {
+            estParent=true;
+        } else {
+            System.out.println("Le sexe des créatures n'est pas compatible pour se reproduires");
+        }
+    }
+
     // Redéfinition de la méthode toString pour afficher les propriétés de la créature
     @Override
     public String toString() {
         return "------  Information "+ getEspece() +" \"" + nom + "\" :  ------\n" +
                 "Age : " + age + "\n" +
-                "Sexe : " + getSex()  + "\n" +
+                "Sexe : " + getSexToString()  + "\n" +
                 "Poids : " + poids + "\n" +
                 "Taille : " + taille + "\n" +
                 "Type : " + getTypeName() + "\n" +
                 "Indicateur de faim : " + indicateurFaim + "\n" +
                 "Indicateur de sante : " + indicateurSante + "\n" +
                 "Indicateur de sommeil : " + indicateurSommeil + "\n" +
-                "Dort-il : " + isDortIlToString() + "\n" +
-                "Est-il mort(e) : " + isEstMorteToString() + "\n" +
+                "Dort-il : " + getDortIlToString() + "\n" +
+                "Est-il mort(e) : " + getEstMorteToString() + "\n" +
                 "  ----------------------------------------------  " + "\n";
     }
 }

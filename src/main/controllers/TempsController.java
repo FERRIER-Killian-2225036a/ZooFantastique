@@ -1,12 +1,23 @@
 package main.controllers;
 
+import main.common.Check;
 import main.models.MaitreZoo;
 import main.models.Temps;
 import main.models.ZooFantastique;
 import main.models.creatures.Creature;
+import main.models.creatures.naissance.Vivipare;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 
 public class TempsController {
-    Temps temps;
+    private final Temps temps;
+    private static Map<Vivipare, Integer> moisDepuisDerniereNaissanceMap = new HashMap<>();
+    private static Map<Creature, List<Creature>> parentsDesNouvellesCreatures = new HashMap<>();
+    private List<Vivipare> creaturesNees = new ArrayList<>();
     public TempsController(ZooFantastique zooFantastique) {
         this.temps = new Temps(zooFantastique);
     }
@@ -19,7 +30,15 @@ public class TempsController {
         } else {
             passeUnJour();
         }
+    }
 
+    public static void nouvelleNaissance(Vivipare vivipare, Creature pere, Creature mere) {
+        moisDepuisDerniereNaissanceMap.put(vivipare, 0);
+        // Enregistrez les parents de la nouvelle créature dans une ArrayList
+        List<Creature> parents = new ArrayList<>();
+        parents.add(pere);
+        parents.add(mere);
+        parentsDesNouvellesCreatures.put(vivipare, parents);
     }
 
     protected void ajouterUnAnAToutLeMonde() {
@@ -28,6 +47,25 @@ public class TempsController {
             creature.vieillir(1);
         }
         maitreZoo.setAge(maitreZoo.getAge()+1);
+
+        for (Map.Entry<Vivipare, Integer> entry : moisDepuisDerniereNaissanceMap.entrySet()) {
+            Vivipare vivipare = entry.getKey();
+            int moisDepuisDerniereNaissance = entry.getValue();
+            moisDepuisDerniereNaissance++;
+
+            if (moisDepuisDerniereNaissance >= 9) {
+                Check.checkEspeceEtAjoutCreature(vivipare.getEspece());
+                System.out.println("Nouvelle naissance de Vivipare !");
+                moisDepuisDerniereNaissance = 0;
+            }
+
+            moisDepuisDerniereNaissanceMap.put(vivipare, moisDepuisDerniereNaissance);
+        }
+
+        // Supprimer les entrées pour les créatures qui ont donné naissance
+        for (Vivipare creature : creaturesNees) {
+            moisDepuisDerniereNaissanceMap.remove(creature);
+        }
     }
 
     public void passeUnJour() {

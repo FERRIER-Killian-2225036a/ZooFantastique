@@ -1,8 +1,8 @@
-// Déclaration du package et des imports nécessaires
 package main.models.creatures.naissance;
+
+import main.controllers.TempsController;
 import main.models.creatures.Creature;
 
-// Définition de la classe Vivipare qui étend la classe Creature
 public abstract class Vivipare extends Creature {
 
     // Constructeur de la classe avec initialisation des propriétés de la créature
@@ -11,8 +11,12 @@ public abstract class Vivipare extends Creature {
         super(nom, age, sexe, poids, taille);
     }
 
-    // Méthode spécifique à la classe Vivipare qui simule le processus de mise bas
-    void mettreBas() {
-        System.out.println("Le vivipare met bas");
+    @Override
+    public void reproduction(Creature male, Creature femelle) {
+        super.reproduction(male, femelle);
+        if (super.getEstParent()) {
+            System.out.println(femelle+" est enceinte");
+            TempsController.nouvelleNaissance(this, male, femelle);
+        }
     }
 }

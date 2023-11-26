@@ -123,7 +123,7 @@ public abstract class Enclos {
     }
 
     private boolean creatureEstVivante(Creature creature) {
-        if (!creature.isEstMorte()) {
+        if (!creature.getEstMorte()) {
             return true;
         } else {
             System.out.println(creature.getNom() + " est mort(e)");

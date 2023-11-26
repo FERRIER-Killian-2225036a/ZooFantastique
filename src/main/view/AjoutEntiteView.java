@@ -27,8 +27,8 @@ public class AjoutEntiteView {
         } catch (Exception e) {
             listInfoNouvelleCreature.add(2,"3");
         }
-        listInfoNouvelleCreature.add(3,checkIfEntreeIsIntToPutIntoTab("le poids"));
-        listInfoNouvelleCreature.add(4,checkIfEntreeIsIntToPutIntoTab("la taille"));
+        listInfoNouvelleCreature.add(3,checkIfEntreeIsIntToPutIntoTab("le poids (en Kg)"));
+        listInfoNouvelleCreature.add(4,checkIfEntreeIsIntToPutIntoTab("la taille (en cm)"));
         System.out.println();
         return listInfoNouvelleCreature;
     }
@@ -38,18 +38,18 @@ public class AjoutEntiteView {
         Scanner sc = new Scanner(System.in);
         System.out.print("Entrez le nom de l'enclos : ");
         listInfoNouvelEnclos.add(0,sc.nextLine());
-        listInfoNouvelEnclos.add(1,checkIfEntreeIsIntToPutIntoTab("la superficie"));
+        listInfoNouvelEnclos.add(1,checkIfEntreeIsIntToPutIntoTab("la superficie (en m²)"));
         listInfoNouvelEnclos.add(2,checkIfEntreeIsIntToPutIntoTab("la capacité maximum de l'enclos"));
         return listInfoNouvelEnclos;
     }
     public ArrayList<String> ajoutEnclosAquarium() {
         ArrayList<String> listInfoNouvelEnclos = ajoutEnclos();
-        listInfoNouvelEnclos.add(3,checkIfEntreeIsIntToPutIntoTab("la profondeur"));
+        listInfoNouvelEnclos.add(3,checkIfEntreeIsIntToPutIntoTab("la profondeur (en mètres)"));
         return listInfoNouvelEnclos;
     }
     public ArrayList<String> ajoutEnclosVoliere() {
         ArrayList<String> listInfoNouvelEnclos = ajoutEnclos();
-        listInfoNouvelEnclos.add(3,checkIfEntreeIsIntToPutIntoTab("la hauteur"));
+        listInfoNouvelEnclos.add(3,checkIfEntreeIsIntToPutIntoTab("la hauteur (en mètres)"));
         return listInfoNouvelEnclos;
     }
 }
