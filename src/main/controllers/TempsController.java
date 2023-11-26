@@ -76,8 +76,6 @@ public class TempsController {
         if (Temps.getMois()<12) {
             temps.setMois(Temps.getMois()+1);
             System.out.println("Le mois est passé");
-        } else {
-            ajouterUneAnnee();
         }
     }
 
