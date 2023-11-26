@@ -131,7 +131,7 @@ public class MenuUserController {
                     }
                     break;
                 case 13:
-                    // Ajouter une créature
+                    // Créer une créature
                     menuView.menuAjoutCreature();
                     entree = checkIfEntreeIsInt();
                     if (entree<1 || entree>8){
@@ -186,7 +186,7 @@ public class MenuUserController {
                     break;
 
                 case 14:
-                    // Ajouter un enclos
+                    // Créer un enclos
                     if (Enclos.InstanceManager.getAllInstances().size()+1 <= ZooFantastique.getNombreMaxEnclos()) {
                         menuView.menuCreationEnclos();
                         entree = checkIfEntreeIsInt();
@@ -221,13 +221,10 @@ public class MenuUserController {
                     try {
                         menuView.afficherChoixCreatures();
                         Creature creatureCible = zooFantastique.getToutesCreatureDansZoo().get(checkIfEntreeIsInt()-1);
-                        System.out.println(creatureCible.getNom());
                         menuView.afficherText("Dans quel enclos voulez-vous transférer "+creatureCible.getNom());
                         menuView.afficherChoixEnclos();
-                        System.out.println(zooFantastique.getEnclosExistants());
                         Enclos enclosDestination = zooFantastique.getEnclosExistants().get(checkIfEntreeIsInt()-1);
-
-                        maitreZoo.transferCreature(creatureCible,zooFantastique.getEnclosDUneCreature(creatureCible),enclosDestination);
+                        maitreZoo.transferCreature(creatureCible,enclosDestination);
                         temps.faisUneAction(3);
                     } catch (Exception e) {
                         menuView.numeroEntreeInvalideErrorMessage();
@@ -252,6 +249,7 @@ public class MenuUserController {
                     }
                     break;
                 case 17:
+                    // Faire la reproduction de deux créatures
                     try {
                         System.out.println("\nChoisissez le père (mâle ou non défini)");
                         menuView.afficherChoixCreatures();
@@ -271,6 +269,7 @@ public class MenuUserController {
                     }
                     break;
                 case 18:
+                    // Passer le mois
                     temps.ajouterUnMois();
                     break;
             }
