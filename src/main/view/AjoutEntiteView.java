@@ -38,7 +38,6 @@ public class AjoutEntiteView {
         listInfoNouvelleCreature.add(2,entrezSex());
         listInfoNouvelleCreature.add(3,checkIfEntreeIsIntToPutIntoTab("le poids (en Kg)"));
         listInfoNouvelleCreature.add(4,checkIfEntreeIsIntToPutIntoTab("la taille (en cm)"));
-        System.out.println();
         return listInfoNouvelleCreature;
     }
 
@@ -48,7 +47,6 @@ public class AjoutEntiteView {
         listInfoNouvelleCreature.add(2,entrezSex());
         listInfoNouvelleCreature.add(3,checkIfEntreeIsIntToPutIntoTab("le poids (en Kg)"));
         listInfoNouvelleCreature.add(4,checkIfEntreeIsIntToPutIntoTab("la taille (en cm)"));
-        System.out.println();
         return listInfoNouvelleCreature;
     }
 
