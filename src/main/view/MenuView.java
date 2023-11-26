@@ -157,7 +157,9 @@ public class MenuView {
                 System.out.println("Choisissez une créature que vous voulez nourrir : ");
                 yield 12;
             }
+            // Créer une créature
             case 13 ->13;
+            // Créer un enclos
             case 14 -> 14;
             case 15 -> {
                 System.out.println("Qu'elle créature voulez-vous transférer:");
@@ -167,7 +169,9 @@ public class MenuView {
                 System.out.println("Quel enclos voulez-vous transférer:");
                 yield 16;
             }
+            // Faire la reproduction de deux créatures
             case 17 -> 17;
+            // Passer le mois
             case 18 -> 18;
             default -> -1;
         };
