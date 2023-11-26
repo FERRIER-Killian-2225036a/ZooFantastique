@@ -8,9 +8,9 @@ import static main.initialisation.InitialisationZoo.initializeZoo;
 
 public class Main {
     public static void main(String[] args) {
+        zooView.messageInitialisation();
         String choixInitDefaut = zooView.initializeAsDefault();
         if (!Objects.equals(choixInitDefaut, "y")) {
-            zooView.messageInitialisation();
             initializeZoo();
         } else {
             initializeZooAsDefault();
