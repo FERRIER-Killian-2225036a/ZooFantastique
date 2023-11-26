@@ -4,7 +4,6 @@ import main.common.Check;
 import main.common.GFG;
 import main.models.ZooFantastique;
 import main.models.creatures.Creature;
-import main.models.creatures.implemente.*;
 import main.models.enclos.Enclos;
 import main.models.enclos.implemente.Aquarium;
 import main.models.enclos.implemente.Cage;
@@ -155,7 +154,7 @@ public class MenuUserController {
                         Check.checkEspeceEtAjoutCreature("Nymphes");
                     } else if (entree==7) {
                         Check.checkEspeceEtAjoutCreature("Phenix");
-                    } else if (entree==8) {
+                    } else {
                         Check.checkEspeceEtAjoutCreature("Sirenes");
                     }
 
@@ -267,10 +266,13 @@ public class MenuUserController {
                     } catch (Exception e) {
                         menuView.numeroEntreeInvalideErrorMessage();
                     }
+                    temps.passeUnJour();
                     break;
                 case 18:
                     // Passer le mois
-                    temps.ajouterUnMois();
+                    for (int i = 0; i<31; ++i){
+                        temps.passeUnJour();
+                    }
                     break;
             }
         }
