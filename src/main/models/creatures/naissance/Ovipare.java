@@ -1,5 +1,7 @@
 package main.models.creatures.naissance;
 
+import main.controllers.TempsController;
+import main.models.Temps;
 import main.models.creatures.Creature;
 
 public abstract class Ovipare extends Creature {
@@ -14,12 +16,8 @@ public abstract class Ovipare extends Creature {
     public void reproduction(Creature male, Creature femelle) {
         super.reproduction(male, femelle);
         if (super.getEstParent()) {
-            pondOeuf();
+            System.out.println("L'ovipare pond un œuf\n");
+            TempsController.nouvelleNaissanceOvipare(male,femelle);
         }
-    }
-
-    // Méthode spécifique à la classe Ovipare qui simule la ponte d'un œuf
-    void pondOeuf() {
-        System.out.println("L'ovipare pond un œuf");
     }
 }
