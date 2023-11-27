@@ -1,6 +1,6 @@
 // Déclaration du package et des imports nécessaires
 package main.models.enclos;
-import main.common.Couleur;
+import main.common.GFG;
 import main.models.ZooFantastique;
 import main.models.creatures.Creature;
 import java.util.ArrayList;
@@ -47,7 +47,7 @@ public abstract class Enclos {
             this.capaciteMax = capaciteMax;
             InstanceManager.addInstance(this);
         } else {
-            System.out.println(Couleur.ANSI_YELLOW+"Le nombre maximal d'enclos du zoo est atteint..."+ Couleur.ANSI_RESET);
+            System.out.println(GFG.ANSI_YELLOW+"Le nombre maximal d'enclos du zoo est atteint..."+GFG.ANSI_RESET);
         }
 
     }
@@ -108,7 +108,7 @@ public abstract class Enclos {
                 System.out.println(creature.getNom() + " placé dans " + nom);
                 return true;
             } else {
-                System.out.println(Couleur.ANSI_YELLOW + "Cet enclos ne contient pas la même espèce" + Couleur.ANSI_RESET);
+                System.out.println(GFG.ANSI_YELLOW + "Cet enclos ne contient pas la même espèce" + GFG.ANSI_RESET);
                 return false;
             }
         }
@@ -117,7 +117,7 @@ public abstract class Enclos {
 
     private boolean enclosExiste() {
         if (nom == null) {
-            System.out.println(Couleur.ANSI_YELLOW + "L'enclos n'existe pas" + Couleur.ANSI_RESET);
+            System.out.println(GFG.ANSI_YELLOW + "L'enclos n'existe pas" + GFG.ANSI_RESET);
         }
         return nom != null;
     }
@@ -135,7 +135,7 @@ public abstract class Enclos {
         if (!Enclos.getListCreatureDansEnclos().contains(creature)) {
             return false;
         } else {
-            System.out.println(Couleur.ANSI_YELLOW + "La créature est déjà dans un enclos" + Couleur.ANSI_RESET);
+            System.out.println(GFG.ANSI_YELLOW + "La créature est déjà dans un enclos" + GFG.ANSI_RESET);
             return true;
         }
     }
@@ -144,7 +144,7 @@ public abstract class Enclos {
         if (creaturePresentes.size() < capaciteMax) {
             return true;
         } else {
-            System.out.println(Couleur.ANSI_YELLOW + "Capacité maximum de " + nom + " atteinte" + Couleur.ANSI_RESET);
+            System.out.println(GFG.ANSI_YELLOW + "Capacité maximum de " + nom + " atteinte" + GFG.ANSI_RESET);
             return false;
         }
     }
@@ -162,7 +162,7 @@ public abstract class Enclos {
             nombreCreaturesPresentes -= 1;
             System.out.println(creature.getNom() + " a été enlevé de " + nom);
         } else {
-            System.out.println(Couleur.ANSI_YELLOW+creature.getNom() + " n'est pas dans " + nom+ Couleur.ANSI_RESET);
+            System.out.println(GFG.ANSI_YELLOW+creature.getNom() + " n'est pas dans " + nom+GFG.ANSI_RESET);
         }
         if (nombreCreaturesPresentes==0) {
             especeContenue="";
@@ -177,7 +177,7 @@ public abstract class Enclos {
                 System.out.println("Les créatures ont été nourries");
             }
         } else {
-            System.out.println(Couleur.ANSI_YELLOW+"Il n'y a pas de créature dans l'enclos"+ Couleur.ANSI_RESET);
+            System.out.println(GFG.ANSI_YELLOW+"Il n'y a pas de créature dans l'enclos"+GFG.ANSI_RESET);
         }
     }
 
@@ -187,7 +187,7 @@ public abstract class Enclos {
             degresProprete = 2;
             System.out.println("L'enclos a été nettoyé");
         } else {
-            System.out.println(Couleur.ANSI_YELLOW+"L'enclos est déjà propre ou il reste des créatures dedans"+ Couleur.ANSI_RESET);
+            System.out.println(GFG.ANSI_YELLOW+"L'enclos est déjà propre ou il reste des créatures dedans"+GFG.ANSI_RESET);
         }
     }
 

@@ -40,7 +40,7 @@ public class Check {
                 if (intForCheck!=0) {
                     return input;
                 } else {
-                    System.out.println(Couleur.ANSI_YELLOW+subject+" ne peut pas valoir 0..."+ Couleur.ANSI_RESET);
+                    System.out.println(GFG.ANSI_YELLOW+subject+" ne peut pas valoir 0..."+GFG.ANSI_RESET);
                 }
             } catch (NumberFormatException e) {
                 // Si la conversion échoue, afficher un message d'erreur et continuer la boucle

@@ -1,7 +1,7 @@
 package main.controllers;
 
 import main.common.Check;
-import main.common.Couleur;
+import main.common.GFG;
 import main.models.creatures.Creature;
 import main.models.enclos.Enclos;
 import main.view.AjoutEntiteView;
@@ -225,12 +225,12 @@ public class MenuUserController {
                         System.out.println("\nChoisissez le père (mâle ou non défini)");
                         menuView.afficherChoixCreatures();
                         Creature creatureUne = zooFantastique.getToutesCreatureDansZoo().get(checkIfEntreeIsInt()-1);
-                        if (creatureUne.getSex()==1) { System.out.println(Couleur.ANSI_YELLOW+"Ce n'est pas le bon sexe\n"+ Couleur.ANSI_RESET);break;}
+                        if (creatureUne.getSex()==1) { System.out.println(GFG.ANSI_YELLOW+"Ce n'est pas le bon sexe\n"+GFG.ANSI_RESET);break;}
                         try {
                             System.out.println("\nChoisissez la femelle");
                             menuView.afficherChoixCreatures();
                             Creature creatureDeux = zooFantastique.getToutesCreatureDansZoo().get(checkIfEntreeIsInt()-1);
-                            if (creatureDeux.getSex()!=1) { System.out.println(Couleur.ANSI_YELLOW+"Ce n'est pas le bon sexe\n"+ Couleur.ANSI_RESET);break;}
+                            if (creatureDeux.getSex()!=1) { System.out.println(GFG.ANSI_YELLOW+"Ce n'est pas le bon sexe\n"+GFG.ANSI_RESET);break;}
                             creatureUne.reproduction(creatureUne,creatureDeux);
                         } catch (Exception e) {
                             menuView.numeroEntreeInvalideErrorMessage();

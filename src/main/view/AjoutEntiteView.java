@@ -1,6 +1,6 @@
 package main.view;
 
-import main.common.Couleur;
+import main.common.GFG;
 import main.models.ZooFantastique;
 import main.models.enclos.Enclos;
 import main.models.enclos.implemente.Aquarium;
@@ -105,7 +105,7 @@ public class AjoutEntiteView {
                     break;
             }
         } else {
-            System.out.println(Couleur.ANSI_YELLOW+"La capacité maximum du zoo est atteinte..."+ Couleur.ANSI_RESET+"\n");
+            System.out.println(GFG.ANSI_YELLOW+"La capacité maximum du zoo est atteinte..."+GFG.ANSI_RESET+"\n");
         }
     }
 }

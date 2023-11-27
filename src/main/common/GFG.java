@@ -5,7 +5,7 @@ package main.common;
 // Importing input output classes
 
 // Main class
-public class Couleur {
+public class GFG {
 
     // Déclaration de la couleur de réinitialisation
     public static final String ANSI_RESET = "\u001B[0m";

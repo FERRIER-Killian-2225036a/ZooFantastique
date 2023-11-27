@@ -1,6 +1,6 @@
 package main.view;
 
-import main.common.Couleur;
+import main.common.GFG;
 import main.models.creatures.Creature;
 import main.models.enclos.Enclos;
 
@@ -55,7 +55,7 @@ public class MenuView {
     }
 
     public void numeroEntreeInvalideErrorMessage() {
-        System.out.println(Couleur.ANSI_YELLOW+"Vous n'avez pas entré un numéro valide...\n"+ Couleur.ANSI_RESET);
+        System.out.println(GFG.ANSI_YELLOW+"Vous n'avez pas entré un numéro valide...\n"+GFG.ANSI_RESET);
     }
 
     public void menuAjoutCreature() {
