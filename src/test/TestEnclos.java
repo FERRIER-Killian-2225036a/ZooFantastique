@@ -1,5 +1,6 @@
 package test;
 
+import main.models.ZooFantastique;
 import main.models.creatures.Creature;
 import main.models.creatures.implemente.Dragon;
 import main.models.creatures.implemente.Phenix;
@@ -9,9 +10,11 @@ import static org.junit.Assert.*;
 import main.models.enclos.Enclos;
 
 public class TestEnclos {
+    ZooFantastique zooFantastique = new ZooFantastique("Zoo", null, 30);
     Enclos enclos = new Cage("enclosTest", 34, 3);
     Creature dragon = new Dragon("Dragon", 60, 0, 160, 200);
     Creature dragonne = new Dragon("Dragonne", 60, 1, 160, 200);
+
 
     @Test
     public void testEnleverCreature() {
@@ -62,20 +65,20 @@ public class TestEnclos {
     public void testNourrirCreatures() {
         enclos.ajouterCreature(dragon);
         enclos.ajouterCreature(dragonne);
-        dragon.setIndicateurFaim(50);
-        dragonne.setIndicateurFaim(50);
+        dragon.setIndicateurFaim(70);
+        dragonne.setIndicateurFaim(70);
         enclos.nourrirCreatures();
         assertEquals(dragonne.getIndicateurFaim(),0);
         assertEquals(dragon.getIndicateurFaim(),0);
     }
     @Test
     public void testNourrirCreaturesAvecAutreType() {
-        Creature phenix = new Phenix("Phénix", 60, 0, 160, 200);
-        Creature phenix2 = new Phenix("Phénixe", 60, 1, 160, 200);
+        Creature phenix = new Phenix("Phénix", 15, 0, 160, 200);
+        Creature phenix2 = new Phenix("Phénixe", 15, 1, 160, 200);
         enclos.ajouterCreature(phenix);
         enclos.ajouterCreature(phenix2);
-        phenix.setIndicateurFaim(50);
-        phenix2.setIndicateurFaim(50);
+        phenix.setIndicateurFaim(70);
+        phenix2.setIndicateurFaim(70);
         enclos.nourrirCreatures();
         assertEquals(phenix.getIndicateurFaim(),0);
         assertEquals(phenix2.getIndicateurFaim(),0);
@@ -102,6 +105,7 @@ public class TestEnclos {
         enclos.ajouterCreature(dragon);
         enclos1.ajouterCreature(dragonne);
         enclos1.ajouterCreature(dragon2);
+        // Une autre créature est déjà instancié avant donc le test global doit valoir 4 et pas 3
         assertEquals(Enclos.getListCreatureDansEnclos().size(),3);
     }
 }

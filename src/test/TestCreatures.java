@@ -29,8 +29,8 @@ public class TestCreatures {
     }
     @Test
     public void testManger() {
-        dragon.setIndicateurFaim(50);
-        assertEquals(dragon.getIndicateurFaim(), 50);
+        dragon.setIndicateurFaim(70);
+        assertEquals(dragon.getIndicateurFaim(), 70);
         dragon.manger();
         assertEquals(dragon.getIndicateurFaim(), 0);
     }
