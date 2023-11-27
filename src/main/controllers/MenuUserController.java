@@ -8,6 +8,8 @@ import main.models.enclos.Enclos;
 import main.models.enclos.implemente.Aquarium;
 import main.models.enclos.implemente.Cage;
 import main.models.enclos.implemente.Voliere;
+import main.view.AjoutEntiteView;
+
 import java.util.ArrayList;
 import static main.common.Check.checkIfEntreeIsInt;
 import static main.initialisation.InitialisationZoo.*;
@@ -186,33 +188,7 @@ public class MenuUserController {
 
                 case 14:
                     // Créer un enclos
-                    if (Enclos.InstanceManager.getAllInstances().size()+1 <= ZooFantastique.getNombreMaxEnclos()) {
-                        menuView.menuCreationEnclos();
-                        entree = checkIfEntreeIsInt();
-                        ArrayList<String> listInformationNouvelEnclos;
-                        switch (entree) {
-                            case 1:
-                                listInformationNouvelEnclos = ajoutEntiteView.ajoutEnclos();
-                                listEnclosInitialise.add(new Cage(listInformationNouvelEnclos.get(0), Integer.parseInt(listInformationNouvelEnclos.get(1)),
-                                        Integer.parseInt(listInformationNouvelEnclos.get(2))));
-                                System.out.println();
-                                break;
-                            case 2:
-                                listInformationNouvelEnclos = ajoutEntiteView.ajoutEnclosAquarium();
-                                listEnclosInitialise.add(new Aquarium(listInformationNouvelEnclos.get(0), Integer.parseInt(listInformationNouvelEnclos.get(1)),
-                                        Integer.parseInt(listInformationNouvelEnclos.get(2)), Integer.parseInt(listInformationNouvelEnclos.get(3))));
-                                System.out.println();
-                                break;
-                            case 3:
-                                listInformationNouvelEnclos = ajoutEntiteView.ajoutEnclosVoliere();
-                                listEnclosInitialise.add(new Voliere(listInformationNouvelEnclos.get(0), Integer.parseInt(listInformationNouvelEnclos.get(1)),
-                                        Integer.parseInt(listInformationNouvelEnclos.get(2)), Integer.parseInt(listInformationNouvelEnclos.get(3))));
-                                System.out.println();
-                                break;
-                        }
-                    } else {
-                        System.out.println(GFG.ANSI_YELLOW+"La capacité maximum du zoo est atteinte..."+GFG.ANSI_RESET+"\n");
-                    }
+                    AjoutEntiteView.creerUnEnclos();
                     temps.passeUnJour();
                     break;
                 case 15:

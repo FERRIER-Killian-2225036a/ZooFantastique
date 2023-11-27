@@ -1,6 +1,10 @@
 package main.common;
 
+import main.models.creatures.Creature;
 import main.models.creatures.implemente.*;
+import main.models.enclos.Enclos;
+import main.view.AjoutEntiteView;
+
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Scanner;
@@ -89,6 +93,36 @@ public class Check {
     public static void checkEspeceEtAjoutCreaturePourNaissance(String espece) {
         ArrayList<String> listeInformationCreatureNouveauNee = ajoutEntiteView.ajoutCreatureNouveauNee();
         ajoutDeLaCreature(espece, listeInformationCreatureNouveauNee);
+        boolean unEnclosEstDisponile = false;
+        for (Enclos enclos : Enclos.InstanceManager.getAllInstances()){
+            if (enclos.getCapaciteMax() > enclos.getNombreCreaturesPresentes()) {
+                unEnclosEstDisponile = true;
+                break;
+            }
+        }
+        if (unEnclosEstDisponile){
+            Scanner sc = new Scanner(System.in);
+            while(true) {
+                ArrayList<Enclos> enclosDisponible = new ArrayList<>();
+                int index = 1;
+                for (Enclos enclos : Enclos.InstanceManager.getAllInstances()){
+                    if (enclos.getCapaciteMax() > enclos.getNombreCreaturesPresentes()){
+                        System.out.println("\tEnclos " + index + " : " +enclos.getNom());
+                        enclosDisponible.add(enclos);
+                    }
+                }
+                System.out.println("Dans quel enclos voulez-vous l'ajouter : ");
+                try {
+                    enclosDisponible.get(checkIfEntreeIsInt()-1).ajouterCreature(Creature.InstanceManager.getCreaturesNee().getLast());
+                    break;
+                } catch (Exception e) {
+                    menuView.numeroEntreeInvalideErrorMessage();
+                }
+            }
+        } else {
+            AjoutEntiteView.creerUnEnclos();
+        }
+
     }
 
 }
