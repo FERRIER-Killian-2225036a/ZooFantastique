@@ -5,10 +5,9 @@ import main.models.MaitreZoo;
 import main.models.Temps;
 import main.models.ZooFantastique;
 import main.models.creatures.Creature;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import main.models.enclos.Enclos;
+
+import java.util.*;
 
 public class TempsController {
     private final Temps temps;
@@ -97,6 +96,30 @@ public class TempsController {
         if (!moisDeGestationMap.isEmpty()) {
             checkMoisGestation();
         }
+
+        List<Integer> chiffres = new ArrayList<>();
+        chiffres.add(0);
+        chiffres.add(1);
+        chiffres.add(1);
+        chiffres.add(2);
+        chiffres.add(2);
+        chiffres.add(2);
+        Random random = new Random();
+
+        for (Enclos enclos : Enclos.InstanceManager.getAllInstances()) {
+            int indexAleatoire = random.nextInt(chiffres.size());
+            int chiffreAleatoire = chiffres.get(indexAleatoire);
+            if (enclos.getDegresProprete()>chiffreAleatoire) {
+                enclos.setDegresProprete(chiffreAleatoire);
+                if (chiffreAleatoire==0){
+                    System.out.println("Vous devez nettoyer "+enclos.getNom()+" car il est sale");
+                }
+            }
+
+        }
+
+
+
         if (Temps.getMois() < 12) {
             temps.setMois(Temps.getMois() + 1);
         }
