@@ -1,7 +1,5 @@
 # ZooFantastique
 
----
-
 ## Description:
 Ceci est un projet Java de la ressource R3.04 dans lequel nous devons simuler un zoo. Ce projet adopte un design pattern MVC un peu revisité.
 Dans cette simulation, vous aurez le rôle du maître du zoo et vous pourrez gérer celui-ci avec tous les enclos et créatures présents que vous pourrez ajouter.
