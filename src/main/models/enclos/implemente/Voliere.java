@@ -30,13 +30,6 @@ public class Voliere extends Enclos {
         }
     }
 
-    // Redéfinition de la méthode pour nettoyer la Voliere
-    @Override
-    public void nettoyer() {
-        // TODO: Ajouter la logique de nettoyage spécifique à la Voliere (vérification du toit)
-        super.nettoyer(); // Appel de la méthode de la classe parente Enclos
-    }
-
     @Override
     public String toString() {
         return super.toString() +
