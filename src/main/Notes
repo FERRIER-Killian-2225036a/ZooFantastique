@@ -17,10 +17,10 @@ X Vérifier ajout créa quand enclos pas le même type doit appuyer deux fois su
 X Ajout d'une créature qui n'est pas dans un enclos de base
 X Faire la vérification d'entrée pour transfère de créature
 X Implémenté la reproduction Ovipare
-- Modification saleté des enclos (faire méthode enclos se sali dans Enclos)
+X Modification saleté des enclos (faire méthode enclos se sali dans Enclos)
 
 
 AUTRE:
 - Faire les comm
 - Transformé les erreur dans les exceptions
-- Refaire tests enclos
+X Refaire tests enclos
