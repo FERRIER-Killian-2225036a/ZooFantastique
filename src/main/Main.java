@@ -14,8 +14,8 @@ public class Main {
             initializeZoo();
         } else {
             initializeZooAsDefault();
+            initializeDonneesDuJeu();
         }
-        initializeDonneesDuJeu();
         zooView.messageFinInitialisation();
         menuView.start();
         menuViewManager();
