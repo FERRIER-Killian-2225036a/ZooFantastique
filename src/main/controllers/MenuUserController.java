@@ -2,12 +2,8 @@ package main.controllers;
 
 import main.common.Check;
 import main.common.GFG;
-import main.models.ZooFantastique;
 import main.models.creatures.Creature;
 import main.models.enclos.Enclos;
-import main.models.enclos.implemente.Aquarium;
-import main.models.enclos.implemente.Cage;
-import main.models.enclos.implemente.Voliere;
 import main.view.AjoutEntiteView;
 
 import java.util.ArrayList;

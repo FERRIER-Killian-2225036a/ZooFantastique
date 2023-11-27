@@ -101,7 +101,6 @@ public class Check {
             }
         }
         if (unEnclosEstDisponile){
-            Scanner sc = new Scanner(System.in);
             while(true) {
                 ArrayList<Enclos> enclosDisponible = new ArrayList<>();
                 int index = 1;
