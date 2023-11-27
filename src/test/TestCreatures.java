@@ -9,7 +9,6 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class TestCreatures {
-    Creature phenix = new Phenix("Phénix", 18, 0, 50, 2);
     Creature dragon = new Dragon("Dragon", 20, 0, 50, 2);
     Creature dragonne = new Dragon("Dragonne", 20, 1, 50, 2);
     Creature licorne = new Licornes("Licorne", 20, 0, 60, 150);

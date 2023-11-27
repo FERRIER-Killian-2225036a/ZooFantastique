@@ -1,6 +1,5 @@
 package main.models.creatures;
 
-import main.controllers.TempsController;
 import main.models.enclos.Enclos;
 import java.util.ArrayList;
 import java.util.Objects;
