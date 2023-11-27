@@ -60,12 +60,15 @@ Dans cette simulation, vous aurez le rôle du maître du zoo et vous pourrez gé
 
 
   - Package view :
+
+    Dans ce package, nous aurons toutes les classes models (du MVC) :
+
     - Classe AjoutEntiteView : contiendra toutes les vues (du MVC) concernant les entrées de l'utilisateur pour l'ajout d'entitées dans le zoo.
     - Classe MenuView : contiendra toutes les vues (du MVC) concernant les entrées de l'utilisateur pour le menu de gestion de la simulation et son affichage.
     - Classe ModificationEntiteView : contiendra toutes les vues (du MVC) concernant les entrées de l'utilisateur pour la modification d'une entité comme le nom, l'âge (pour le maître du zoo), etc.
     - Classe TempsView : contiendra l'affichage de la date.
     - Classe ZooView : contiendra toutes les vues (du MVC) concernant l'initialisation du zoo ou le chois de l'initialisation auto ou non.
-  - Classe Main : Cette classe va être le point d'entrée de la simulation et va faire les premiers appels pour lancer et fermer la simulation.
+    - Classe Main : Cette classe va être le point d'entrée de la simulation et va faire les premiers appels pour lancer et fermer la simulation.
 
 ### Package test :
 - Classe TestCreatures : comme son nom l'indique, elle va contenir tous les tests concernant les créatures.
