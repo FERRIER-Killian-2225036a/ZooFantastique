@@ -6,10 +6,10 @@ import main.models.creatures.Creature;
 import main.models.creatures.implemente.*;
 import main.models.enclos.Enclos;
 import main.models.enclos.implemente.Cage;
-import main.view.AjoutEntiteView;
-import main.view.MenuView;
-import main.view.ModificationEntiteView;
-import main.view.ZooView;
+import main.views.AjoutEntiteView;
+import main.views.MenuView;
+import main.views.ModificationEntiteView;
+import main.views.ZooView;
 import java.util.ArrayList;
 
 public class InitialisationZoo {

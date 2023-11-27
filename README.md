@@ -61,7 +61,7 @@ Dans cette simulation, vous aurez le rôle du maître du zoo et vous pourrez gé
 
   - Package view :
 
-    Dans ce package, nous aurons toutes les classes models (du MVC) :
+    Dans ce package, nous aurons toutes les classes views (du MVC) :
 
     - Classe AjoutEntiteView : contiendra toutes les vues (du MVC) concernant les entrées de l'utilisateur pour l'ajout d'entitées dans le zoo.
     - Classe MenuView : contiendra toutes les vues (du MVC) concernant les entrées de l'utilisateur pour le menu de gestion de la simulation et son affichage.

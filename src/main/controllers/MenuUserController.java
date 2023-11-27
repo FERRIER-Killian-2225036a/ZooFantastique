@@ -4,7 +4,7 @@ import main.common.Check;
 import main.common.Couleur;
 import main.models.creatures.Creature;
 import main.models.enclos.Enclos;
-import main.view.AjoutEntiteView;
+import main.views.AjoutEntiteView;
 
 import java.util.ArrayList;
 import static main.common.Check.checkIfEntreeIsInt;

@@ -3,14 +3,14 @@ package main.common;
 import main.models.creatures.Creature;
 import main.models.creatures.implemente.*;
 import main.models.enclos.Enclos;
-import main.view.AjoutEntiteView;
+import main.views.AjoutEntiteView;
 
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Scanner;
 
 import static main.initialisation.InitialisationZoo.*;
-import static main.view.MenuView.menu;
+import static main.views.MenuView.menu;
 
 public class Check {
     protected static Scanner sc = new Scanner(System.in);
