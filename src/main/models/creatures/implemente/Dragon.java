@@ -11,9 +11,8 @@ public class Dragon extends Ovipare implements Terrestre, Aquatique, Volant {
     // Constructeur de la classe avec initialisation des propriétés de la créature
     public Dragon(String nom, int age, int sexe, int poids, int taille) {
         // Appel du constructeur de la classe parente Ovipare avec les paramètres fournis
-        super(nom, age, sexe, poids, taille);
+        super(nom, age, sexe, poids, taille, 100);
         // Initialisation de la durée de vie à 100 (exemple de valeur arbitraire)
-        super.dureeDeVie = 100;
     }
 
     // Méthode qui redéfinit le comportement de la mort de la créature

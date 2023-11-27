@@ -11,6 +11,11 @@ public abstract class Vivipare extends Creature {
         super(nom, age, sexe, poids, taille);
     }
 
+    public Vivipare(String nom, int age, int sexe, int poids, int taille, int dureeVie) {
+        // Appel du constructeur de la classe parente Creature avec les paramètres fournis
+        super(nom, age, sexe, poids, taille, dureeVie);
+    }
+
     @Override
     public void reproduction(Creature male, Creature femelle) {
         super.reproduction(male, femelle);

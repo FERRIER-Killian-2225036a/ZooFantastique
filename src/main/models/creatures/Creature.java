@@ -58,6 +58,21 @@ public abstract class Creature {
         this.taille = taille;
         InstanceManager.addInstance(this);
     }
+    // Constructeur de la classe Creature
+    public Creature(String nom, int age, int sexe, int poids, int taille, int dureeDeVie) {
+        this.nom = nom;
+        this.dureeDeVie = dureeDeVie;
+        if (age>=dureeDeVie) {
+            this.age = dureeDeVie;
+            this.estMorte = true;
+        } else {
+            this.age = age;
+        }
+        this.sexe = sexe;
+        this.poids = poids;
+        this.taille = taille;
+        InstanceManager.addInstance(this);
+    }
 
     // Méthode simulant l'action de manger
     public void manger() {
@@ -80,7 +95,7 @@ public abstract class Creature {
         } else return false;
     }
     protected boolean aFaim() {
-        if (indicateurFaim<70) {
+        if (indicateurFaim<=60) {
             System.out.println(getNom()+" n'a pas faim");
             return false;
         } return true;
