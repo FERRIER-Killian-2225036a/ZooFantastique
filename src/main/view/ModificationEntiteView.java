@@ -1,6 +1,6 @@
 package main.view;
 
-import main.common.GFG;
+import main.common.Couleur;
 
 import java.util.Objects;
 import java.util.Scanner;
@@ -38,7 +38,7 @@ public class ModificationEntiteView {
                 if (!resultat.equals("0")) {
                     exit=true;
                 } else {
-                    System.out.println(GFG.ANSI_YELLOW+"Lâge ne peut pas valoir 0..."+GFG.ANSI_RESET);
+                    System.out.println(Couleur.ANSI_YELLOW+"Lâge ne peut pas valoir 0..."+ Couleur.ANSI_RESET);
                 }
             }
         }
