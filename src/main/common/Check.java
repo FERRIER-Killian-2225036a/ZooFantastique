@@ -112,7 +112,7 @@ public class Check {
                 }
                 System.out.println("Dans quel enclos voulez-vous l'ajouter : ");
                 try {
-                    enclosDisponible.get(checkIfEntreeIsInt()-1).ajouterCreature(Creature.InstanceManager.getCreaturesNee().getLast());
+                    enclosDisponible.get(checkIfEntreeIsInt()-1).ajouterCreature(Creature.InstanceManager.getCreaturesNee().get(Creature.InstanceManager.getCreaturesNee().size()-1));
                     break;
                 } catch (Exception e) {
                     menuView.numeroEntreeInvalideErrorMessage();

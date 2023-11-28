@@ -56,7 +56,7 @@ public class TempsController {
                 String suffixeMessage = eventType.equals("gestation") ? "a accouché" : "a éclot";
                 System.out.println(prefixMessage + entry.getKey().get(1).getNom() + " " + suffixeMessage + ", créer son bébé");
                 Check.checkEspeceEtAjoutCreaturePourNaissance(pere.getEspece());
-                Creature creatureNee = Creature.InstanceManager.getAllInstances().getLast();
+                Creature creatureNee = Creature.InstanceManager.getAllInstances().get(Creature.InstanceManager.getAllInstances().size()-1);
                 creatureNee.getEstEnfantDe().add(entry.getKey().get(0));
                 creatureNee.getEstEnfantDe().add(entry.getKey().get(1));
                 entry.getKey().get(0).getEstParentDe().add(creatureNee);

@@ -156,7 +156,7 @@ public class MenuUserController {
                         Check.checkEspeceEtAjoutCreature("Sirenes");
                     }
 
-                    Creature creatureAjoutee = listCreatureInitialise.getLast();
+                    Creature creatureAjoutee = listCreatureInitialise.get(listCreatureInitialise.size()-1);
                     menuView.afficherText("Dans quel enclos voulez-vous le placer : ");
                     menuView.afficherChoixEnclos();
                     choix = checkIfEntreeIsInt();

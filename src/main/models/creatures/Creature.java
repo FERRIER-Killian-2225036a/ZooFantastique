@@ -246,7 +246,7 @@ public abstract class Creature {
     }
     public String getEstEnfantDeToString() {
         if (!estEnfantDe.isEmpty()) {
-            return "\n\tPère : "+estEnfantDe.getFirst().getNom()+"\n\tMère : "+estEnfantDe.getLast().getNom();
+            return "\n\tPère : "+estEnfantDe.get(0).getNom()+"\n\tMère : "+estEnfantDe.get(1).getNom();
         } else {
             return "Pas de parents";
         }
