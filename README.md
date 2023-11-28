@@ -22,6 +22,17 @@ Dans cette simulation, vous aurez le rôle du maître du zoo et vous pourrez gé
   - Cages
   - Volières
 
+## Spécificité du temps :
+- Chaque jour :
+  - Si la créature est malade, elle perdra 1 point de vie.
+  - Si le zoo contient un œuf, sa durée d'incubation sera incrémenté.
+- Chaque mois :
+  - Si une créature est enceinte, la durée de gestation sera incrémenté.
+  - Les enclos vont se salir à un degrès aléatoire et les créatures peuvent tomber malade si l'enclos est sali de manière aléatoire aussi. 
+- Chaque année :
+  - Toutes les entités prennent un an.
+  - Les créatures peuvent tomber malade.
+
 ## Structure:
 
 ### Package main :

@@ -88,15 +88,6 @@ public class TempsController {
             creature.vieillir(1);
         }
         maitreZoo.setAge(maitreZoo.getAge() + 1);
-
-        for (Enclos enclos : Enclos.InstanceManager.getAllInstances()) {
-            Random booleanRandom = new Random();
-            if (booleanRandom.nextBoolean()){
-                for (Creature creature : enclos.getCreaturePresentes()) {
-                    creature.setEstMalade(true);
-                }
-            }
-        }
     }
 
     public void ajouterUnMois() {
@@ -156,6 +147,12 @@ public class TempsController {
         temps.setMois(1);
         temps.setAnnee(Temps.getAnnee() + 1);
         ajouterUnAnAToutLeMonde();
+
+        // Les créatures peuvent tomber malade de manière aléatoire
+        Random booleanRandom = new Random();
+        for (Creature creature : Creature.InstanceManager.getAllInstances()) {
+            creature.setEstMalade(booleanRandom.nextBoolean());
+        }
     }
 
     public void passeUnJour() {
@@ -166,11 +163,11 @@ public class TempsController {
                 creature.meurt();
             }
         }
+        if (!joursDIncubationMap.isEmpty()) {
+            checkMoisIncubation();
+        }
         if (Temps.getJour() < 31) {
             temps.setJour(Temps.getJour() + 1);
-            if (!joursDIncubationMap.isEmpty()) {
-                checkMoisIncubation();
-            }
         } else {
             temps.setJour(1);
             if (Temps.getMois() < 12) {
