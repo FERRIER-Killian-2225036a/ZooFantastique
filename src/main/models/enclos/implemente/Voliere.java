@@ -1,5 +1,6 @@
 // Déclaration du package et des imports nécessaires
 package main.models.enclos.implemente;
+import main.common.Couleur;
 import main.models.creatures.Creature;
 import main.models.enclos.Enclos;
 
@@ -7,6 +8,7 @@ import main.models.enclos.Enclos;
 public class Voliere extends Enclos {
     // Propriété spécifique à la Voliere
     int hauteur;
+    protected int etatToiture=2; // 0 = « mauvais », 1 = « correct » et 2 = « bon »
 
     // Constructeur de la classe Voliere
     public Voliere(String nom, int superficie, int capaciteMax, int hauteur) {
@@ -15,6 +17,7 @@ public class Voliere extends Enclos {
         // Initialisation de la propriété spécifique à la Voliere
         this.hauteur = hauteur;
     }
+   
 
     // Redéfinition de la méthode pour ajouter une créature à la Voliere
     @Override
@@ -29,11 +32,24 @@ public class Voliere extends Enclos {
             return false;
         }
     }
+    
+    @Override
+    public boolean nettoyer() {
+    	boolean doitEtreNettoye = super.nettoyer();
+    	if (doitEtreNettoye && etatToiture < 2) {
+    		etatToiture = 2;
+            System.out.println("La toiture a été nettoyé");
+        } else {
+        	System.out.println("La toiture est déjà propre");
+        }
+    	return true;
+    }
 
     @Override
     public String toString() {
         return super.toString() +
                 "Hauteur : " + hauteur +
+                "Etat de la toiture : " + super.getProprete(etatToiture) +
                 "  ----------------------------------------------  " + "\n";
     }
 }

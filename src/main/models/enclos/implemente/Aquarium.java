@@ -1,5 +1,6 @@
 // Déclaration du package et des imports nécessaires
 package main.models.enclos.implemente;
+import main.common.Couleur;
 import main.models.creatures.Creature;
 import main.models.enclos.Enclos;
 
@@ -33,9 +34,15 @@ public class Aquarium extends Enclos {
 
     // Redéfinition de la méthode pour nettoyer l'Aquarium
     @Override
-    public void nettoyer() {
-        // TODO: Ajouter la logique de nettoyage spécifique à l'Aquarium
-        super.nettoyer(); // Appel de la méthode de la classe parente Enclos
+    public boolean nettoyer() {
+    	boolean doitEtreNettoye = super.nettoyer();
+    	if (doitEtreNettoye && saliniteEau > 0) {
+    		saliniteEau = 0;
+            System.out.println("L'eau a été traité");
+        } else {
+        	System.out.println("La salinité de l'eau est déjà bonne");
+        }
+    	return true;
     }
 
     // Redéfinition de la méthode toString pour afficher les propriétés de l'Aquarium

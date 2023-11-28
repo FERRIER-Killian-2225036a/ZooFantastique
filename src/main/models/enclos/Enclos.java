@@ -53,8 +53,8 @@ public abstract class Enclos {
     }
 
     // Méthode protégée pour obtenir le niveau de propreté sous forme de chaîne de caractères
-    protected String getProprete() {
-        if (degresProprete == 0) {
+    protected String getProprete(int propDeProprete) {
+        if (propDeProprete == 0) {
             return "mauvais";
         } else if (degresProprete == 1) {
             return "correct";
@@ -182,12 +182,14 @@ public abstract class Enclos {
     }
 
     // Méthode pour nettoyer l'Enclos
-    public void nettoyer() {
+    public boolean nettoyer() {
         if (this.degresProprete < 2 && creaturePresentes.isEmpty()) {
             degresProprete = 2;
             System.out.println("L'enclos a été nettoyé");
+            return true;
         } else {
             System.out.println(Couleur.ANSI_YELLOW+"L'enclos est déjà propre ou il reste des créatures dedans"+ Couleur.ANSI_RESET);
+            return false;
         }
     }
 
@@ -207,6 +209,6 @@ public abstract class Enclos {
                 "Type de créature dans l'enclos : " + getEspeceContenueToString() + "\n" +
                 "Nombre de creatures présentes : " + getNombreCreaturesPresentes() + "\n" +
                 "Liste des creatures présentes : " + toStringCreaturePresentes + "\n" +
-                "Indice de propreté : " + getProprete() + "\n";
+                "Indice de propreté : " + getProprete(degresProprete) + "\n";
     }
 }

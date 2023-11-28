@@ -18,7 +18,8 @@ X Ajout d'une créature qui n'est pas dans un enclos de base
 X Faire la vérification d'entrée pour transfère de créature
 X Implémenté la reproduction Ovipare
 X Modification saleté des enclos (faire méthode enclos se sali dans Enclos)
-
+- Modification salinité de l'eau et propreté du toit
+- Faire la maladie des créatures
 
 AUTRE:
 - Faire les comm
