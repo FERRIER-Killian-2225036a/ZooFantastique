@@ -25,9 +25,9 @@ Dans cette simulation, vous aurez le rôle du maître du zoo et vous pourrez gé
 ## Spécificité du temps :
 - Chaque jour :
   - Si la créature est malade, elle perdra 1 point de vie.
-  - Si le zoo contient un œuf, sa durée d'incubation sera incrémenté.
+  - Si le zoo contient un œuf, sa durée d'incubation sera incrémenté. Quand la période d'incubation est fini, le maître du zoo (vous) créera le bébé qui sera ajouté au zoo.
 - Chaque mois :
-  - Si une créature est enceinte, la durée de gestation sera incrémenté.
+  - Si une créature est enceinte, la durée de gestation sera incrémenté. Quand la période de gestation est fini, le maître du zoo (vous) créera le bébé qui sera ajouté au zoo.
   - Les enclos vont se salir à un degrès aléatoire et les créatures peuvent tomber malade si l'enclos est sali de manière aléatoire aussi. 
 - Chaque année :
   - Toutes les entités prennent un an.
