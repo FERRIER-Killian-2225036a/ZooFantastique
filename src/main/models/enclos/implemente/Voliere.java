@@ -1,6 +1,5 @@
 // Déclaration du package et des imports nécessaires
 package main.models.enclos.implemente;
-import main.common.Couleur;
 import main.models.creatures.Creature;
 import main.models.enclos.Enclos;
 
@@ -17,7 +16,14 @@ public class Voliere extends Enclos {
         // Initialisation de la propriété spécifique à la Voliere
         this.hauteur = hauteur;
     }
-   
+
+    public int getEtatToiture() {
+        return etatToiture;
+    }
+
+    public void setEtatToiture(int etatToiture) {
+        this.etatToiture = etatToiture;
+    }
 
     // Redéfinition de la méthode pour ajouter une créature à la Voliere
     @Override

@@ -1,6 +1,5 @@
 // Déclaration du package et des imports nécessaires
 package main.models.enclos.implemente;
-import main.common.Couleur;
 import main.models.creatures.Creature;
 import main.models.enclos.Enclos;
 
@@ -16,6 +15,14 @@ public class Aquarium extends Enclos {
         super(nom, superficie, capaciteMax);
         // Initialisation des propriétés spécifiques à l'Aquarium
         this.profondeur = profondeur;
+    }
+
+    public int getSaliniteEau() {
+        return saliniteEau;
+    }
+
+    public void setSaliniteEau(int saliniteEau) {
+        this.saliniteEau = saliniteEau;
     }
 
     // Redéfinition de la méthode pour ajouter une créature à l'Aquarium

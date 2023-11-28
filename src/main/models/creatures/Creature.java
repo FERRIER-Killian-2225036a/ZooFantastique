@@ -18,6 +18,7 @@ public abstract class Creature {
     protected int indicateurSommeil = 0; // De 0 à 100
     protected boolean dortIl = false;
     protected boolean estMorte = false;
+    protected boolean estMalade = false;
     protected String espece = getClass().getSimpleName();
     protected boolean estParent = false;
     protected static ArrayList<Creature> creaturesNee = new ArrayList<>();
@@ -115,6 +116,9 @@ public abstract class Creature {
     public void soigner() {
         if (!estMorte) {
             this.indicateurSante = 100;
+            if (estMalade) {
+                this.estMalade = false;
+            }
         } else {
             System.out.println(nom + " est mort(e)");
         }
@@ -159,7 +163,9 @@ public abstract class Creature {
     public void reverseEstMorte() {
         this.estMorte = !estMorte;
     }
-
+    public void setEstMalade(boolean estMalade) {
+        this.estMalade = estMalade;
+    }
     public void setIndicateurFaim(int indicateurFaim) {
         this.indicateurFaim = indicateurFaim;
     }
@@ -205,6 +211,9 @@ public abstract class Creature {
     public boolean getEstMorte() {
         return estMorte;
     }
+    public boolean getEstMalade() {
+        return estMalade;
+    }
     public boolean getEstParent() {
         return estParent;
     }
@@ -213,6 +222,15 @@ public abstract class Creature {
     }
     public ArrayList<Creature> getEstEnfantDe() {
         return estEnfantDe;
+    }
+    public String getSexToString() {
+        if (this.sexe == 0) {
+            return "Mâle";
+        } else if (this.sexe == 1) {
+            return "Femelle";
+        } else {
+            return "Non défini";
+        }
     }
     public String getDortIlToString() {
         if (!dortIl) {
@@ -224,15 +242,12 @@ public abstract class Creature {
             return "non";
         } else return "oui";
     }
-    public String getSexToString() {
-        if (this.sexe == 0) {
-            return "Mâle";
-        } else if (this.sexe == 1) {
-            return "Femelle";
-        } else {
-            return "Non défini";
-        }
+    public String getEstMaladeToString() {
+        if (!estMalade) {
+            return "La créature n'est pas malade";
+        } else return "La créature est malade";
     }
+
     public String getEstParentDeToString() {
         if (!estParentDe.isEmpty()) {
             StringBuilder listNomsEnfants = new StringBuilder();
@@ -287,8 +302,9 @@ public abstract class Creature {
                 "Indicateur de faim : " + indicateurFaim + "\n" +
                 "Indicateur de sante : " + indicateurSante + "\n" +
                 "Indicateur de sommeil : " + indicateurSommeil + "\n" +
-                "Dort-il : " + getDortIlToString() + "\n" +
-                "Est-il mort(e) : " + getEstMorteToString() + "\n" +
+                "Dort-elle : " + getDortIlToString() + "\n" +
+                "Est-elle mort(e) : " + getEstMorteToString() + "\n" +
+                "Est-elle malade : " + getEstMaladeToString() + "\n" +
                 "Est le parent de : " + getEstParentDeToString() + "\n" +
                 "Est l'enfant de : " + getEstEnfantDeToString() + "\n" +
                 "  ----------------------------------------------  " + "\n";

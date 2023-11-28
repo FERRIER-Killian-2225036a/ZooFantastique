@@ -6,6 +6,8 @@ import main.models.Temps;
 import main.models.ZooFantastique;
 import main.models.creatures.Creature;
 import main.models.enclos.Enclos;
+import main.models.enclos.implemente.Aquarium;
+import main.models.enclos.implemente.Voliere;
 
 import java.util.*;
 
@@ -19,11 +21,7 @@ public class TempsController {
     }
 
     public void faisUneAction(int duree) {
-        if (duree >= 1) {
-            for (int i = 0; i < duree; i++) {
-                passeUnJour();
-            }
-        } else {
+        for (int i = 0; i < duree; i++) {
             passeUnJour();
         }
     }
@@ -43,7 +41,7 @@ public class TempsController {
         moisMap.put(pereEtMere, 0);
     }
 
-    // Cette fonction va incrémenté les mois/jours depuis l'ovulation et va vérifier si la gestation ou l'incubation est arrivé a terme
+    // Cette fonction va incrémenter les mois/jours depuis l'ovulation et va vérifier si la gestation ou l'incubation est arrivé a terme
     private void checkNaissanceGeneric(Map<ArrayList<Creature>, Integer> tempsDepuisFecondationMap, String eventType, int tempsAttenteAvantNaissance) {
         List<ArrayList<Creature>> creaturesAEnlever = new ArrayList<>();
         for (Map.Entry<ArrayList<Creature>, Integer> entry : tempsDepuisFecondationMap.entrySet()) {
@@ -90,6 +88,15 @@ public class TempsController {
             creature.vieillir(1);
         }
         maitreZoo.setAge(maitreZoo.getAge() + 1);
+
+        for (Enclos enclos : Enclos.InstanceManager.getAllInstances()) {
+            Random booleanRandom = new Random();
+            if (booleanRandom.nextBoolean()){
+                for (Creature creature : enclos.getCreaturePresentes()) {
+                    creature.setEstMalade(true);
+                }
+            }
+        }
     }
 
     public void ajouterUnMois() {
@@ -97,28 +104,47 @@ public class TempsController {
             checkMoisGestation();
         }
 
-        List<Integer> chiffres = new ArrayList<>();
-        chiffres.add(0);
-        chiffres.add(1);
-        chiffres.add(1);
-        chiffres.add(2);
-        chiffres.add(2);
-        chiffres.add(2);
+        // Changement aléatoire de la propreté des enclos
+        List<Integer> chiffres = new ArrayList<>(Arrays.asList(0, 1, 1, 2, 2, 2));
         Random random = new Random();
-
         for (Enclos enclos : Enclos.InstanceManager.getAllInstances()) {
             int indexAleatoire = random.nextInt(chiffres.size());
             int chiffreAleatoire = chiffres.get(indexAleatoire);
-            if (enclos.getDegresProprete()>chiffreAleatoire) {
+            int chiffreAleatoire2 = chiffres.get(indexAleatoire);
+            int chiffreAleatoire3 = chiffres.get(indexAleatoire);
+            if (enclos.getDegresProprete() > chiffreAleatoire) {
                 enclos.setDegresProprete(chiffreAleatoire);
                 if (chiffreAleatoire==0){
                     System.out.println("Vous devez nettoyer "+enclos.getNom()+" car il est sale");
                 }
+                if (enclos.getEspeceContenue().contains("Aquatique")){
+                    Aquarium aquarium = (Aquarium) enclos;
+                    if (aquarium.getSaliniteEau() > chiffreAleatoire2){
+                        aquarium.setSaliniteEau(chiffreAleatoire2);
+                        if (chiffreAleatoire2==0) {
+                            System.out.println("Vous devez nettoyer "+enclos.getNom()+" le taux de salinité est élevé");
+                        }
+                    }
+                } else if (enclos.getEspeceContenue().contains("Volant")){
+                    Voliere voliere = (Voliere) enclos;
+                    if (voliere.getEtatToiture() > chiffreAleatoire3){
+                        voliere.setEtatToiture(chiffreAleatoire3);
+                        if (chiffreAleatoire3 == 0) {
+                            System.out.println("Vous devez nettoyer "+enclos.getNom()+" le taux de salinité est élevé");
+                        }
+                    }
+                }
             }
 
+            if (enclos.getDegresProprete()<2) {
+                Random booleanRandom = new Random();
+                if (booleanRandom.nextBoolean()){
+                    for (Creature creature : enclos.getCreaturePresentes()) {
+                        creature.setEstMalade(true);
+                    }
+                }
+            }
         }
-
-
 
         if (Temps.getMois() < 12) {
             temps.setMois(Temps.getMois() + 1);
@@ -133,6 +159,13 @@ public class TempsController {
     }
 
     public void passeUnJour() {
+        for (Creature creature : Creature.InstanceManager.getAllInstances()) {
+            if (creature.getEstMalade() && creature.getIndicateurSante()-1 != 0){
+                creature.setIndicateurSante(creature.getIndicateurSante()-1);
+            } else if (creature.getIndicateurSante()-1 == 0) {
+                creature.meurt();
+            }
+        }
         if (Temps.getJour() < 31) {
             temps.setJour(Temps.getJour() + 1);
             if (!joursDIncubationMap.isEmpty()) {
