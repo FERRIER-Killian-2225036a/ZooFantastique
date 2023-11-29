@@ -1,14 +1,19 @@
 package test;
 
 
+import main.controllers.TempsController;
+import main.models.MaitreZoo;
+import main.models.ZooFantastique;
 import main.models.creatures.Creature;
 import main.models.creatures.implemente.Dragon;
 import main.models.creatures.implemente.Licornes;
-import main.models.creatures.implemente.Phenix;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-public class TestCreatures {
+public class TestsCreatures {
+    Creature creature;
+    Creature creature2;
+    TempsController tempsController = new TempsController(new ZooFantastique("Zoo", new MaitreZoo("Maitre Zoo", 1, 19), 40));
     Creature dragon = new Dragon("Dragon", 20, 0, 50, 2);
     Creature dragonne = new Dragon("Dragonne", 20, 1, 50, 2);
     Creature licorne = new Licornes("Licorne", 20, 0, 60, 150);
@@ -78,6 +83,14 @@ public class TestCreatures {
         assertEquals(dragon.getIndicateurSante(),100);
     }
     @Test
+    public void testSoinSiEstMalade() {
+        dragon.setIndicateurSante(50);
+        dragon.setEstMalade(true);
+        assertTrue(dragon.getEstMalade());
+        dragon.soigner();
+        assertFalse(dragon.getEstMalade());
+    }
+    @Test
     public void testEmetUnSon() {
         licorne.emetUnSon();
         assertTrue(licorne.emetUnSon());
@@ -88,5 +101,20 @@ public class TestCreatures {
     public void testGetType() {
         assertNotEquals(dragon.getType(), licorne.getType());
         assertEquals(dragon.getType(), dragonne.getType());
+    }
+    @Test
+    public void testCreatureMaladePerdDeLaVie() {
+        creature = new Dragon("Dragonne test perd vie", 56, 1, 100, 200);
+        creature.setEstMalade(true);
+        assertEquals(creature.getIndicateurSante(), 100);
+        tempsController.passeUnJour();
+        assertEquals(creature.getIndicateurSante(), 99);
+    }
+    @Test
+    public void testReproductionMemeSexe() {
+        creature = new Dragon("Dragon test reproduction", 56, 1, 100, 200);
+        creature2 = new Dragon("Dragon 2 test reproduction", 56, 1, 100, 200);
+        creature.reproduction(creature,creature2);
+        assertFalse(creature.getEstParent());
     }
 }

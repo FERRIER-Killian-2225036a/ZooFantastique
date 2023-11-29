@@ -30,7 +30,19 @@ public class MaitreZoo {
     }
     public void transferCreature(Creature creature, Enclos enclosDestination) {
         if ((Objects.equals(creature.getEspece(), enclosDestination.getEspeceContenue()) || enclosDestination.getEspeceContenue().isEmpty())){
-            enclosDestination.ajouterCreature(creature);
+            Enclos enclosDepart = null;
+            for (Enclos enclos : Enclos.InstanceManager.getAllInstances()) {
+                if (enclos.getCreaturePresentes().contains(creature)) {
+                    enclosDepart = enclos;
+                    break;
+                }
+            }
+            if (enclosDepart==null){
+                enclosDestination.ajouterCreature(creature);
+            } else {
+                enclosDepart.enleverCreature(creature);
+                enclosDestination.ajouterCreature(creature);
+            }
             System.out.println(creature.getNom()+" a bien été placé dans "+enclosDestination.getNom()+"\n");
         } else {
             System.out.println("Les enclos n'ont pas le même type ou l'enclos est le même\n");

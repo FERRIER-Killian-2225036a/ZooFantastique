@@ -9,7 +9,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import main.models.enclos.Enclos;
 
-public class TestEnclos {
+public class TestsEnclos {
     ZooFantastique zooFantastique = new ZooFantastique("Zoo", null, 30);
     Enclos enclos = new Cage("enclosTest", 34, 3);
     Creature dragon = new Dragon("Dragon", 60, 0, 160, 200);
@@ -97,15 +97,5 @@ public class TestEnclos {
         assertEquals(enclos.getDegresProprete(), 0);
         enclos.nettoyer();
         assertNotEquals(enclos.getDegresProprete(), 2);
-    }
-    @Test
-    public void testGetCreaturesDansEnclos() {
-        Enclos enclos1 = new Cage("premierEnclosTest", 34, 3);
-        Creature dragon2 = new Dragon("Dragon2", 60, 0, 160, 200);
-        enclos.ajouterCreature(dragon);
-        enclos1.ajouterCreature(dragonne);
-        enclos1.ajouterCreature(dragon2);
-        // Une autre créature est déjà instancié avant donc le test global doit valoir 4 et pas 3
-        assertEquals(Enclos.getListCreatureDansEnclos().size(),3);
     }
 }

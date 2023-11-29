@@ -118,12 +118,12 @@ public abstract class Creature {
             if (indicateurSante<100) {
                 this.indicateurSante = 100;
                 System.out.println(nom + " a été soigné");
-                if (estMalade) {
-                    this.estMalade = false;
-                    System.out.println(nom + " n'est plus malade");
-                }
             } else {
                 System.out.println(nom + " est déjà en bonne santé");
+            }
+            if (estMalade) {
+                this.estMalade = false;
+                System.out.println(nom + " n'est plus malade");
             }
         } else {
             System.out.println(nom + " est mort(e)");
