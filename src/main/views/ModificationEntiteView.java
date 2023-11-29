@@ -7,8 +7,20 @@ import java.util.Scanner;
 
 import static main.common.Check.checkIfEntreeIsInt;
 
+/**
+ * La classe ModificationEntiteView représente la vue pour la modification d'entités dans le zoo,
+ * telles que le MaitreZoo et le nom du Zoo. Elle permet à l'utilisateur d'interagir avec le programme
+ * pour effectuer des modifications sur ces entités.
+ */
 public class ModificationEntiteView {
     Scanner scanner;
+
+    /**
+     * Modifie les informations du MaitreZoo en fonction du choix de l'utilisateur entre le nom, le sexe et l'âge.
+     *
+     * @param choix Le choix de l'utilisateur.
+     * @return La nouvelle valeur pour la modification choisie.
+     */
     public String changeInformationMaitreZoo(int choix) {
         scanner = new Scanner(System.in);
         String resultat = "";
@@ -46,6 +58,11 @@ public class ModificationEntiteView {
         return resultat;
     }
 
+    /**
+     * Modifie le nom du zoo en fonction de la saisie de l'utilisateur.
+     *
+     * @return Le nouveau nom du zoo.
+     */
     public String changerNomZoo() {
         scanner = new Scanner(System.in);
         System.out.print("Entrez le nouveau nom du zoo : ");

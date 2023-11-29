@@ -11,29 +11,63 @@ import main.models.enclos.implemente.Voliere;
 
 import java.util.*;
 
+/**
+ * La classe TempsController gère les actions temporelles dans le zoo, telles que le passage du temps,
+ * la naissance des créatures, le vieillissement, la propreté des enclos, etc.
+ */
 public class TempsController {
     private final Temps temps;
     private static final Map<ArrayList<Creature>, Integer> moisDeGestationMap = new HashMap<>();
     private static final Map<ArrayList<Creature>, Integer> joursDIncubationMap = new HashMap<>();
 
+    /**
+     * Constructeur de la classe TempsController.
+     *
+     * @param zooFantastique Instance de ZooFantastique pour laquelle le contrôleur du temps est créé.
+     */
     public TempsController(ZooFantastique zooFantastique) {
         this.temps = new Temps(zooFantastique);
     }
 
+    /**
+     * Effectue une action pendant une durée spécifiée en jours.
+     *
+     * @param duree Durée en jours de l'action à effectuer.
+     */
     public void faisUneAction(int duree) {
         for (int i = 0; i < duree; i++) {
             passeUnJour();
         }
     }
 
+    /**
+     * Déclenche une nouvelle naissance vivipare en l'ajoutant dans le tableau "moisDeGestationMap".
+     *
+     * @param pere Creature mâle.
+     * @param mere Creature femelle.
+     */
     public static void nouvelleNaissanceVivipare(Creature pere, Creature mere) {
         ajouterNaissance(pere, mere, moisDeGestationMap);
     }
 
+    /**
+     * Déclenche une nouvelle naissance ovipare en l'ajoutant dans le tableau "joursDIncubationMap".
+     *
+     * @param pere Creature mâle.
+     * @param mere Creature femelle.
+     */
     public static void nouvelleNaissanceOvipare(Creature pere, Creature mere) {
         ajouterNaissance(pere, mere, joursDIncubationMap);
     }
 
+    /**
+     * Ajoute une nouvelle naissance avec le père, la mère et initialise le temps de la fécondation à 0
+     * dans la carte correspondante (moisDeGestationMap ou joursDIncubationMap).
+     *
+     * @param pere    Creature mâle.
+     * @param mere    Creature femelle.
+     * @param moisMap Carte associant la paire de créatures à un temps écoulé depuis la fécondation.
+     */
     private static void ajouterNaissance(Creature pere, Creature mere, Map<ArrayList<Creature>, Integer> moisMap) {
         ArrayList<Creature> pereEtMere = new ArrayList<>();
         pereEtMere.add(pere);
@@ -41,7 +75,13 @@ public class TempsController {
         moisMap.put(pereEtMere, 0);
     }
 
-    // Cette fonction va incrémenter les mois/jours depuis l'ovulation et va vérifier si la gestation ou l'incubation est arrivé a terme
+    /**
+     * Vérifie si la gestation ou l'incubation est arrivée à terme, et déclenche la naissance si c'est le cas.
+     *
+     * @param tempsDepuisFecondationMap Map contenant la paire de créatures et le temps écoulé depuis la fécondation.
+     * @param eventType                Type d'événement à vérifier (gestation ou incubation).
+     * @param tempsAttenteAvantNaissance Temps d'attente avant la naissance en mois/jours.
+     */
     private void checkNaissanceGeneric(Map<ArrayList<Creature>, Integer> tempsDepuisFecondationMap, String eventType, int tempsAttenteAvantNaissance) {
         List<ArrayList<Creature>> creaturesAEnlever = new ArrayList<>();
         for (Map.Entry<ArrayList<Creature>, Integer> entry : tempsDepuisFecondationMap.entrySet()) {
@@ -72,16 +112,23 @@ public class TempsController {
         }
     }
 
+    /**
+     * Vérifie si le mois de gestation est écoulé pour déclencher les naissances.
+     */
     protected void checkMoisGestation() {
         checkNaissanceGeneric(moisDeGestationMap, "gestation", 9);
     }
 
+    /**
+     * Vérifie si le mois d'incubation est écoulé pour déclencher les naissances.
+     */
     protected void checkMoisIncubation() {
         checkNaissanceGeneric(joursDIncubationMap, "incubation", 21);
     }
 
-    // ... (autres méthodes inchangées)
-
+    /**
+     * Ajoute un an à l'âge de toutes les entités du zoo.
+     */
     private void ajouterUnAnAToutLeMonde() {
         MaitreZoo maitreZoo = temps.getZooFantastique().getMaitreZoo();
         for (Creature creature : Creature.InstanceManager.getAllInstances()) {
@@ -90,6 +137,9 @@ public class TempsController {
         maitreZoo.setAge(maitreZoo.getAge() + 1);
     }
 
+    /**
+     * Ajoute un mois au temps actuel du zoo.
+     */
     public void ajouterUnMois() {
         if (!moisDeGestationMap.isEmpty()) {
             checkMoisGestation();
@@ -108,6 +158,7 @@ public class TempsController {
                 if (chiffreAleatoire==0){
                     System.out.println("Vous devez nettoyer "+enclos.getNom()+" car il est sale");
                 }
+                // Si l'enclos est un aquarium
                 if (enclos.getEspeceContenue().contains("Aquatique")){
                     Aquarium aquarium = (Aquarium) enclos;
                     if (aquarium.getSaliniteEau() > chiffreAleatoire2){
@@ -116,7 +167,9 @@ public class TempsController {
                             System.out.println("Vous devez nettoyer "+enclos.getNom()+" le taux de salinité est élevé");
                         }
                     }
-                } else if (enclos.getEspeceContenue().contains("Volant")){
+                }
+                // Si l'enclos est une volière
+                else if (enclos.getEspeceContenue().contains("Volant")){
                     Voliere voliere = (Voliere) enclos;
                     if (voliere.getEtatToiture() > chiffreAleatoire3){
                         voliere.setEtatToiture(chiffreAleatoire3);
@@ -127,6 +180,7 @@ public class TempsController {
                 }
             }
 
+            // Si la propreté d'un enclos est à 0, les créatures contenues tombent malade
             if (enclos.getDegresProprete()==0) {
                 Random booleanRandom = new Random();
                 if (booleanRandom.nextBoolean()){
@@ -143,6 +197,9 @@ public class TempsController {
         }
     }
 
+    /**
+     * Ajoute une année au temps actuel du zoo, vieillit les créatures et gère les maladies aléatoires.
+     */
     public void ajouterUneAnnee() {
         temps.setJour(1);
         temps.setMois(1);
@@ -159,6 +216,9 @@ public class TempsController {
         }
     }
 
+    /**
+     * Fait passer un jour dans le zoo, vérifie la santé des créatures, enlève de la vie aux créatures malade et déclenche les naissances.
+     */
     public void passeUnJour() {
         for (Creature creature : Creature.InstanceManager.getAllInstances()) {
             if (creature.getEstMalade() && creature.getIndicateurSante()-1 != 0){

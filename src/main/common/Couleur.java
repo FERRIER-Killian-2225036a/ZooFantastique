@@ -1,16 +1,16 @@
 package main.common;
 
-// Java Program to Print Colored Text in Console
-
-// Importing input output classes
-
-// Main class
+/**
+ * La classe Couleur fournit des codes de couleur ANSI pour l'affichage console.
+ */
 public class Couleur {
 
-    // Déclaration de la couleur de réinitialisation
+    /** Code de réinitialisation de la couleur. */
     public static final String ANSI_RESET = "\u001B[0m";
 
-    // Déclaration des coleurs
+    /** Code de couleur jaune. */
     public static final String ANSI_YELLOW = "\u001B[33m";
+
+    /** Code de couleur rouge. */
     public static final String ANSI_RED = "\u001B[31m";
 }

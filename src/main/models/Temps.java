@@ -1,11 +1,20 @@
 package main.models;
 
+/**
+ * La classe Temps représente le système de gestion du temps dans le Zoo Fantastique.
+ * Elle maintient les informations sur le jour, le mois, l'année, et une référence au zoo associé.
+ */
 public class Temps {
     protected static int jour = 31;
     protected static int mois = 12;
     protected static int annee = 2023;
     ZooFantastique zooFantastique;
 
+    /**
+     * Constructeur de la classe Temps.
+     *
+     * @param zooFantastique La référence au zoo fantastique associé au temps.
+     */
     public Temps(ZooFantastique zooFantastique) {
         this.zooFantastique = zooFantastique;
     }

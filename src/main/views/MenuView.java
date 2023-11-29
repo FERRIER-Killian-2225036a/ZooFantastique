@@ -68,6 +68,10 @@ public class MenuView {
         System.out.println(Couleur.ANSI_YELLOW+"Vous n'avez pas entré un numéro valide...\n"+ Couleur.ANSI_RESET);
     }
 
+    public void pasLeBonSexeErrorMessage() {
+        System.out.println(Couleur.ANSI_YELLOW+"Ce n'est pas le bon sexe\n"+ Couleur.ANSI_RESET);
+    }
+
     public void menuAjoutCreature() {
         System.out.print("""
                         Ajout d'une créature :

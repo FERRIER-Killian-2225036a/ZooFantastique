@@ -15,15 +15,36 @@ import static main.common.Check.checkIfEntreeIsInt;
 import static main.common.Check.checkIfEntreeIsIntToPutIntoTab;
 import static main.initialisation.InitialisationZoo.*;
 
+/**
+ * La classe AjoutEntiteView représente la vue pour l'ajout d'entités dans le zoo, telles que les créatures et les enclos.
+ * Elle permet à l'utilisateur d'interagir avec le programme pour créer de nouvelles créatures ou enclos.
+ */
 public class AjoutEntiteView {
+    /**
+     * Scanner utilisé pour lire les entrées de l'utilisateur.
+     */
     Scanner sc = new Scanner(System.in);
 
+    /**
+     * Liste contenant les informations sur la nouvelle créature.
+     */
     ArrayList<String> listInfoNouvelleCreature = new ArrayList<>(5);
 
+    /**
+     * Demande à l'utilisateur d'entrer le nom d'une créature.
+     *
+     * @return Le nom de la créature saisi par l'utilisateur.
+     */
     protected String entrezNom() {
         System.out.print("Entrez le nom de la créature : ");
         return sc.nextLine();
     }
+
+    /**
+     * Demande à l'utilisateur d'entrer le sexe d'une créature.
+     *
+     * @return La représentation numérique du sexe (0 pour homme, 1 pour femme, 3 pour non défini).
+     */
     protected String entrezSex() {
         System.out.print("Entrez le sexe de la créature (h/f sinon sera non défini) :");
         String sexe = sc.nextLine();
@@ -41,6 +62,11 @@ public class AjoutEntiteView {
         }
     }
 
+    /**
+     * Méthode pour ajouter une nouvelle créature avec les informations fournies par l'utilisateur.
+     *
+     * @return Une liste contenant les informations de la nouvelle créature.
+     */
     public ArrayList<String> ajoutCreature() {
         listInfoNouvelleCreature.add(0,entrezNom());
         listInfoNouvelleCreature.add(1,checkIfEntreeIsIntToPutIntoTab("l'âge"));
@@ -50,6 +76,11 @@ public class AjoutEntiteView {
         return listInfoNouvelleCreature;
     }
 
+    /**
+     * Méthode pour ajouter une nouvelle créature nouveau-née avec les informations fournies par l'utilisateur.
+     *
+     * @return Une liste contenant les informations de la nouvelle créature.
+     */
     public ArrayList<String> ajoutCreatureNouveauNee() {
         listInfoNouvelleCreature.add(0,entrezNom());
         listInfoNouvelleCreature.add(1,"0");
@@ -59,6 +90,11 @@ public class AjoutEntiteView {
         return listInfoNouvelleCreature;
     }
 
+    /**
+     * Méthode pour ajouter un nouvel enclos avec les informations fournies par l'utilisateur.
+     *
+     * @return Une liste contenant les informations du nouvel enclos.
+     */
     public ArrayList<String> ajoutEnclos() {
         ArrayList<String> listInfoNouvelEnclos = new ArrayList<>(4);
         Scanner sc = new Scanner(System.in);
@@ -68,17 +104,33 @@ public class AjoutEntiteView {
         listInfoNouvelEnclos.add(2,checkIfEntreeIsIntToPutIntoTab("la capacité maximum de l'enclos"));
         return listInfoNouvelEnclos;
     }
+
+    /**
+     * Méthode pour ajouter un nouvel aquarium avec les informations fournies par l'utilisateur.
+     *
+     * @return Une liste contenant les informations du nouvel aquarium.
+     */
     public ArrayList<String> ajoutEnclosAquarium() {
         ArrayList<String> listInfoNouvelEnclos = ajoutEnclos();
         listInfoNouvelEnclos.add(3,checkIfEntreeIsIntToPutIntoTab("la profondeur (en mètres)"));
         return listInfoNouvelEnclos;
     }
+
+    /**
+     * Méthode pour ajouter une nouvelle volière avec les informations fournies par l'utilisateur.
+     *
+     * @return Une liste contenant les informations de la nouvelle volière.
+     */
     public ArrayList<String> ajoutEnclosVoliere() {
         ArrayList<String> listInfoNouvelEnclos = ajoutEnclos();
         listInfoNouvelEnclos.add(3,checkIfEntreeIsIntToPutIntoTab("la hauteur (en mètres)"));
         return listInfoNouvelEnclos;
     }
 
+    /**
+     * Méthode statique pour créer un nouvel enclos en fonction du choix de l'utilisateur.
+     * Elle gère également la capacité maximale du zoo.
+     */
     public static void creerUnEnclos() {
         if (Enclos.InstanceManager.getAllInstances().size()+1 <= ZooFantastique.getNombreMaxEnclos()) {
             menuView.menuCreationEnclos();

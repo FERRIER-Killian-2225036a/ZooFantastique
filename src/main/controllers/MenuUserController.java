@@ -1,7 +1,6 @@
 package main.controllers;
 
 import main.common.Check;
-import main.common.Couleur;
 import main.models.creatures.Creature;
 import main.models.enclos.Enclos;
 import main.views.AjoutEntiteView;
@@ -10,7 +9,14 @@ import java.util.ArrayList;
 import static main.common.Check.checkIfEntreeIsInt;
 import static main.initialisation.InitialisationZoo.*;
 
+/**
+ * La classe MenuUserController gère les interactions utilisateur dans le menu du zoo.
+ */
 public class MenuUserController {
+
+    /**
+     * Gère le menu utilisateur principal.
+     */
     public static void menuViewManager() {
         TempsController temps = new TempsController(zooFantastique);
         int choix;
@@ -20,9 +26,11 @@ public class MenuUserController {
             int entree;
             switch (menuOutput) {
                 case 0:
+                    // Sortie du menu utilisateur
                     exit=1;
                     break;
                 case -1:
+                    // Si un choix est incorrect, afficher le message d'erreur
                     menuView.numeroEntreeInvalideErrorMessage();
                     break;
                 case 1:
@@ -39,11 +47,11 @@ public class MenuUserController {
                     }
                     break;
                 case 2:
-                    // Affichage nombre de créatures présentes dans l'enclos
+                    // Affichage du nombre de créatures présentes dans l'enclos
                     System.out.println(zooFantastique.getToutesCreatureDansZoo().size()+"\n");
                     break;
                 case 3:
-                    // Examiner une créature
+                    // Examination d'une créature
                     menuView.afficherChoixCreatures();
                     try {
                         maitreZoo.examinerCreature(Creature.InstanceManager.getAllInstances().get(checkIfEntreeIsInt()-1));
@@ -53,7 +61,7 @@ public class MenuUserController {
                     }
                     break;
                 case 4:
-                    // Affiche les enclos du Zoo
+                    // Affichage des enclos du Zoo
                     if (!zooFantastique.getEnclosExistants().isEmpty()) {
                         for (int i = 0; i<zooFantastique.getEnclosExistants().size(); ++i){
                             System.out.println("\tEnclos " + (i+1) + " : " + zooFantastique.getEnclosExistants().get(i).getNom());
@@ -68,7 +76,7 @@ public class MenuUserController {
                     System.out.println(zooFantastique.getEnclosExistants().size()+"\n");
                     break;
                 case 6:
-                    // Examiner un enclos
+                    // Examination d'un enclos
                     try {
                         maitreZoo.examinerEnclos(zooFantastique.getEnclosExistants().get(checkIfEntreeIsInt()-1));
                     } catch (Exception e) {
@@ -86,7 +94,7 @@ public class MenuUserController {
                     }
                     break;
                 case 8:
-                    // Nourrir créatures dans un enclos
+                    // Nourrir les créatures dans un enclos
                     try {
                         maitreZoo.nourrirEnclos(zooFantastique.getEnclosExistants().get(checkIfEntreeIsInt()-1));
                         temps.faisUneAction(3);
@@ -156,6 +164,7 @@ public class MenuUserController {
                         Check.checkEspeceEtAjoutCreature("Sirenes");
                     }
 
+                    // Choix de l'enclos dans lequel mettre la créature
                     Creature creatureAjoutee = listCreatureInitialise.get(listCreatureInitialise.size()-1);
                     menuView.afficherText("Dans quel enclos voulez-vous le placer : ");
                     menuView.afficherChoixEnclos();
@@ -225,12 +234,12 @@ public class MenuUserController {
                         System.out.println("\nChoisissez le père (mâle ou non défini)");
                         menuView.afficherChoixCreatures();
                         Creature creatureUne = zooFantastique.getToutesCreatureDansZoo().get(checkIfEntreeIsInt()-1);
-                        if (creatureUne.getSex()==1) { System.out.println(Couleur.ANSI_YELLOW+"Ce n'est pas le bon sexe\n"+ Couleur.ANSI_RESET);break;}
+                        if (creatureUne.getSex()==1) { menuView.pasLeBonSexeErrorMessage(); break; }
                         try {
-                            System.out.println("\nChoisissez la femelle");
+                            System.out.println("\nChoisissez la mère");
                             menuView.afficherChoixCreatures();
                             Creature creatureDeux = zooFantastique.getToutesCreatureDansZoo().get(checkIfEntreeIsInt()-1);
-                            if (creatureDeux.getSex()!=1) { System.out.println(Couleur.ANSI_YELLOW+"Ce n'est pas le bon sexe\n"+ Couleur.ANSI_RESET);break;}
+                            if (creatureDeux.getSex()!=1) { menuView.pasLeBonSexeErrorMessage(); break; }
                             creatureUne.reproduction(creatureUne,creatureDeux);
                         } catch (Exception e) {
                             menuView.numeroEntreeInvalideErrorMessage();
@@ -238,7 +247,7 @@ public class MenuUserController {
                     } catch (Exception e) {
                         menuView.numeroEntreeInvalideErrorMessage();
                     }
-                    temps.passeUnJour();
+                    temps.faisUneAction(2);
                     break;
                 case 18:
                     // Passer le mois

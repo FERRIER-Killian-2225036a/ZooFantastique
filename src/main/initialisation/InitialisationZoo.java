@@ -12,6 +12,9 @@ import main.views.ModificationEntiteView;
 import main.views.ZooView;
 import java.util.ArrayList;
 
+/**
+ * Classe pour l'initialisation du zoo et de ses entités pour la simulation.
+ */
 public class InitialisationZoo {
     public static MenuView menuView = new MenuView();
     public static AjoutEntiteView ajoutEntiteView = new AjoutEntiteView();
@@ -23,6 +26,9 @@ public class InitialisationZoo {
     public static ArrayList<Enclos> listEnclosInitialise = new ArrayList<>();
     public static ArrayList<Creature> listCreatureInitialise = new ArrayList<>();
 
+    /**
+     * Initialise le zoo avec les informations du maitre du zoo et du zoo lui-même.
+     */
     public static void initializeZoo() {
         // Initialisation du maitre du zoo
         ArrayList<String> maitreZooInfo = zooView.initializeMaitreZooView();
@@ -32,6 +38,9 @@ public class InitialisationZoo {
         zooFantastique = new ZooFantastique(zooFantastiqueInfo.get(0), maitreZoo,Integer.parseInt(zooFantastiqueInfo.get(1)));
     }
 
+    /**
+     * Initialise le zoo avec des valeurs par défaut.
+     */
     public static void initializeZooAsDefault() {
         // Initialisation du maitre du zoo
         maitreZoo = new MaitreZoo("Maitre du Zoo",0,19);
@@ -39,7 +48,9 @@ public class InitialisationZoo {
         zooFantastique = new ZooFantastique("Zoo Fantastique", maitreZoo,2);
     }
 
-
+    /**
+     * Initialise des données de jeu par défaut, y compris des enclos et des créatures ansi que leur placement dans des enclos.
+     */
     public static void initializeDonneesDuJeu() {
         // Initialisation des enclos
         listEnclosInitialise.add(new Cage("Enclos de Licornes", 34, 6));
