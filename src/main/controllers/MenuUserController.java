@@ -100,7 +100,7 @@ public class MenuUserController {
                     System.out.println(zooFantastique);
                     break;
                 case 10:
-                    // Modification des information du maitre du zoo
+                    // Modification de l'information du maitre du zoo
                     choix = checkIfEntreeIsInt();
                     if (choix == 1) {
                         maitreZoo.setNom(modificationEntiteView.changeInformationMaitreZoo(choix));
@@ -249,17 +249,24 @@ public class MenuUserController {
                 case 19:
                     // Soigner une créature
                     try {
-                        Creature.InstanceManager.getAllInstances().get(checkIfEntreeIsInt()).soigner();
+                        Creature.InstanceManager.getAllInstances().get(checkIfEntreeIsInt()-1).soigner();
+                        System.out.println();
                     } catch (Exception e) {
                         menuView.numeroEntreeInvalideErrorMessage();
                     }
                     break;
                 case 20:
-                    // Soigner une créature
+                    // Soigner toutes les créatures d'un enclos
                     try {
-                        for (Creature creature : Enclos.InstanceManager.getAllInstances().get(checkIfEntreeIsInt()).getCreaturePresentes()) {
-                            creature.soigner();
+                        Enclos enclosOuSoignerLaCreature = Enclos.InstanceManager.getAllInstances().get(checkIfEntreeIsInt()-1);
+                        if (!enclosOuSoignerLaCreature.getCreaturePresentes().isEmpty() || enclosOuSoignerLaCreature.getNombreCreaturesPresentes() != 0){
+                            for (Creature creature : enclosOuSoignerLaCreature.getCreaturePresentes()) {
+                                creature.soigner();
+                            }
+                        } else {
+                            System.out.println("L'enclos ne contient pas de créatures");
                         }
+                        System.out.println();
                     } catch (Exception e) {
                         menuView.numeroEntreeInvalideErrorMessage();
                     }
