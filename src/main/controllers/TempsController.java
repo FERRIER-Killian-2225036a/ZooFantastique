@@ -121,18 +121,19 @@ public class TempsController {
                     if (voliere.getEtatToiture() > chiffreAleatoire3){
                         voliere.setEtatToiture(chiffreAleatoire3);
                         if (chiffreAleatoire3 == 0) {
-                            System.out.println("Vous devez nettoyer "+enclos.getNom()+" le taux de salinité est élevé");
+                            System.out.println("Vous devez nettoyer "+enclos.getNom()+" car la toiture est sale");
                         }
                     }
                 }
             }
 
-            if (enclos.getDegresProprete()<2) {
+            if (enclos.getDegresProprete()==0) {
                 Random booleanRandom = new Random();
                 if (booleanRandom.nextBoolean()){
                     for (Creature creature : enclos.getCreaturePresentes()) {
                         creature.setEstMalade(true);
                     }
+                    System.out.println("Les créatures de l'enclos " + enclos.getNom() + " sont malade a cause de l'état de l'enclos. Vous devez les soigner");
                 }
             }
         }
@@ -151,7 +152,10 @@ public class TempsController {
         // Les créatures peuvent tomber malade de manière aléatoire
         Random booleanRandom = new Random();
         for (Creature creature : Creature.InstanceManager.getAllInstances()) {
-            creature.setEstMalade(booleanRandom.nextBoolean());
+            if (booleanRandom.nextBoolean()) {
+                creature.setEstMalade(true);
+                System.out.println(creature.getNom()+" est tombé malade");
+            }
         }
     }
 
