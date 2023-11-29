@@ -28,16 +28,6 @@ public class MaitreZoo {
     public void nourrirEnclos(Enclos enclos) {
         enclos.nourrirCreatures();
     }
-    public void transferCreature(Creature creature, Enclos enclosCible, Enclos enclosDestination) {
-        if ((Objects.equals(enclosCible.getEspeceContenue(), enclosDestination.getEspeceContenue()) || enclosDestination.getEspeceContenue().isEmpty())
-                && !Objects.equals(enclosCible, enclosDestination)){
-            enclosCible.enleverCreature(creature);
-            enclosDestination.ajouterCreature(creature);
-            System.out.println(creature.getNom()+" a bien été transféré de "+enclosCible.getNom()+" dans "+enclosDestination.getNom()+"\n");
-        } else {
-            System.out.println("Les enclos n'ont pas le même type ou l'enclos est le même\n");
-        }
-    }
     public void transferCreature(Creature creature, Enclos enclosDestination) {
         if ((Objects.equals(creature.getEspece(), enclosDestination.getEspeceContenue()) || enclosDestination.getEspeceContenue().isEmpty())){
             enclosDestination.ajouterCreature(creature);
