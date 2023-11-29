@@ -13,7 +13,7 @@ public class MenuView {
     protected ArrayList<Creature> instanceCreatures = Creature.InstanceManager.getAllInstances();
 
     public void start() {
-        System.out.println("---------------------------------------  Bienvenue  ---------------------------------------");
+        System.out.println("-------------------------------------------------  Bienvenue  -------------------------------------------------");
     }
     public void end() {
         System.out.println("Aurevoir...");
@@ -100,7 +100,7 @@ public class MenuView {
         08. Nourrir les créature dans un enclos                          18. Passer un mois
         09. Afficher les informations du Zoo et du maître du zoo         19. Soigner une créature
         10. Modification des information du maitre du zoo                20. Soigner toutes les créature d'un enclos
-        
+        ----------------------------------------------------------------------------------------------------------------
         0. Quitter""");
         System.out.print("Choisir une action : ");
     }
@@ -189,6 +189,7 @@ public class MenuView {
                 afficherChoixCreaturesAvecIndicateurSanteEtMaladie();
                 yield 19;
             }
+            // Soigner toutes les créatures d'un enclos
             case 20 -> {
                 afficherChoixEnclos();
                 yield 20;
