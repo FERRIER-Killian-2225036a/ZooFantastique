@@ -246,6 +246,24 @@ public class MenuUserController {
                         temps.passeUnJour();
                     }
                     break;
+                case 19:
+                    // Soigner une créature
+                    try {
+                        Creature.InstanceManager.getAllInstances().get(checkIfEntreeIsInt()).soigner();
+                    } catch (Exception e) {
+                        menuView.numeroEntreeInvalideErrorMessage();
+                    }
+                    break;
+                case 20:
+                    // Soigner une créature
+                    try {
+                        for (Creature creature : Enclos.InstanceManager.getAllInstances().get(checkIfEntreeIsInt()).getCreaturePresentes()) {
+                            creature.soigner();
+                        }
+                    } catch (Exception e) {
+                        menuView.numeroEntreeInvalideErrorMessage();
+                    }
+                    break;
             }
         }
     }

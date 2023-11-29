@@ -49,6 +49,16 @@ public class MenuView {
             System.out.println("Il n'y pas de créatures...\n");
         }
     }
+    public void afficherChoixCreaturesAvecIndicateurSanteEtMaladie() {
+        if (!instanceCreatures.isEmpty()){
+            for (int i = 0; i < instanceCreatures.size(); ++i){
+                System.out.println((i+1)+" : "+instanceCreatures.get(i).getNom()+" avec "+instanceCreatures.get(i).getIndicateurSante()+" de vie. "+instanceCreatures.get(i).getEstMaladeToString());
+            }
+            System.out.print("Sélectionnez une créature : ");
+        } else {
+            System.out.println("Il n'y pas de créatures...\n");
+        }
+    }
 
     public void afficherText(String texte) {
         System.out.println(texte);
@@ -80,16 +90,17 @@ public class MenuView {
     public static void menu() {
         System.out.println(TempsView.afficherDate());
         System.out.println("""
-        1. Lister les créatures                                         10. Modification des information du maitre du zoo
-        2. Afficher le nombre de créature dans le zoo                   11. Renommer le zoo
-        3. Examiner une créature                                        12. Nourrir seulement une créature
-        4. Afficher les enclos existants                                13. Ajout d'une créature
-        5. Affiche le nombre d'enclos dans le zoo                       14. Ajout d'un enclos
-        6. Examiner un enclos                                           15. Transférer une créature
-        7. Nettoyer un enclos                                           16. Transférer toutes les créature d'un enclos
-        8. Nourrir les créature dans un enclos                          17. Faire reproduire les créatures
-        9. Afficher les informations du Zoo et du maître du zoo         18. Passer un mois
-
+        01. Lister les créatures                                         11. Renommer le zoo
+        02. Afficher le nombre de créature dans le zoo                   12. Nourrir seulement une créature
+        03. Examiner une créature                                        13. Ajout d'une créature
+        04. Afficher les enclos existants                                14. Ajout d'un enclos
+        05. Affiche le nombre d'enclos dans le zoo                       15. Transférer une créature
+        06. Examiner un enclos                                           16. Transférer toutes les créature d'un enclos
+        07. Nettoyer un enclos                                           17. Faire reproduire les créatures
+        08. Nourrir les créature dans un enclos                          18. Passer un mois
+        09. Afficher les informations du Zoo et du maître du zoo         19. Soigner une créature
+        10. Modification des information du maitre du zoo                20. Soigner toutes les créature d'un enclos
+        
         0. Quitter""");
         System.out.print("Choisir une action : ");
     }
@@ -173,6 +184,15 @@ public class MenuView {
             case 17 -> 17;
             // Passer le mois
             case 18 -> 18;
+            // Soigner une créature
+            case 19 -> {
+                afficherChoixCreaturesAvecIndicateurSanteEtMaladie();
+                yield 19;
+            }
+            case 20 -> {
+                afficherChoixEnclos();
+                yield 20;
+            }
             default -> -1;
         };
     }
