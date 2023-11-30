@@ -4,6 +4,11 @@ import main.models.enclos.Enclos;
 import java.util.ArrayList;
 import java.util.Objects;
 
+/**
+ * La classe Creature est une classe abstraite représentant une créature générique.
+ * Elle possède des propriétés communes à toutes les créatures, telles que le nom, l'âge, le sexe, le poids, la taille, etc.
+ * Cette classe gère également la gestion des instances de créatures.
+ */
 public abstract class Creature {
     // Propriétés communes à toutes les créatures
     protected String nom;
@@ -25,28 +30,62 @@ public abstract class Creature {
     protected ArrayList<Creature> estParentDe = new ArrayList<>();
     protected ArrayList<Creature> estEnfantDe = new ArrayList<>(2);
 
-    // Classe interne pour la gestion des instances de Creature
+    /**
+     * La classe interne InstanceManager gère les instances d'Enclos.
+     */
     public static class InstanceManager {
+        /**
+         * Liste contenant toutes les instances de créatures.
+         */
         private static final ArrayList<Creature> instances = new ArrayList<>();
 
+        /**
+         * Ajoute une instance de créature à la liste.
+         *
+         * @param instance La créature à ajouter.
+         */
         private static void addInstance(Creature instance) {
             instances.add(instance);
         }
 
+        /**
+         * Renvoie la liste de toutes les instances de créatures.
+         *
+         * @return La liste de toutes les instances de créatures.
+         */
         public static ArrayList<Creature> getAllInstances() {
             return instances;
         }
 
+        /**
+         * Ajoute une créature à la liste des créatures nées.
+         *
+         * @param creature La créature à ajouter.
+         */
         public static void addCreatureNee(Creature creature) {
             creaturesNee.add(creature);
         }
 
+        /**
+         * Renvoie la liste de toutes les créatures nées.
+         *
+         * @return La liste de toutes les créatures nées.
+         */
         public static ArrayList<Creature> getCreaturesNee(){return creaturesNee;}
     }
 
-    // Constructeur de la classe Creature
+    /**
+     * Constructeur de la classe Creature.
+     *
+     * @param nom    Le nom de la créature.
+     * @param age    L'âge de la créature.
+     * @param sexe   Le sexe de la créature (0 = mâle, 1 = femelle, autre = non définie).
+     * @param poids  Le poids de la créature en kg.
+     * @param taille La taille de la créature en cm.
+     */
     public Creature(String nom, int age, int sexe, int poids, int taille) {
         this.nom = nom;
+        // Si l'âge est supérieur ou s'il vaut la durée de vie de la créature, elle meurt
         if (age>=dureeDeVie) {
             this.age = dureeDeVie;
             this.estMorte = true;
@@ -58,7 +97,16 @@ public abstract class Creature {
         this.taille = taille;
         InstanceManager.addInstance(this);
     }
-    // Constructeur de la classe Creature
+
+    /**
+     * Redéfinition du constructeur de la classe Creature avec la durée de vie.
+     *
+     * @param nom    Le nom de la créature.
+     * @param age    L'âge de la créature.
+     * @param sexe   Le sexe de la créature (0 = mâle, 1 = femelle sinon = non définie).
+     * @param poids  Le poids de la créature en kg.
+     * @param taille La taille de la créature en cm.
+     */
     public Creature(String nom, int age, int sexe, int poids, int taille, int dureeDeVie) {
         this.nom = nom;
         this.dureeDeVie = dureeDeVie;
@@ -74,7 +122,10 @@ public abstract class Creature {
         InstanceManager.addInstance(this);
     }
 
-    // Méthode simulant l'action de manger
+    /**
+     * Méthode simulant l'action de manger.
+     * Vérifie si la créature est vivante, ne dort pas et a faim avant de la nourrir.
+     */
     public void manger() {
         // Vérifie si la créature est vivante et ne dort pas
         if (!estMorte() && !dortIl() && aFaim()) {
@@ -82,6 +133,7 @@ public abstract class Creature {
             indicateurFaim = 0;
         }
     }
+
     protected boolean dortIl() {
         if (dortIl) {
             System.out.println(getNom()+" est en train de dormir");
@@ -101,7 +153,11 @@ public abstract class Creature {
         } return true;
     }
 
-    // Méthode simulant l'émission d'un son par la créature
+    /**
+     * Méthode simulant l'émission d'un son par la créature.
+     *
+     * @return true si la créature a émis un son, false sinon.
+     */
     public boolean emetUnSon() {
         if (!estMorte) {
             System.out.println(nom + " émet un son");
@@ -112,7 +168,10 @@ public abstract class Creature {
         }
     }
 
-    // Méthode pour soigner la créature
+    /**
+     * Méthode pour soigner la créature.
+     * Soigne la créature en restaurant sa santé et enlevant la maladie si présente.
+     */
     public void soigner() {
         if (!estMorte) {
             if (indicateurSante<100) {
@@ -130,7 +189,10 @@ public abstract class Creature {
         }
     }
 
-    // Méthode pour endormir ou réveiller la créature
+    /**
+     * Méthode pour endormir ou réveiller la créature.
+     * Cette méthode inverse l'état de sommeil et réinitialise l'indicateur de sommeil.
+     */
     public void sendormirOuSeReveiller() {
         if (estMorte) {
             System.out.println(nom + " est mort(e)");
@@ -140,7 +202,12 @@ public abstract class Creature {
         }
     }
 
-    // Méthode pour faire vieillir la créature
+    /**
+     * Méthode pour faire vieillir la créature.
+     * Augmente l'âge de la créature en fonction du nombre d'années spécifié.
+     *
+     * @param annee Le nombre d'années à ajouter à l'âge de la créature.
+     */
     public void vieillir(int annee) {
         if ((this.age + annee) < dureeDeVie) {
             this.age += annee;
@@ -153,7 +220,10 @@ public abstract class Creature {
         }
     }
 
-    // Méthode pour simuler la mort de la créature
+    /**
+     * Méthode pour simuler la mort de la créature.
+     * Si la créature n'est pas déjà morte, la marque comme morte et affiche un message.
+     */
     public void meurt() {
         if (!estMorte) {
             this.estMorte = true;
@@ -229,6 +299,13 @@ public abstract class Creature {
     public ArrayList<Creature> getEstEnfantDe() {
         return estEnfantDe;
     }
+
+    // Getters pour des strings
+    /**
+     * Méthode pour obtenir le sexe de la créature sous forme de chaîne de caractères.
+     *
+     * @return La représentation sous forme de chaîne de caractères du sexe de la créature.
+     */
     public String getSexToString() {
         if (this.sexe == 0) {
             return "Mâle";
@@ -238,22 +315,42 @@ public abstract class Creature {
             return "Non défini";
         }
     }
+    /**
+     * Méthode pour obtenir l'état de sommeil de la créature sous forme de chaîne de caractères.
+     *
+     * @return "oui" si la créature dort, "non" sinon.
+     */
     public String getDortIlToString() {
         if (!dortIl) {
             return "non";
         } else return "oui";
     }
+    /**
+     * Méthode pour obtenir l'état de mort de la créature sous forme de chaîne de caractères.
+     *
+     * @return "oui" si la créature est morte, "non" sinon.
+     */
     public String getEstMorteToString() {
         if (!estMorte) {
             return "non";
         } else return "oui";
     }
+    /**
+     * Méthode pour obtenir l'état de maladie de la créature sous forme de chaîne de caractères.
+     *
+     * @return "La créature n'est pas malade" si elle n'est pas malade, "La créature est malade" sinon.
+     */
     public String getEstMaladeToString() {
         if (!estMalade) {
             return "La créature n'est pas malade";
         } else return "La créature est malade";
     }
 
+    /**
+     * Méthode pour obtenir la liste des enfants de la créature sous forme de chaîne de caractères.
+     *
+     * @return La liste des noms des enfants de la créature ou "Pas d'enfant" s'il n'y en a pas.
+     */
     public String getEstParentDeToString() {
         if (!estParentDe.isEmpty()) {
             StringBuilder listNomsEnfants = new StringBuilder();
@@ -265,6 +362,11 @@ public abstract class Creature {
             return "Pas d'enfant";
         }
     }
+    /**
+     * Méthode pour obtenir les noms des parents de la créature sous forme de chaîne de caractères.
+     *
+     * @return Les noms du père et de la mère de la créature ou "Pas de parents" s'il n'y en a pas.
+     */
     public String getEstEnfantDeToString() {
         if (!estEnfantDe.isEmpty()) {
             return "\n\tPère : "+estEnfantDe.get(0).getNom()+"\n\tMère : "+estEnfantDe.get(1).getNom();
@@ -273,7 +375,11 @@ public abstract class Creature {
         }
     }
 
-    // Méthode pour obtenir le nom de l'interface
+    /**
+     * Méthode pour obtenir le nom de l'interface sous forme de chaîne de caractères.
+     *
+     * @return Le nom de l'interface implémentée par la classe ou "Non spécifié" si aucune interface n'est implémentée.
+     */
     private ArrayList<?> getTypeName() {
         Class<?>[] interfaces = this.getClass().getInterfaces();
         ArrayList<String> interfaceNames = new ArrayList<>();
@@ -288,6 +394,12 @@ public abstract class Creature {
         return interfaceNames; // Prend le nom de la première interface (Volant dans ce cas)
     }
 
+    /**
+     * Méthode permettant la reproduction entre deux créatures avec les vérifications qu'elle nécessite.
+     *
+     * @param male    La créature mâle.
+     * @param femelle La créature femelle.
+     */
     public void reproduction (Creature male, Creature femelle) {
         if (femelle.getSex()==1 && male.getSex()!=1 || !Objects.equals(male.getEspece(), femelle.getEspece())) {
             estParent=true;

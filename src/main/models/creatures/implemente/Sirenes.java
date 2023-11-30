@@ -1,14 +1,24 @@
-// Déclaration du package et des imports nécessaires
 package main.models.creatures.implemente;
+
 import main.models.creatures.naissance.Vivipare;
 import main.models.interfaces.Aquatique;
 
-// Définition de la classe Sirenes qui hérite de Vivipare et implémente l'interface Aquatique
+/**
+ * La classe Sirenes représente une créature du type Sirenes.
+ * Elle hérite de la classe Vivipare et implémente l'interface Aquatique.
+ */
 public class Sirenes extends Vivipare implements Aquatique {
 
-    // Constructeur de la classe avec initialisation des propriétés de la créature
+    /**
+     * Constructeur de la classe Sirenes avec initialisation des propriétés de la créature.
+     *
+     * @param nom    Le nom des Sirenes.
+     * @param age    L'âge des Sirenes.
+     * @param sexe   Le sexe des Sirenes (0 pour masculin, 1 pour féminin, 3 pour non défini).
+     * @param poids  Le poids des Sirenes.
+     * @param taille La taille des Sirenes.
+     */
     public Sirenes(String nom, int age, int sexe, int poids, int taille) {
-        // Appel du constructeur de la classe parente Vivipare avec les paramètres fournis
         super(nom, age, sexe, poids, taille);
     }
 }

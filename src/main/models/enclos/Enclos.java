@@ -1,12 +1,14 @@
-// Déclaration du package et des imports nécessaires
 package main.models.enclos;
+
 import main.common.Couleur;
 import main.models.ZooFantastique;
 import main.models.creatures.Creature;
 import java.util.ArrayList;
 import java.util.Objects;
 
-// Définition de la classe abstraite Enclos
+/**
+ * La classe abstraite Enclos représente un type générique d'enclos destiné à héberger des créatures.
+ */
 public abstract class Enclos {
     // Propriétés communes à tous les enclos
     protected String nom;
@@ -17,20 +19,39 @@ public abstract class Enclos {
     protected int degresProprete=2; // 0 = « mauvais », 1 = « correct » et 2 = « bon »
     protected String especeContenue="";
 
-    // Classe interne pour la gestion des instances d'Enclos
+    /**
+     * La classe interne InstanceManager gère les instances d'Enclos.
+     */
     public static class InstanceManager {
+        /**
+         * La liste statique d'instances d'Enclos.
+         */
         private static final ArrayList<Enclos> instances = new ArrayList<>();
 
+        /**
+         * Ajoute une instance d'Enclos à la liste.
+         *
+         * @param instance L'instance d'Enclos à ajouter.
+         */
         private static void addInstance(Enclos instance) {
             instances.add(instance);
         }
 
+        /**
+         * Récupère toutes les instances d'Enclos.
+         *
+         * @return La liste de toutes les instances d'Enclos.
+         */
         public static ArrayList<Enclos> getAllInstances() {
             return instances;
         }
     }
 
-    // Méthode statique pour obtenir la liste de toutes les créatures dans les enclos
+    /**
+     * Méthode statique pour obtenir la liste de toutes les créatures dans les enclos.
+     *
+     * @return La liste de toutes les créatures dans les enclos.
+     */
     public static ArrayList<Creature> getListCreatureDansEnclos() {
         ArrayList<Creature> listCreatureDansEnclos = new ArrayList<>();
         for (Enclos enclos : Enclos.InstanceManager.getAllInstances()) {
@@ -39,7 +60,13 @@ public abstract class Enclos {
         return listCreatureDansEnclos;
     }
 
-    // Constructeur de la classe Enclos
+    /**
+     * Constructeur de la classe Enclos.
+     *
+     * @param nom         Le nom de l'Enclos.
+     * @param superficie  La superficie de l'Enclos en mètres carrés.
+     * @param capaciteMax La capacité maximale de l'Enclos.
+     */
     public Enclos(String nom, int superficie, int capaciteMax) {
         if (InstanceManager.getAllInstances().size()+1<=ZooFantastique.getNombreMaxEnclos()) {
             this.nom = nom;
@@ -52,7 +79,12 @@ public abstract class Enclos {
 
     }
 
-    // Méthode protégée pour obtenir le niveau de propreté sous forme de chaîne de caractères
+    /**
+     * Méthode pour obtenir le niveau de propreté sous forme de chaîne de caractères.
+     *
+     * @param propDeProprete Le niveau de propreté.
+     * @return La représentation sous forme de chaîne de caractères du niveau de propreté.
+     */
     protected String getProprete(int propDeProprete) {
         if (propDeProprete == 0) {
             return "mauvais";
@@ -98,7 +130,12 @@ public abstract class Enclos {
         this.degresProprete = degresProprete;
     }
 
-    // Méthode pour ajouter une créature à l'Enclos
+    /**
+     * Méthode pour ajouter une créature à l'Enclos.
+     *
+     * @param creature La créature à ajouter.
+     * @return true si la créature a été ajoutée avec succès, false sinon.
+     */
     public boolean ajouterCreature(Creature creature) {
         if (enclosExiste() && creatureEstVivante(creature) && !creatureEstDansUnAutreEnclos(creature) && capaciteEstAtteinte()) {
             if (memeEspeceQuePremiereCreature(creature)) {
@@ -122,6 +159,12 @@ public abstract class Enclos {
         return nom != null;
     }
 
+    /**
+     * Méthode pour savoir si une créature est vivante ou non.
+     *
+     * @param creature La créature dont on veut savoir si elle est vivante ou pas.
+     * @return true si la créature est vivante, false sinon.
+     */
     private boolean creatureEstVivante(Creature creature) {
         if (!creature.getEstMorte()) {
             return true;
@@ -131,6 +174,12 @@ public abstract class Enclos {
         }
     }
 
+    /**
+     * Méthode pour savoir si une créature est déjà dans un enclos ou non.
+     *
+     * @param creature La créature dont on veut savoir si elle est dans un enclos ou pas.
+     * @return true si la créature est déjà dans un enclos, false sinon.
+     */
     private boolean creatureEstDansUnAutreEnclos(Creature creature) {
         if (!Enclos.getListCreatureDansEnclos().contains(creature)) {
             return false;
@@ -155,7 +204,11 @@ public abstract class Enclos {
         } else return creaturePresentes.isEmpty();
     }
 
-    // Méthode pour enlever une créature de l'Enclos
+    /**
+     * Méthode pour enlever une créature de l'Enclos.
+     *
+     * @param creature La créature à enlever.
+     */
     public void enleverCreature(Creature creature) {
         if (creaturePresentes.contains(creature)) {
             creaturePresentes.remove(creature);
@@ -169,19 +222,25 @@ public abstract class Enclos {
         }
     }
 
-    // Méthode pour nourrir toutes les créatures dans l'Enclos
+    /**
+     * Méthode pour nourrir toutes les créatures dans l'Enclos.
+     */
     public void nourrirCreatures() {
         if (!this.creaturePresentes.isEmpty()){
             for (Creature creature: creaturePresentes) {
                 creature.manger();
-                System.out.println("Les créatures ont été nourries");
             }
+            System.out.println("Les créatures ont été nourries");
         } else {
             System.out.println(Couleur.ANSI_YELLOW+"Il n'y a pas de créature dans l'enclos"+ Couleur.ANSI_RESET);
         }
     }
 
-    // Méthode pour nettoyer l'Enclos
+    /**
+     * Méthode pour nettoyer l'Enclos.
+     *
+     * @return true si l'enclos a été nettoyé avec succès, false sinon.
+     */
     public boolean nettoyer() {
         if (this.degresProprete < 2 && creaturePresentes.isEmpty()) {
             degresProprete = 2;

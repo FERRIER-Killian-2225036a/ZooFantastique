@@ -1,15 +1,25 @@
-// Déclaration du package et des imports nécessaires
 package main.models.enclos.implemente;
+
 import main.models.creatures.Creature;
 import main.models.enclos.Enclos;
 
-// Définition de la classe Aquarium qui hérite de la classe abstraite Enclos
+/**
+ * La classe Aquarium hérite de la classe abstraite Enclos et représente un type spécifique
+ * d'enclos destiné à héberger des créatures aquatiques.
+ */
 public class Aquarium extends Enclos {
     // Propriétés spécifiques à l'Aquarium
     int profondeur;
     int saliniteEau=0;
 
-    // Constructeur de la classe Aquarium
+    /**
+     * Constructeur de la classe Aquarium.
+     *
+     * @param nom         Le nom de l'aquarium.
+     * @param superficie  La superficie de l'aquarium.
+     * @param capaciteMax La capacité maximale d'aquarium.
+     * @param profondeur  La profondeur de l'aquarium.
+     */
     public Aquarium(String nom, int superficie, int capaciteMax, int profondeur) {
         // Appel du constructeur de la classe parente Enclos avec les paramètres fournis
         super(nom, superficie, capaciteMax);
@@ -25,7 +35,12 @@ public class Aquarium extends Enclos {
         this.saliniteEau = saliniteEau;
     }
 
-    // Redéfinition de la méthode pour ajouter une créature à l'Aquarium
+    /**
+     * Redéfinition de la méthode pour ajouter une créature à l'aquarium.
+     *
+     * @param creature La créature à ajouter.
+     * @return true si la créature est ajoutée avec succès, false sinon.
+     */
     @Override
     public boolean ajouterCreature(Creature creature) {
         // Vérifie si la créature est de type Aquatique
@@ -39,7 +54,11 @@ public class Aquarium extends Enclos {
         }
     }
 
-    // Redéfinition de la méthode pour nettoyer l'Aquarium
+    /**
+     * Redéfinition de la méthode pour nettoyer l'aquarium comprenant la salinité de l'eau.
+     *
+     * @return true si l'aquarium a été nettoyé avec succès, false sinon.
+     */
     @Override
     public boolean nettoyer() {
     	boolean doitEtreNettoye = super.nettoyer();

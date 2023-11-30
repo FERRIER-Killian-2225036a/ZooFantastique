@@ -1,15 +1,25 @@
-// Déclaration du package et des imports nécessaires
 package main.models.enclos.implemente;
+
 import main.models.creatures.Creature;
 import main.models.enclos.Enclos;
 
-// Définition de la classe Voliere qui hérite de la classe Enclos
+/**
+ * La classe Voliere hérite de la classe abstraite Enclos et représente un type spécifique
+ * d'enclos destiné à héberger des créatures volantes.
+ */
 public class Voliere extends Enclos {
     // Propriété spécifique à la Voliere
     int hauteur;
     protected int etatToiture=2; // 0 = « mauvais », 1 = « correct » et 2 = « bon »
 
-    // Constructeur de la classe Voliere
+    /**
+     * Constructeur de la classe Voliere.
+     *
+     * @param nom         Le nom de la volière.
+     * @param superficie  La superficie de la volière.
+     * @param capaciteMax La capacité maximale de la volière.
+     * @param hauteur     La hauteur de la volière.
+     */
     public Voliere(String nom, int superficie, int capaciteMax, int hauteur) {
         // Appel du constructeur de la classe parente Enclos avec les paramètres fournis
         super(nom, superficie, capaciteMax);
@@ -25,7 +35,12 @@ public class Voliere extends Enclos {
         this.etatToiture = etatToiture;
     }
 
-    // Redéfinition de la méthode pour ajouter une créature à la Voliere
+    /**
+     * Redéfinition de la méthode pour ajouter une créature à la Voliere.
+     *
+     * @param creature La créature à ajouter à la volière.
+     * @return true si la créature a été ajoutée avec succès, false sinon.
+     */
     @Override
     public boolean ajouterCreature(Creature creature) {
         // Vérifie si la créature est de type Volant
@@ -38,7 +53,12 @@ public class Voliere extends Enclos {
             return false;
         }
     }
-    
+
+    /**
+     * Redéfinition de la méthode pour nettoyer la Voliere comprenant sa toiture.
+     *
+     * @return true si le nettoyage a été effectué avec succès, false sinon.
+     */
     @Override
     public boolean nettoyer() {
     	boolean doitEtreNettoye = super.nettoyer();
@@ -51,6 +71,7 @@ public class Voliere extends Enclos {
     	return true;
     }
 
+    // Redéfinition de la méthode toString pour afficher les propriétés de la volière
     @Override
     public String toString() {
         return super.toString() +
