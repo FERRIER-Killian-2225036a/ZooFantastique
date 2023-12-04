@@ -1,11 +1,10 @@
 package main.controllers;
 
 import main.common.Check;
+import main.common.Tri;
 import main.models.creatures.Creature;
 import main.models.enclos.Enclos;
 import main.views.AjoutEntiteView;
-
-import java.util.ArrayList;
 import static main.common.Check.checkIfEntreeIsInt;
 import static main.initialisation.InitialisationZoo.*;
 
@@ -36,11 +35,7 @@ public class MenuUserController {
                 case 1:
                     // Affichage de toutes les créatures dans le Zoo
                     if (!zooFantastique.getToutesCreatureDansZoo().isEmpty()) {
-                        ArrayList<Creature> listDesCreaures =  zooFantastique.getToutesCreatureDansZoo();
-                        for (int i = 0; i<listDesCreaures.size(); ++i){
-                            System.out.println("\tCréature " + (i+1) + " : " + listDesCreaures.get(i).getNom() + " est un " + listDesCreaures.get(i).getSexToString() +
-                                    " est a " + listDesCreaures.get(i).getAge() + " ans");
-                        }
+                        Tri.affichageDesCreaturesSelonAge();
                         System.out.println();
                     } else {
                         System.out.println("Pas de créatures\n");
@@ -63,9 +58,7 @@ public class MenuUserController {
                 case 4:
                     // Affichage des enclos du Zoo
                     if (!zooFantastique.getEnclosExistants().isEmpty()) {
-                        for (int i = 0; i<zooFantastique.getEnclosExistants().size(); ++i){
-                            System.out.println("\tEnclos " + (i+1) + " : " + zooFantastique.getEnclosExistants().get(i).getNom());
-                        }
+                        Tri.affichageDesEnclosSelonNombreCreaturesPresente();
                         System.out.println();
                     } else {
                         System.out.println("Pas d'enclos\n");

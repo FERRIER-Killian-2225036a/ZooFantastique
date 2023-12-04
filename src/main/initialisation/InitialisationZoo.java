@@ -45,7 +45,7 @@ public class InitialisationZoo {
         // Initialisation du maitre du zoo
         maitreZoo = new MaitreZoo("Maitre du Zoo",0,19);
         // Initialisation du zoo
-        zooFantastique = new ZooFantastique("Zoo Fantastique", maitreZoo,2);
+        zooFantastique = new ZooFantastique("Zoo Fantastique", maitreZoo,3);
     }
 
     /**
@@ -58,8 +58,8 @@ public class InitialisationZoo {
         listEnclosInitialise.add(new Cage("Enclos de Krakens", 34, 6));
 
         // Initialisation des créatures
-        listCreatureInitialise.add(new Dragon("Papa Dragon", 13, 0, 300, 4));
-        listCreatureInitialise.add(new Dragon("Maman Dragonne", 13, 1, 300, 4));
+        listCreatureInitialise.add(new Dragon("Papa Dragon", 65, 0, 300, 4));
+        listCreatureInitialise.add(new Dragon("Maman Dragonne", 63, 1, 300, 4));
 
         // Initialisation du "Dragon" avec une faim à 80% et ses deux parents
         listCreatureInitialise.add(new Dragon("Dragon", 13, 0, 300, 4));
@@ -68,14 +68,14 @@ public class InitialisationZoo {
         listCreatureInitialise.get(2).getEstEnfantDe().add(listCreatureInitialise.get(1));
 
         // Initialisation de la "Dragonne" avec ses deux parents
-        listCreatureInitialise.add(new Dragon("Dragonne", 13, 1, 300, 4));
+        listCreatureInitialise.add(new Dragon("Dragonne", 15, 1, 300, 4));
         listCreatureInitialise.get(3).getEstEnfantDe().add(listCreatureInitialise.get(0));
         listCreatureInitialise.get(3).getEstEnfantDe().add(listCreatureInitialise.get(1));
 
         // Initialisation des autres créatures
         listCreatureInitialise.add(new Krakens("Krakens", 13, 0, 300, 4));
-        listCreatureInitialise.add(new Licornes("Licorne mâle", 13, 0, 300, 4));
-        listCreatureInitialise.add(new Licornes("Licorne femelle", 13, 1, 300, 4));
+        listCreatureInitialise.add(new Licornes("Licorne mâle", 21, 0, 300, 4));
+        listCreatureInitialise.add(new Licornes("Licorne femelle", 20, 1, 300, 4));
 
         // Ajout des enfants dans la liste des enfants de leurs parents
         listCreatureInitialise.get(0).getEstParentDe().add(listCreatureInitialise.get(2));
