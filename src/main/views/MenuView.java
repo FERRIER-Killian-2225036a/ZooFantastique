@@ -8,17 +8,29 @@ import java.util.ArrayList;
 
 import static main.common.Check.*;
 
+/**
+ * Vue du menu principal de l'application Zoo.
+ */
 public class MenuView {
     protected ArrayList<Enclos> instanceEnclos = Enclos.InstanceManager.getAllInstances();
     protected ArrayList<Creature> instanceCreatures = Creature.InstanceManager.getAllInstances();
 
+    /**
+     * Affiche le message de bienvenue.
+     */
     public void start() {
         System.out.println("-------------------------------------------------  Bienvenue  -------------------------------------------------");
     }
+    /**
+     * Affiche le message de fermeture.
+     */
     public void end() {
         System.out.println("Aurevoir...");
     }
 
+    /**
+     * Affiche les choix d'enclos disponibles.
+     */
     public void afficherChoixEnclos() {
         if (!instanceEnclos.isEmpty()){
             for (int i = 0; i < instanceEnclos.size(); ++i){
@@ -29,6 +41,9 @@ public class MenuView {
             System.out.println("Il n'y pas d'enclos...\n");
         }
     }
+    /**
+     * Affiche les choix de créatures disponibles.
+     */
     public void afficherChoixCreatures() {
         if (!instanceCreatures.isEmpty()){
             for (int i = 0; i < instanceCreatures.size(); ++i){
@@ -39,6 +54,9 @@ public class MenuView {
             System.out.println("Il n'y pas de créatures...\n");
         }
     }
+    /**
+     * Affiche les choix de créatures avec indicateur de faim disponibles.
+     */
     public void afficherChoixCreaturesAvecIndicateurFaim() {
         if (!instanceCreatures.isEmpty()){
             for (int i = 0; i < instanceCreatures.size(); ++i){
@@ -49,6 +67,9 @@ public class MenuView {
             System.out.println("Il n'y pas de créatures...\n");
         }
     }
+    /**
+     * Affiche les choix de créatures avec indicateur de santé et s'ils sont malades.
+     */
     public void afficherChoixCreaturesAvecIndicateurSanteEtMaladie() {
         if (!instanceCreatures.isEmpty()){
             for (int i = 0; i < instanceCreatures.size(); ++i){
@@ -72,6 +93,9 @@ public class MenuView {
         System.out.println(Couleur.ANSI_YELLOW+"Ce n'est pas le bon sexe\n"+ Couleur.ANSI_RESET);
     }
 
+    /**
+     * Affiche le choix des créatures que l'utilisateur peut créer
+     */
     public void menuAjoutCreature() {
         System.out.print("""
                         Ajout d'une créature :
@@ -91,6 +115,9 @@ public class MenuView {
         System.out.print("Entrez votre choix : ");
     }
 
+    /**
+     * Méthode pour afficher tous les choix disponibles de la simulation
+     */
     public static void menu() {
         System.out.println(TempsView.afficherDate());
         System.out.println("""
@@ -109,6 +136,11 @@ public class MenuView {
         System.out.print("Choisir une action : ");
     }
 
+    /**
+     * Méthode pour afficher le menu principal et récupérer le choix de l'utilisateur.
+     *
+     * @return Le choix de l'utilisateur pour le MenuUserController.
+     */
     public int userMenu() {
         menu();
         int entree = checkIfEntreeIsInt();
