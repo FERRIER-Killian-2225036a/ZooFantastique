@@ -93,7 +93,7 @@ public class InitialisationZoo {
         listEnclosInitialise.get(1).ajouterCreature(listCreatureInitialise.get(2));
         listEnclosInitialise.get(1).ajouterCreature(listCreatureInitialise.get(3));
 
-        // AJout des créatures dans l'enclos "Enclos de Licornes"
+        // AJout des créatures dans l'enclos "Enclos de Krakens"
         listEnclosInitialise.get(2).ajouterCreature(listCreatureInitialise.get(4));
     }
 }
