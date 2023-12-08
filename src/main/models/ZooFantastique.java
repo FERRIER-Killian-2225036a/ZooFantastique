@@ -95,7 +95,7 @@ public class ZooFantastique {
     public String toString() {
         return "------  Information ZooFantastique " + nom + " :  ------\n" +
                 "Maitre du zoo : " + maitreZoo.getNom() + "\n" +
-                "Nombre Maximum d'enclos : " + nombreMaxEnclos + "\n" +
+                "Nombre maximum d'enclos : " + nombreMaxEnclos + "\n" +
                 "Liste des enclos du Zoo : \n" + getNomsEnclos();
 
     }

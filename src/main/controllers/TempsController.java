@@ -187,7 +187,7 @@ public class TempsController {
                     for (Creature creature : enclos.getCreaturePresentes()) {
                         creature.setEstMalade(true);
                     }
-                    System.out.println("Les créatures de l'enclos " + enclos.getNom() + " sont malade a cause de l'état de l'enclos. Vous devez les soigner");
+                    System.out.println("Les créatures de l'enclos " + enclos.getNom() + " sont malades à cause de l'état de l'enclos. Vous devez les soigner");
                 }
             }
         }
@@ -211,7 +211,7 @@ public class TempsController {
         for (Creature creature : Creature.InstanceManager.getAllInstances()) {
             if (booleanRandom.nextBoolean()) {
                 creature.setEstMalade(true);
-                System.out.println(creature.getNom()+" est tombé malade");
+                System.out.println(creature.getNom()+" est tombé(e) malade");
             }
         }
     }

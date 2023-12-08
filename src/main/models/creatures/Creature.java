@@ -176,7 +176,7 @@ public abstract class Creature {
         if (!estMorte) {
             if (indicateurSante<100) {
                 this.indicateurSante = 100;
-                System.out.println(nom + " a été soigné");
+                System.out.println(nom + " a été soigné(e)");
             } else {
                 System.out.println(nom + " est déjà en bonne santé");
             }
@@ -404,7 +404,7 @@ public abstract class Creature {
         if (femelle.getSex()==1 && male.getSex()!=1 || !Objects.equals(male.getEspece(), femelle.getEspece())) {
             estParent=true;
         } else {
-            System.out.println("Le sexe ou l'espèce des créatures n'est pas compatible pour se reproduires");
+            System.out.println("Le sexe ou l'espèce des créatures n'est pas compatible pour se reproduire");
         }
     }
 

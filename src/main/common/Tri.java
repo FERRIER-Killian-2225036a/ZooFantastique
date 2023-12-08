@@ -18,7 +18,7 @@ public class Tri {
 
         listDesCreaures.sort((c1, c2) -> Integer.compare(c2.getAge(), c1.getAge()));
         for (int i = 0; i < listDesCreaures.size(); ++i) {
-            System.out.println("\tCréature " + (i + 1) + " : " + listDesCreaures.get(i).getNom() + " est un "
+            System.out.println("\tCréature " + (i + 1) + " : " + listDesCreaures.get(i).getNom() + " est un(e) "
                     + listDesCreaures.get(i).getSexToString() + " est a " + listDesCreaures.get(i).getAge() + " ans");
         }
     }

@@ -51,7 +51,7 @@ public class MenuView {
             }
             System.out.print("Sélectionnez une créature : ");
         } else {
-            System.out.println("Il n'y pas de créatures...\n");
+            System.out.println("Il n'y pas de créature...\n");
         }
     }
     /**
@@ -64,7 +64,7 @@ public class MenuView {
             }
             System.out.print("Sélectionnez une créature : ");
         } else {
-            System.out.println("Il n'y pas de créatures...\n");
+            System.out.println("Il n'y pas de créature...\n");
         }
     }
     /**
@@ -77,7 +77,7 @@ public class MenuView {
             }
             System.out.print("Sélectionnez une créature : ");
         } else {
-            System.out.println("Il n'y pas de créatures...\n");
+            System.out.println("Il n'y pas de créature...\n");
         }
     }
 
@@ -122,15 +122,15 @@ public class MenuView {
         System.out.println(TempsView.afficherDate());
         System.out.println("""
         01. Lister les créatures                                         11. Renommer le zoo
-        02. Afficher le nombre de créature dans le zoo                   12. Nourrir seulement une créature
+        02. Afficher le nombre de créatures dans le zoo                  12. Nourrir seulement une créature
         03. Examiner une créature                                        13. Ajout d'une créature
         04. Afficher les enclos existants                                14. Ajout d'un enclos
-        05. Affiche le nombre d'enclos dans le zoo                       15. Transférer une créature
-        06. Examiner un enclos                                           16. Transférer toutes les créature d'un enclos
+        05. Afficher le nombre d'enclos dans le zoo                      15. Transférer une créature
+        06. Examiner un enclos                                           16. Transférer toutes les créatures d'un enclos
         07. Nettoyer un enclos                                           17. Faire reproduire les créatures
-        08. Nourrir les créature dans un enclos                          18. Passer un mois
+        08. Nourrir les créatures dans un enclos                         18. Passer un mois
         09. Afficher les informations du Zoo et du maître du zoo         19. Soigner une créature
-        10. Modification des information du maitre du zoo                20. Soigner toutes les créature d'un enclos
+        10. Modification des informations du maitre du zoo               20. Soigner toutes les créatures d'un enclos
         ----------------------------------------------------------------------------------------------------------------
         0. Quitter""");
         System.out.print("Choisir une action : ");
@@ -154,7 +154,7 @@ public class MenuView {
                 yield 1;
             }
             case 2 -> {
-                System.out.print("\nLe nombre de créature présente dans le zoo est : ");
+                System.out.print("\nLe nombre de créatures présente dans le zoo est : ");
                 yield 2;
             }
             case 3 -> {
@@ -166,11 +166,11 @@ public class MenuView {
                 yield 4;
             }
             case 5 -> {
-                System.out.print("\nLe nombre d'enclos présente dans le zoo est : ");
+                System.out.print("\nLe nombre d'enclos présent dans le zoo est : ");
                 yield 5;
             }
             case 6 -> {
-                System.out.println("\nChoisissez l'encos que vous voulez examiner : ");
+                System.out.println("\nChoisissez l'enclos que vous voulez examiner : ");
                 afficherChoixEnclos();
                 yield 6;
             }
@@ -180,7 +180,7 @@ public class MenuView {
                 yield 7;
             }
             case 8 -> {
-                System.out.println("\nNourrir un enclos : ");
+                System.out.println("\nNourrir les créatures d'un enclos : ");
                 afficherChoixEnclos();
                 yield 8;
             }
@@ -189,7 +189,7 @@ public class MenuView {
                 yield 9;
             }
             case 10 -> {
-                System.out.println("Modification des information du maitre du zoo : ");
+                System.out.println("Modification des informations du maitre du zoo : ");
                 System.out.println("1. Changer le nom");
                 System.out.println("2. Changer le sexe");
                 System.out.println("3. Changer l'âge");
@@ -209,11 +209,11 @@ public class MenuView {
             // Créer un enclos
             case 14 -> 14;
             case 15 -> {
-                System.out.println("Qu'elle créature voulez-vous transférer:");
+                System.out.println("Qu'elle créature voulez-vous transférer :");
                 yield 15;
             }
             case 16 -> {
-                System.out.println("Quel enclos voulez-vous transférer:");
+                System.out.println("Quel enclos voulez-vous transférer :");
                 yield 16;
             }
             // Faire la reproduction de deux créatures

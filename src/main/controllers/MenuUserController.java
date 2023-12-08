@@ -38,7 +38,7 @@ public class MenuUserController {
                         Tri.affichageDesCreaturesSelonAge();
                         System.out.println();
                     } else {
-                        System.out.println("Pas de créatures\n");
+                        System.out.println("Pas de créature\n");
                     }
                     break;
                 case 2:
@@ -194,7 +194,7 @@ public class MenuUserController {
                     try {
                         menuView.afficherChoixCreatures();
                         Creature creatureCible = zooFantastique.getToutesCreatureDansZoo().get(checkIfEntreeIsInt()-1);
-                        menuView.afficherText("Dans quel enclos voulez-vous transférer "+creatureCible.getNom());
+                        menuView.afficherText("Dans quel enclos voulez-vous le transférer "+creatureCible.getNom());
                         menuView.afficherChoixEnclos();
                         Enclos enclosDestination = zooFantastique.getEnclosExistants().get(checkIfEntreeIsInt()-1);
                         maitreZoo.transferCreature(creatureCible,enclosDestination);
@@ -229,7 +229,7 @@ public class MenuUserController {
                         Creature creatureUne = zooFantastique.getToutesCreatureDansZoo().get(checkIfEntreeIsInt()-1);
                         if (creatureUne.getSex()==1) { menuView.pasLeBonSexeErrorMessage(); break; }
                         try {
-                            System.out.println("\nChoisissez la mère");
+                            System.out.println("\nChoisissez la mère (femelle)");
                             menuView.afficherChoixCreatures();
                             Creature creatureDeux = zooFantastique.getToutesCreatureDansZoo().get(checkIfEntreeIsInt()-1);
                             if (creatureDeux.getSex()!=1) { menuView.pasLeBonSexeErrorMessage(); break; }
@@ -266,7 +266,7 @@ public class MenuUserController {
                                 creature.soigner();
                             }
                         } else {
-                            System.out.println("L'enclos ne contient pas de créatures");
+                            System.out.println("L'enclos ne contient pas de créature");
                         }
                         System.out.println();
                     } catch (Exception e) {

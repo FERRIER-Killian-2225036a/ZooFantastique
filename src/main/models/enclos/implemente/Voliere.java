@@ -76,7 +76,7 @@ public class Voliere extends Enclos {
     public String toString() {
         return super.toString() +
                 "Hauteur : " + hauteur +
-                "Etat de la toiture : " + super.getProprete(etatToiture) +
+                "État de la toiture : " + super.getProprete(etatToiture) +
                 "  ----------------------------------------------  " + "\n";
     }
 }

@@ -119,7 +119,7 @@ public abstract class Enclos {
     }
     public String getEspeceContenueToString() {
         if (especeContenue.isEmpty()) {
-            return "Pas d'escpèce contenue";
+            return "Pas d'espèce contenue";
         } return especeContenue;
     }
 
@@ -264,10 +264,10 @@ public abstract class Enclos {
         return "------  Information enclos \"" + nom + "\" :  ------\n" +
                 "Nom : " + getNom() + "\n" +
                 "Superficie : " + getSuperficie() + "\n" +
-                "Capacite maximum : " + getCapaciteMax() + "\n" +
+                "Capacité maximum : " + getCapaciteMax() + "\n" +
                 "Type de créature dans l'enclos : " + getEspeceContenueToString() + "\n" +
-                "Nombre de creatures présentes : " + getNombreCreaturesPresentes() + "\n" +
-                "Liste des creatures présentes : " + toStringCreaturePresentes + "\n" +
+                "Nombre de créatures présentes : " + getNombreCreaturesPresentes() + "\n" +
+                "Liste des créatures présentes : " + toStringCreaturePresentes + "\n" +
                 "Indice de propreté : " + getProprete(degresProprete) + "\n";
     }
 }
